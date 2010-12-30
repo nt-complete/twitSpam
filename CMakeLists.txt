@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 2.4)
+
+project(HELLO)
+
+set( hello_SRCS hello.cpp add.cpp )
+add_executable( hello ${hello_SRCS} )
