@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/nick/twitSpam/src/add.cpp
+iostream
+-
+add.h
+/home/nick/twitSpam/src/add.h
+
+/home/nick/twitSpam/src/add.h
+iostream
+-
+
+/home/nick/twitSpam/src/hello.cpp
+iostream
+-
+add.h
+/home/nick/twitSpam/src/add.h
+

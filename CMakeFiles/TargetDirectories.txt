@@ -1,1 +1,1 @@
-/home/nick/twitSpam/CMakeFiles/hello.dir
+/home/nick/twitSpam/src/CMakeFiles/hello.dir

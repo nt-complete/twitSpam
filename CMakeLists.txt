@@ -1,6 +1,5 @@
 cmake_minimum_required(VERSION 2.4)
 
-project(HELLO)
+project(TwitSpam)
+add_subdirectory(src)
 
-set( hello_SRCS hello.cpp add.cpp )
-add_executable( hello ${hello_SRCS} )

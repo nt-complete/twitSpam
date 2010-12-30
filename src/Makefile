@@ -69,14 +69,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/nick/twitSpam/CMakeFiles /home/nick/twitSpam/CMakeFiles/progress.marks
-	$(MAKE) -f CMakeFiles/Makefile2 all
+	cd /home/nick/twitSpam && $(CMAKE_COMMAND) -E cmake_progress_start /home/nick/twitSpam/CMakeFiles /home/nick/twitSpam/src/CMakeFiles/progress.marks
+	cd /home/nick/twitSpam && $(MAKE) -f CMakeFiles/Makefile2 src/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/nick/twitSpam/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) -f CMakeFiles/Makefile2 clean
+	cd /home/nick/twitSpam && $(MAKE) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -85,31 +85,62 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /home/nick/twitSpam && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /home/nick/twitSpam && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/nick/twitSpam && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named hello
+# Convenience name for target.
+src/CMakeFiles/hello.dir/rule:
+	cd /home/nick/twitSpam && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/hello.dir/rule
+.PHONY : src/CMakeFiles/hello.dir/rule
 
-# Build rule for target.
-hello: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 hello
+# Convenience name for target.
+hello: src/CMakeFiles/hello.dir/rule
 .PHONY : hello
 
 # fast build rule for target.
 hello/fast:
-	$(MAKE) -f src/CMakeFiles/hello.dir/build.make src/CMakeFiles/hello.dir/build
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/hello.dir/build.make src/CMakeFiles/hello.dir/build
 .PHONY : hello/fast
+
+# target to build an object file
+add.o:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/hello.dir/build.make src/CMakeFiles/hello.dir/add.o
+.PHONY : add.o
+
+# target to preprocess a source file
+add.i:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/hello.dir/build.make src/CMakeFiles/hello.dir/add.i
+.PHONY : add.i
+
+# target to generate assembly for a file
+add.s:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/hello.dir/build.make src/CMakeFiles/hello.dir/add.s
+.PHONY : add.s
+
+# target to build an object file
+hello.o:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/hello.dir/build.make src/CMakeFiles/hello.dir/hello.o
+.PHONY : hello.o
+
+# target to preprocess a source file
+hello.i:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/hello.dir/build.make src/CMakeFiles/hello.dir/hello.i
+.PHONY : hello.i
+
+# target to generate assembly for a file
+hello.s:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/hello.dir/build.make src/CMakeFiles/hello.dir/hello.s
+.PHONY : hello.s
 
 # Help Target
 help:
@@ -118,8 +149,14 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... rebuild_cache"
 	@echo "... hello"
+	@echo "... rebuild_cache"
+	@echo "... add.o"
+	@echo "... add.i"
+	@echo "... add.s"
+	@echo "... hello.o"
+	@echo "... hello.i"
+	@echo "... hello.s"
 .PHONY : help
 
 
@@ -131,6 +168,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/nick/twitSpam && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
