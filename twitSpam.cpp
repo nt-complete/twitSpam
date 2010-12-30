@@ -1,12 +1,12 @@
-#include <twitCurl.h>
+#include <twitcurl.h>
 #include <iostream>
 
 int main()
 {
   twitCurl twitterObj;
-
-  twitterObj.setTwitterUsername("ntiller");
-  
+  std::string userName = "ntiller";
+  twitterObj.setTwitterUsername(userName);
+  twitterObj.followersGet();
 
 
 }
