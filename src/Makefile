@@ -99,48 +99,33 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-src/CMakeFiles/hello.dir/rule:
-	cd /home/nick/twitSpam && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/hello.dir/rule
-.PHONY : src/CMakeFiles/hello.dir/rule
+src/CMakeFiles/twitSpam.dir/rule:
+	cd /home/nick/twitSpam && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/twitSpam.dir/rule
+.PHONY : src/CMakeFiles/twitSpam.dir/rule
 
 # Convenience name for target.
-hello: src/CMakeFiles/hello.dir/rule
-.PHONY : hello
+twitSpam: src/CMakeFiles/twitSpam.dir/rule
+.PHONY : twitSpam
 
 # fast build rule for target.
-hello/fast:
-	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/hello.dir/build.make src/CMakeFiles/hello.dir/build
-.PHONY : hello/fast
+twitSpam/fast:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/build
+.PHONY : twitSpam/fast
 
 # target to build an object file
-add.o:
-	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/hello.dir/build.make src/CMakeFiles/hello.dir/add.o
-.PHONY : add.o
+twitSpam.o:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/twitSpam.o
+.PHONY : twitSpam.o
 
 # target to preprocess a source file
-add.i:
-	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/hello.dir/build.make src/CMakeFiles/hello.dir/add.i
-.PHONY : add.i
+twitSpam.i:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/twitSpam.i
+.PHONY : twitSpam.i
 
 # target to generate assembly for a file
-add.s:
-	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/hello.dir/build.make src/CMakeFiles/hello.dir/add.s
-.PHONY : add.s
-
-# target to build an object file
-hello.o:
-	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/hello.dir/build.make src/CMakeFiles/hello.dir/hello.o
-.PHONY : hello.o
-
-# target to preprocess a source file
-hello.i:
-	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/hello.dir/build.make src/CMakeFiles/hello.dir/hello.i
-.PHONY : hello.i
-
-# target to generate assembly for a file
-hello.s:
-	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/hello.dir/build.make src/CMakeFiles/hello.dir/hello.s
-.PHONY : hello.s
+twitSpam.s:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/twitSpam.s
+.PHONY : twitSpam.s
 
 # Help Target
 help:
@@ -149,14 +134,11 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... hello"
 	@echo "... rebuild_cache"
-	@echo "... add.o"
-	@echo "... add.i"
-	@echo "... add.s"
-	@echo "... hello.o"
-	@echo "... hello.i"
-	@echo "... hello.s"
+	@echo "... twitSpam"
+	@echo "... twitSpam.o"
+	@echo "... twitSpam.i"
+	@echo "... twitSpam.s"
 .PHONY : help
 
 
