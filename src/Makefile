@@ -187,6 +187,21 @@ twitSpam.s:
 	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/twitSpam.s
 .PHONY : twitSpam.s
 
+# target to build an object file
+user.o:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/user.o
+.PHONY : user.o
+
+# target to preprocess a source file
+user.i:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/user.i
+.PHONY : user.i
+
+# target to generate assembly for a file
+user.s:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/user.s
+.PHONY : user.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -211,6 +226,9 @@ help:
 	@echo "... twitSpam.o"
 	@echo "... twitSpam.i"
 	@echo "... twitSpam.s"
+	@echo "... user.o"
+	@echo "... user.i"
+	@echo "... user.s"
 .PHONY : help
 
 

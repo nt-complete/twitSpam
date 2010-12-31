@@ -17,6 +17,12 @@ src/CMakeFiles/twitSpam.dir/tinyxmlparser.o: include/tinystr.h
 src/CMakeFiles/twitSpam.dir/tinyxmlparser.o: include/tinyxml.h
 
 src/CMakeFiles/twitSpam.dir/twitSpam.o: src/twitSpam.cpp
+src/CMakeFiles/twitSpam.dir/twitSpam.o: src/user.h
 src/CMakeFiles/twitSpam.dir/twitSpam.o: include/tinystr.h
 src/CMakeFiles/twitSpam.dir/twitSpam.o: include/tinyxml.h
+
+src/CMakeFiles/twitSpam.dir/user.o: src/user.cpp
+src/CMakeFiles/twitSpam.dir/user.o: src/user.h
+src/CMakeFiles/twitSpam.dir/user.o: include/tinystr.h
+src/CMakeFiles/twitSpam.dir/user.o: include/tinyxml.h
 

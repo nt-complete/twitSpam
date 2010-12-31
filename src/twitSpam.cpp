@@ -8,6 +8,8 @@
 #include <tinystr.h>
 #include <sstream>
 #include <vector>
+#include "user.h"
+
 
 using namespace std;
 int main()
@@ -101,44 +103,16 @@ int main()
   twitterObj.userGet(userStr);
   
   twitterObj.getLastWebResponse(userStr);
-  TiXmlText userXml(userStr.c_str());
+
   TiXmlDocument userDoc;
   userDoc.Parse(userStr.c_str());
 
 
   TiXmlHandle userRoot(&userDoc);
-  TiXmlNode* followerCount = userRoot.FirstChild("user").FirstChild("followers_count").ToNode();
-  TiXmlNode* friendCount = userRoot.FirstChild("user").FirstChild("friends_count").ToNode();
 
-  int followerCountInt;
-  int friendCountInt;
+  User primUser(userRoot);
 
-  if(followerCount)
-    {
-      std::string followerCountStr = followerCount->FirstChild()->ToText()->ValueStr();
-      std::stringstream stream(followerCountStr);
-      stream >> followerCountInt;
-      std::cout << "FOLLOWERCOUNT: " << followerCountInt << "\n";
-    }
-  else
-    {
-      std::cout << "Cannot find Followers_count\n";
-      exit(1);
-    }
-  
-  if(friendCount)
-    {
-      std::string friendCountStr = friendCount->FirstChild()->ToText()->ValueStr();
-
-      std::stringstream stream(friendCountStr);
-      stream >> friendCountInt;
-      std::cout << "FRIENDCOUNT: " << friendCountInt << "\n";
-    }
-  else
-    {
-      std::cout << "Cannot find Friends_count\n";
-      exit(1);
-    }
+  std::cout << primUser << "\n";
 
   //  std::cout << userStr << "\n";
 
@@ -149,30 +123,18 @@ int main()
   twitterObj.getLastWebResponse(followersStr);
 
 
-  //  std::cout << followersStr << "\n";
-
-  TiXmlDocument followersDoc;
+   TiXmlDocument followersDoc;
   followersDoc.Parse(followersStr.c_str());
   TiXmlHandle followersRoot(&followersDoc);
 
 
-  std::vector<std::string> usersVector;
-  for(int i = 0; i < followerCountInt; i++ )
-    {
-      if(followersRoot.ToNode())
-	{
 
-	  //	  TiXmlNode* friendNameNode = followersRoot.Child("user", i).ToNode();
-	  TiXmlNode* friendNameNode = followersRoot.FirstChild("user").ToNode();
+  std::cout << followersStr << "\n";
 
-	  if(friendNameNode)
-	    {
-	      std::string friendNameStr = friendNameNode->FirstChild()->ToText()->ValueStr();
-	      std::cout << "Friend: " << friendNameStr << "\n";
+  
 
-	    }
-	}
-    }
+
+  
 
   //  std::cout << xmlText << "\n";
   //  std::cout << followersStr << "\n";
