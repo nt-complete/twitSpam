@@ -164,6 +164,12 @@ HELLO_SOURCE_DIR:STATIC=/home/nick/twitSpam/src
 //Single output directory for building all libraries.
 LIBRARY_OUTPUT_PATH:PATH=
 
+//Value Computed by CMake
+TwitSpam_BINARY_DIR:STATIC=/home/nick/twitSpam
+
+//Value Computed by CMake
+TwitSpam_SOURCE_DIR:STATIC=/home/nick/twitSpam
+
 
 ########################
 # INTERNAL cache entries

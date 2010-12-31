@@ -56,11 +56,11 @@ CMAKE_BINARY_DIR = /home/nick/twitSpam
 # Directory level rules for directory src
 
 # Convenience name for "all" pass in the directory.
-src/all: src/CMakeFiles/hello.dir/all
+src/all: src/CMakeFiles/twitSpam.dir/all
 .PHONY : src/all
 
 # Convenience name for "clean" pass in the directory.
-src/clean: src/CMakeFiles/hello.dir/clean
+src/clean: src/CMakeFiles/twitSpam.dir/clean
 .PHONY : src/clean
 
 # Convenience name for "preinstall" pass in the directory.
@@ -68,38 +68,38 @@ src/preinstall:
 .PHONY : src/preinstall
 
 #=============================================================================
-# Target rules for target src/CMakeFiles/hello.dir
+# Target rules for target src/CMakeFiles/twitSpam.dir
 
 # All Build rule for target.
-src/CMakeFiles/hello.dir/all:
-	$(MAKE) -f src/CMakeFiles/hello.dir/build.make src/CMakeFiles/hello.dir/depend
-	$(MAKE) -f src/CMakeFiles/hello.dir/build.make src/CMakeFiles/hello.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nick/twitSpam/CMakeFiles  1 2
-	@echo "Built target hello"
-.PHONY : src/CMakeFiles/hello.dir/all
+src/CMakeFiles/twitSpam.dir/all:
+	$(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/depend
+	$(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/nick/twitSpam/CMakeFiles  1
+	@echo "Built target twitSpam"
+.PHONY : src/CMakeFiles/twitSpam.dir/all
 
 # Include target in all.
-all: src/CMakeFiles/hello.dir/all
+all: src/CMakeFiles/twitSpam.dir/all
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-src/CMakeFiles/hello.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/nick/twitSpam/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/hello.dir/all
+src/CMakeFiles/twitSpam.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nick/twitSpam/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/twitSpam.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/nick/twitSpam/CMakeFiles 0
-.PHONY : src/CMakeFiles/hello.dir/rule
+.PHONY : src/CMakeFiles/twitSpam.dir/rule
 
 # Convenience name for target.
-hello: src/CMakeFiles/hello.dir/rule
-.PHONY : hello
+twitSpam: src/CMakeFiles/twitSpam.dir/rule
+.PHONY : twitSpam
 
 # clean rule for target.
-src/CMakeFiles/hello.dir/clean:
-	$(MAKE) -f src/CMakeFiles/hello.dir/build.make src/CMakeFiles/hello.dir/clean
-.PHONY : src/CMakeFiles/hello.dir/clean
+src/CMakeFiles/twitSpam.dir/clean:
+	$(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/clean
+.PHONY : src/CMakeFiles/twitSpam.dir/clean
 
 # clean rule for target.
-clean: src/CMakeFiles/hello.dir/clean
+clean: src/CMakeFiles/twitSpam.dir/clean
 .PHONY : clean
 
 #=============================================================================

@@ -99,17 +99,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named hello
+# Target rules for targets named twitSpam
 
 # Build rule for target.
-hello: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 hello
-.PHONY : hello
+twitSpam: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 twitSpam
+.PHONY : twitSpam
 
 # fast build rule for target.
-hello/fast:
-	$(MAKE) -f src/CMakeFiles/hello.dir/build.make src/CMakeFiles/hello.dir/build
-.PHONY : hello/fast
+twitSpam/fast:
+	$(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/build
+.PHONY : twitSpam/fast
 
 # Help Target
 help:
@@ -119,7 +119,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... hello"
+	@echo "... twitSpam"
 .PHONY : help
 
 
