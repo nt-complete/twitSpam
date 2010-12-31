@@ -113,6 +113,66 @@ twitSpam/fast:
 .PHONY : twitSpam/fast
 
 # target to build an object file
+tinystr.o:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/tinystr.o
+.PHONY : tinystr.o
+
+# target to preprocess a source file
+tinystr.i:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/tinystr.i
+.PHONY : tinystr.i
+
+# target to generate assembly for a file
+tinystr.s:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/tinystr.s
+.PHONY : tinystr.s
+
+# target to build an object file
+tinyxml.o:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/tinyxml.o
+.PHONY : tinyxml.o
+
+# target to preprocess a source file
+tinyxml.i:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/tinyxml.i
+.PHONY : tinyxml.i
+
+# target to generate assembly for a file
+tinyxml.s:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/tinyxml.s
+.PHONY : tinyxml.s
+
+# target to build an object file
+tinyxmlerror.o:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/tinyxmlerror.o
+.PHONY : tinyxmlerror.o
+
+# target to preprocess a source file
+tinyxmlerror.i:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/tinyxmlerror.i
+.PHONY : tinyxmlerror.i
+
+# target to generate assembly for a file
+tinyxmlerror.s:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/tinyxmlerror.s
+.PHONY : tinyxmlerror.s
+
+# target to build an object file
+tinyxmlparser.o:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/tinyxmlparser.o
+.PHONY : tinyxmlparser.o
+
+# target to preprocess a source file
+tinyxmlparser.i:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/tinyxmlparser.i
+.PHONY : tinyxmlparser.i
+
+# target to generate assembly for a file
+tinyxmlparser.s:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/tinyxmlparser.s
+.PHONY : tinyxmlparser.s
+
+# target to build an object file
 twitSpam.o:
 	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/twitSpam.o
 .PHONY : twitSpam.o
@@ -136,6 +196,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... twitSpam"
+	@echo "... tinystr.o"
+	@echo "... tinystr.i"
+	@echo "... tinystr.s"
+	@echo "... tinyxml.o"
+	@echo "... tinyxml.i"
+	@echo "... tinyxml.s"
+	@echo "... tinyxmlerror.o"
+	@echo "... tinyxmlerror.i"
+	@echo "... tinyxmlerror.s"
+	@echo "... tinyxmlparser.o"
+	@echo "... tinyxmlparser.i"
+	@echo "... tinyxmlparser.s"
 	@echo "... twitSpam.o"
 	@echo "... twitSpam.i"
 	@echo "... twitSpam.s"

@@ -73,14 +73,118 @@ src/CMakeFiles/twitSpam.dir/twitSpam.o.provides: src/CMakeFiles/twitSpam.dir/twi
 src/CMakeFiles/twitSpam.dir/twitSpam.o.provides.build: src/CMakeFiles/twitSpam.dir/twitSpam.o
 .PHONY : src/CMakeFiles/twitSpam.dir/twitSpam.o.provides.build
 
+src/CMakeFiles/twitSpam.dir/tinystr.o: src/CMakeFiles/twitSpam.dir/flags.make
+src/CMakeFiles/twitSpam.dir/tinystr.o: src/tinystr.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/nick/twitSpam/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/twitSpam.dir/tinystr.o"
+	cd /home/nick/twitSpam/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/twitSpam.dir/tinystr.o -c /home/nick/twitSpam/src/tinystr.cpp
+
+src/CMakeFiles/twitSpam.dir/tinystr.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/twitSpam.dir/tinystr.i"
+	cd /home/nick/twitSpam/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/nick/twitSpam/src/tinystr.cpp > CMakeFiles/twitSpam.dir/tinystr.i
+
+src/CMakeFiles/twitSpam.dir/tinystr.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/twitSpam.dir/tinystr.s"
+	cd /home/nick/twitSpam/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/nick/twitSpam/src/tinystr.cpp -o CMakeFiles/twitSpam.dir/tinystr.s
+
+src/CMakeFiles/twitSpam.dir/tinystr.o.requires:
+.PHONY : src/CMakeFiles/twitSpam.dir/tinystr.o.requires
+
+src/CMakeFiles/twitSpam.dir/tinystr.o.provides: src/CMakeFiles/twitSpam.dir/tinystr.o.requires
+	$(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/tinystr.o.provides.build
+.PHONY : src/CMakeFiles/twitSpam.dir/tinystr.o.provides
+
+src/CMakeFiles/twitSpam.dir/tinystr.o.provides.build: src/CMakeFiles/twitSpam.dir/tinystr.o
+.PHONY : src/CMakeFiles/twitSpam.dir/tinystr.o.provides.build
+
+src/CMakeFiles/twitSpam.dir/tinyxml.o: src/CMakeFiles/twitSpam.dir/flags.make
+src/CMakeFiles/twitSpam.dir/tinyxml.o: src/tinyxml.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/nick/twitSpam/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/twitSpam.dir/tinyxml.o"
+	cd /home/nick/twitSpam/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/twitSpam.dir/tinyxml.o -c /home/nick/twitSpam/src/tinyxml.cpp
+
+src/CMakeFiles/twitSpam.dir/tinyxml.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/twitSpam.dir/tinyxml.i"
+	cd /home/nick/twitSpam/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/nick/twitSpam/src/tinyxml.cpp > CMakeFiles/twitSpam.dir/tinyxml.i
+
+src/CMakeFiles/twitSpam.dir/tinyxml.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/twitSpam.dir/tinyxml.s"
+	cd /home/nick/twitSpam/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/nick/twitSpam/src/tinyxml.cpp -o CMakeFiles/twitSpam.dir/tinyxml.s
+
+src/CMakeFiles/twitSpam.dir/tinyxml.o.requires:
+.PHONY : src/CMakeFiles/twitSpam.dir/tinyxml.o.requires
+
+src/CMakeFiles/twitSpam.dir/tinyxml.o.provides: src/CMakeFiles/twitSpam.dir/tinyxml.o.requires
+	$(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/tinyxml.o.provides.build
+.PHONY : src/CMakeFiles/twitSpam.dir/tinyxml.o.provides
+
+src/CMakeFiles/twitSpam.dir/tinyxml.o.provides.build: src/CMakeFiles/twitSpam.dir/tinyxml.o
+.PHONY : src/CMakeFiles/twitSpam.dir/tinyxml.o.provides.build
+
+src/CMakeFiles/twitSpam.dir/tinyxmlerror.o: src/CMakeFiles/twitSpam.dir/flags.make
+src/CMakeFiles/twitSpam.dir/tinyxmlerror.o: src/tinyxmlerror.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/nick/twitSpam/CMakeFiles $(CMAKE_PROGRESS_4)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/twitSpam.dir/tinyxmlerror.o"
+	cd /home/nick/twitSpam/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/twitSpam.dir/tinyxmlerror.o -c /home/nick/twitSpam/src/tinyxmlerror.cpp
+
+src/CMakeFiles/twitSpam.dir/tinyxmlerror.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/twitSpam.dir/tinyxmlerror.i"
+	cd /home/nick/twitSpam/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/nick/twitSpam/src/tinyxmlerror.cpp > CMakeFiles/twitSpam.dir/tinyxmlerror.i
+
+src/CMakeFiles/twitSpam.dir/tinyxmlerror.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/twitSpam.dir/tinyxmlerror.s"
+	cd /home/nick/twitSpam/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/nick/twitSpam/src/tinyxmlerror.cpp -o CMakeFiles/twitSpam.dir/tinyxmlerror.s
+
+src/CMakeFiles/twitSpam.dir/tinyxmlerror.o.requires:
+.PHONY : src/CMakeFiles/twitSpam.dir/tinyxmlerror.o.requires
+
+src/CMakeFiles/twitSpam.dir/tinyxmlerror.o.provides: src/CMakeFiles/twitSpam.dir/tinyxmlerror.o.requires
+	$(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/tinyxmlerror.o.provides.build
+.PHONY : src/CMakeFiles/twitSpam.dir/tinyxmlerror.o.provides
+
+src/CMakeFiles/twitSpam.dir/tinyxmlerror.o.provides.build: src/CMakeFiles/twitSpam.dir/tinyxmlerror.o
+.PHONY : src/CMakeFiles/twitSpam.dir/tinyxmlerror.o.provides.build
+
+src/CMakeFiles/twitSpam.dir/tinyxmlparser.o: src/CMakeFiles/twitSpam.dir/flags.make
+src/CMakeFiles/twitSpam.dir/tinyxmlparser.o: src/tinyxmlparser.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/nick/twitSpam/CMakeFiles $(CMAKE_PROGRESS_5)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/twitSpam.dir/tinyxmlparser.o"
+	cd /home/nick/twitSpam/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/twitSpam.dir/tinyxmlparser.o -c /home/nick/twitSpam/src/tinyxmlparser.cpp
+
+src/CMakeFiles/twitSpam.dir/tinyxmlparser.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/twitSpam.dir/tinyxmlparser.i"
+	cd /home/nick/twitSpam/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/nick/twitSpam/src/tinyxmlparser.cpp > CMakeFiles/twitSpam.dir/tinyxmlparser.i
+
+src/CMakeFiles/twitSpam.dir/tinyxmlparser.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/twitSpam.dir/tinyxmlparser.s"
+	cd /home/nick/twitSpam/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/nick/twitSpam/src/tinyxmlparser.cpp -o CMakeFiles/twitSpam.dir/tinyxmlparser.s
+
+src/CMakeFiles/twitSpam.dir/tinyxmlparser.o.requires:
+.PHONY : src/CMakeFiles/twitSpam.dir/tinyxmlparser.o.requires
+
+src/CMakeFiles/twitSpam.dir/tinyxmlparser.o.provides: src/CMakeFiles/twitSpam.dir/tinyxmlparser.o.requires
+	$(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/tinyxmlparser.o.provides.build
+.PHONY : src/CMakeFiles/twitSpam.dir/tinyxmlparser.o.provides
+
+src/CMakeFiles/twitSpam.dir/tinyxmlparser.o.provides.build: src/CMakeFiles/twitSpam.dir/tinyxmlparser.o
+.PHONY : src/CMakeFiles/twitSpam.dir/tinyxmlparser.o.provides.build
+
 # Object files for target twitSpam
 twitSpam_OBJECTS = \
-"CMakeFiles/twitSpam.dir/twitSpam.o"
+"CMakeFiles/twitSpam.dir/twitSpam.o" \
+"CMakeFiles/twitSpam.dir/tinystr.o" \
+"CMakeFiles/twitSpam.dir/tinyxml.o" \
+"CMakeFiles/twitSpam.dir/tinyxmlerror.o" \
+"CMakeFiles/twitSpam.dir/tinyxmlparser.o"
 
 # External object files for target twitSpam
 twitSpam_EXTERNAL_OBJECTS =
 
 src/twitSpam: src/CMakeFiles/twitSpam.dir/twitSpam.o
+src/twitSpam: src/CMakeFiles/twitSpam.dir/tinystr.o
+src/twitSpam: src/CMakeFiles/twitSpam.dir/tinyxml.o
+src/twitSpam: src/CMakeFiles/twitSpam.dir/tinyxmlerror.o
+src/twitSpam: src/CMakeFiles/twitSpam.dir/tinyxmlparser.o
 src/twitSpam: src/CMakeFiles/twitSpam.dir/build.make
 src/twitSpam: src/CMakeFiles/twitSpam.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable twitSpam"
@@ -91,6 +195,10 @@ src/CMakeFiles/twitSpam.dir/build: src/twitSpam
 .PHONY : src/CMakeFiles/twitSpam.dir/build
 
 src/CMakeFiles/twitSpam.dir/requires: src/CMakeFiles/twitSpam.dir/twitSpam.o.requires
+src/CMakeFiles/twitSpam.dir/requires: src/CMakeFiles/twitSpam.dir/tinystr.o.requires
+src/CMakeFiles/twitSpam.dir/requires: src/CMakeFiles/twitSpam.dir/tinyxml.o.requires
+src/CMakeFiles/twitSpam.dir/requires: src/CMakeFiles/twitSpam.dir/tinyxmlerror.o.requires
+src/CMakeFiles/twitSpam.dir/requires: src/CMakeFiles/twitSpam.dir/tinyxmlparser.o.requires
 .PHONY : src/CMakeFiles/twitSpam.dir/requires
 
 src/CMakeFiles/twitSpam.dir/clean:

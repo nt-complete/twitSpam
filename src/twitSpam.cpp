@@ -4,6 +4,10 @@
 #include <fstream>
 #include <stdlib.h>
 #include <string.h>
+#include <tinyxml.h>
+#include <tinystr.h>
+#include <sstream>
+#include <vector>
 
 using namespace std;
 int main()
@@ -42,8 +46,8 @@ int main()
   if( myOAuthAccessTokenKey.size() && myOAuthAccessTokenSecret.size() )
     {
       /* If we already have these keys, then no need to go through auth again */
-      printf( "\nUsing:\nKey: %s\nSecret: %s\n\n", myOAuthAccessTokenKey.c_str(), myOAuthAccessTokenSecret.c_str() );
-
+      std::cout << "\nUsing:\nKey: " << myOAuthAccessTokenKey.c_str() << "\nSecret: " << myOAuthAccessTokenSecret.c_str() << "\n\n";
+ 
       twitterObj.getOAuth().setOAuthTokenKey( myOAuthAccessTokenKey );
       twitterObj.getOAuth().setOAuthTokenSecret( myOAuthAccessTokenSecret );
     }
@@ -55,9 +59,9 @@ int main()
       /* Step 3: Ask user to visit web link and get PIN */
       char szOAuthVerifierPin[1024];
       memset( szOAuthVerifierPin, 0, 1024 );
-      printf( "\nPlease visit this link in web browser and authorize this application:\n%s", tmpStr.c_str() );
-      printf( "\nEnter the PIN provided by twitter: " );
-      gets( szOAuthVerifierPin );
+      std::cout << "\nPlease visit this link in web browser and authorize this application:\n" << tmpStr.c_str();
+      std::cout << "\nEnter the PIN provided by twitter: " ;
+      std::cin >> szOAuthVerifierPin;
       tmpStr = szOAuthVerifierPin;
       twitterObj.getOAuth().setOAuthPin( tmpStr );
 
@@ -93,11 +97,88 @@ int main()
   std::string userPwd = "37nst35";
   twitterObj.setTwitterPassword(userPwd);
 
+  std::string userStr = "ntiller";
+  twitterObj.userGet(userStr);
+  
+  twitterObj.getLastWebResponse(userStr);
+  TiXmlText userXml(userStr.c_str());
+  TiXmlDocument userDoc;
+  userDoc.Parse(userStr.c_str());
+
+
+  TiXmlHandle userRoot(&userDoc);
+  TiXmlNode* followerCount = userRoot.FirstChild("user").FirstChild("followers_count").ToNode();
+  TiXmlNode* friendCount = userRoot.FirstChild("user").FirstChild("friends_count").ToNode();
+
+  int followerCountInt;
+  int friendCountInt;
+
+  if(followerCount)
+    {
+      std::string followerCountStr = followerCount->FirstChild()->ToText()->ValueStr();
+      std::stringstream stream(followerCountStr);
+      stream >> followerCountInt;
+      std::cout << "FOLLOWERCOUNT: " << followerCountInt << "\n";
+    }
+  else
+    {
+      std::cout << "Cannot find Followers_count\n";
+      exit(1);
+    }
+  
+  if(friendCount)
+    {
+      std::string friendCountStr = friendCount->FirstChild()->ToText()->ValueStr();
+
+      std::stringstream stream(friendCountStr);
+      stream >> friendCountInt;
+      std::cout << "FRIENDCOUNT: " << friendCountInt << "\n";
+    }
+  else
+    {
+      std::cout << "Cannot find Friends_count\n";
+      exit(1);
+    }
+
+  //  std::cout << userStr << "\n";
+
+
   twitterObj.followersGet();
 
   std::string followersStr;
   twitterObj.getLastWebResponse(followersStr);
 
-  std::cout << followersStr << "\n";
+
+  //  std::cout << followersStr << "\n";
+
+  TiXmlDocument followersDoc;
+  followersDoc.Parse(followersStr.c_str());
+  TiXmlHandle followersRoot(&followersDoc);
+
+
+  std::vector<std::string> usersVector;
+  for(int i = 0; i < followerCountInt; i++ )
+    {
+      if(followersRoot.ToNode())
+	{
+
+	  //	  TiXmlNode* friendNameNode = followersRoot.Child("user", i).ToNode();
+	  TiXmlNode* friendNameNode = followersRoot.FirstChild("user").ToNode();
+
+	  if(friendNameNode)
+	    {
+	      std::string friendNameStr = friendNameNode->FirstChild()->ToText()->ValueStr();
+	      std::cout << "Friend: " << friendNameStr << "\n";
+
+	    }
+	}
+    }
+
+  //  std::cout << xmlText << "\n";
+  //  std::cout << followersStr << "\n";
+
+  
+  
+
 
 }
