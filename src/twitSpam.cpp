@@ -110,12 +110,12 @@ int main()
 
   TiXmlHandle userRoot(&userDoc);
 
-  User primUser(userRoot);
+  TiXmlHandle userRootHandle = userRoot.FirstChild("user");
 
+  User primUser(userRootHandle);
   std::cout << primUser << "\n";
 
-  //  std::cout << userStr << "\n";
-
+  //*** Followers ***//
 
   twitterObj.followersGet();
 
@@ -123,24 +123,27 @@ int main()
   twitterObj.getLastWebResponse(followersStr);
 
 
-   TiXmlDocument followersDoc;
+  TiXmlDocument followersDoc;
   followersDoc.Parse(followersStr.c_str());
-  TiXmlHandle followersRoot(&followersDoc);
+  TiXmlHandle followersRootHandle(&followersDoc);
+  primUser.setFollowers(followersRootHandle);
 
+  //*** Friends ***//
 
+ 
+  twitterObj.friendsGet();
 
-  std::cout << followersStr << "\n";
+  std::string friendsStr;
+  twitterObj.getLastWebResponse(friendsStr);
 
+  //  std::cout << friendsStr;
+  TiXmlDocument friendsDoc;
+  friendsDoc.Parse(friendsStr.c_str());
+  TiXmlHandle friendsRootHandle(&friendsDoc);
   
-
-
+  primUser.setFriends(friendsRootHandle);
   
-
-  //  std::cout << xmlText << "\n";
-  //  std::cout << followersStr << "\n";
-
-  
-  
+  std::cout << primUser.printFriendNames();
 
 
 }

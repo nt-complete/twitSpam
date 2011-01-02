@@ -6,30 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/nick/twitSpam/src/twitSpam.cpp
-twitcurl.h
--
-oauthlib.h
--
-iostream
--
-fstream
--
-stdlib.h
--
-string.h
--
-tinyxml.h
--
-tinystr.h
--
-sstream
--
-vector
--
-user.h
-/home/nick/twitSpam/src/user.h
-
 /home/nick/twitSpam/src/user.cpp
 twitcurl.h
 -
@@ -50,6 +26,8 @@ tinystr.h
 sstream
 -
 vector
+-
+boost/date_time.hpp
 -
 user.h
 /home/nick/twitSpam/src/user.h
