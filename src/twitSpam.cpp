@@ -11,11 +11,31 @@
 #include "user.h"
 
 
+twitCurl twitterObj;
+
+
+/*
+bool mutualFriends(long id1, long id2)
+{
+  bool friend1, friend2;
+  std::string str;
+  friend1 = friend2 = false;
+  
+  twitterObj.userGet(id1, true);
+
+  twitterObj.getLastWebResponse(str);
+
+  std::cout << str;
+  return true;
+}*/
+
+
+
+
 using namespace std;
 int main()
 {
-  twitCurl twitterObj;
-
+  
   std::string tmpStr( "" );
   std::string replyMsg( "" );
 
@@ -93,12 +113,6 @@ int main()
   /* OAuth flow ends */
 
 
-
-  std::string userName = "ntiller";
-  twitterObj.setTwitterUsername(userName);
-  std::string userPwd = "37nst35";
-  twitterObj.setTwitterPassword(userPwd);
-
   std::string userStr = "ntiller";
   twitterObj.userGet(userStr);
   
@@ -114,8 +128,8 @@ int main()
 
   User primUser(userRootHandle);
   std::cout << primUser << "\n";
-
-  //*** Followers ***//
+  std::cout << userStr << "\n";
+  //***        Followers           ***//
 
   twitterObj.followersGet();
 
@@ -128,7 +142,7 @@ int main()
   TiXmlHandle followersRootHandle(&followersDoc);
   primUser.setFollowers(followersRootHandle);
 
-  //*** Friends ***//
+  //***         Friends             ***//
 
  
   twitterObj.friendsGet();
@@ -143,7 +157,41 @@ int main()
   
   primUser.setFriends(friendsRootHandle);
   
-  std::cout << primUser.printFriendNames();
+  //  std::cout << primUser.printFriendNames();
+  
+
+  twitCurl nellObj;
+
+  tmpStr = "128346877";
+  nellObj.userGet(tmpStr, true);
+
+  nellObj.getLastWebResponse(userStr);
+
+  //  std::cout << userStr;
+
+  TiXmlDocument tmpDoc;
+  tmpDoc.Parse(userStr.c_str());
+
+  TiXmlHandle tmpRoot(&tmpDoc);
 
 
+  tmpStr = "16369144";
+  nellObj.friendsGet(tmpStr, true);
+  nellObj.getLastWebResponse(tmpStr);
+  //  std::cout << tmpStr;
+
+
+
+  if(nellObj.friendsGet(tmpStr, true))
+    {
+      std::cout << "Should not be true.";
+      nellObj.getLastWebResponse(userStr);
+      //      std::cout << userStr;
+    }
+  else
+    {
+      std::cout << "TRUE. Perfect.";
+    }
+
+  return 0;
 }
