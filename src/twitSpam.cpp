@@ -30,9 +30,17 @@ bool mutualFriends(long id1, long id2)
 }*/
 
 
+std::ostream& operator<< (std::ostream& str, User& user)
+{
+  str << "ScreenName: " << user.m_screenName;
+  str << "\nName: " << user.m_name;
+  str << "\nId: " << user.m_id;
+  str << "\nFriendsCount: " << user.m_friendsCount;
+  str << "\nFollowersCount: " << user.m_followersCount;
+  return str;
+}
 
 
-using namespace std;
 int main()
 {
   
@@ -95,8 +103,8 @@ int main()
       twitterObj.getOAuth().getOAuthTokenSecret( myOAuthAccessTokenSecret );
 
       /* Step 6: Save these keys in a file or wherever */
-      ofstream oAuthTokenKeyOut;
-      ofstream oAuthTokenSecretOut;
+      std::ofstream oAuthTokenKeyOut;
+      std::ofstream oAuthTokenSecretOut;
 
       oAuthTokenKeyOut.open( "twitterClient_token_key.txt" );
       oAuthTokenSecretOut.open( "twitterClient_token_secret.txt" );
@@ -128,8 +136,8 @@ int main()
 
   User primUser(userRootHandle);
   std::cout << primUser << "\n";
-  std::cout << userStr << "\n";
-  //***        Followers           ***//
+  //  std::cout << userStr << "\n";
+  /***        Followers           ***/
 
   twitterObj.followersGet();
 
@@ -140,15 +148,18 @@ int main()
   TiXmlDocument followersDoc;
   followersDoc.Parse(followersStr.c_str());
   TiXmlHandle followersRootHandle(&followersDoc);
-  primUser.setFollowers(followersRootHandle);
+  //  std::cout << followersStr ;
 
-  //***         Friends             ***//
+    primUser.setFollowers(followersRootHandle);
+
+    /***         Friends             **/
 
  
   twitterObj.friendsGet();
 
   std::string friendsStr;
   twitterObj.getLastWebResponse(friendsStr);
+
 
   //  std::cout << friendsStr;
   TiXmlDocument friendsDoc;
@@ -157,8 +168,8 @@ int main()
   
   primUser.setFriends(friendsRootHandle);
   
-  //  std::cout << primUser.printFriendNames();
-  
+  std::cout << primUser.printFriendNames();
+  /*
 
   twitCurl nellObj;
 
@@ -192,6 +203,6 @@ int main()
     {
       std::cout << "TRUE. Perfect.";
     }
-
+  */
   return 0;
 }
