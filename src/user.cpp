@@ -1,5 +1,7 @@
-#include "user.h"
 #include <stdlib.h>
+#include <boost/date_time.hpp>
+#include "user.h"
+
 
 User::User(TiXmlHandle userRootHandle)
 {
@@ -18,8 +20,6 @@ User::User(TiXmlHandle userRootHandle)
       m_id = 0;
     }
 
-
-
   /** Name **/ 
   TiXmlNode* nameRootNode = userRootHandle.FirstChild("name").ToNode();
 
@@ -33,7 +33,6 @@ User::User(TiXmlHandle userRootHandle)
       m_name = "[Unknown Name]";
     }
   
-
 
   /** screenName **/
   
@@ -104,11 +103,8 @@ void User::setFriends(TiXmlHandle friendsRootHandle)
       TiXmlHandle singleFriendRootHandle = friendsRootHandle.Child("user",i);
       if(singleFriendRootHandle.ToNode())
 	{
-	  User tmpUser(singleFriendRootHandle);
-	  //	  std::cout << i << ": " << tmpUser.m_name << "\n";
-	  
-
-	  m_friends.push_back(&tmpUser);
+	  User * tmpUser = new User(singleFriendRootHandle);
+	  m_friends.push_back(tmpUser);
 	}
     }
 }
@@ -116,20 +112,29 @@ void User::setFriends(TiXmlHandle friendsRootHandle)
 
 std::string User::printFriendNames()
 {
-  std::string friendsNamesStr = "hi";
-  int i = 0;
-  std::cout << "Size: " << m_friends.size() << "\n";
-  std::cout << "*** " << &(m_friends.begin()) << "\n";
-  std::cout << "!!! " << &(m_friends.end()) << "\n";
+  std::string friendsNamesStr;
+
   for(std::vector<User*>::iterator it = m_friends.begin(); 
       it != m_friends.end(); it++)
     {
-      //      friendsNamesStr = "Friend: " + (*it)->m_name;
-      //      std::cout << i << ": " << (*it)->m_name << "\n";
-      std::cout << i << " " << (*it) << "\n";
-      i++;
-
+      friendsNamesStr += "Friend: " + (*it)->m_name + "\n";
     }
 
   return friendsNamesStr;
 }
+
+
+
+
+std::ostream& operator<< (std::ostream& str, User& user)
+{
+  str << "ScreenName: " << user.m_screenName;
+  str << "\nName: " << user.m_name;
+  str << "\nId: " << user.m_id;
+  str << "\nFriendsCount: " << user.m_friendsCount;
+  str << "\nFollowersCount: " << user.m_followersCount;
+
+  return str;
+}
+
+

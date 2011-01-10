@@ -6,11 +6,35 @@
 
 #IncludeRegexTransform: 
 
-/home/nick/twitSpam/src/user.cpp
-user.h
-/home/nick/twitSpam/src/user.h
+/home/nick/twitSpam/src/twitSpam.cpp
+twitcurl.h
+-
+oauthlib.h
+-
+iostream
+-
+fstream
+-
 stdlib.h
 -
+string.h
+-
+tinyxml.h
+-
+tinystr.h
+-
+sstream
+-
+vector
+-
+boost/date_time.hpp
+-
+boost/date_time/local_time/local_time.hpp
+-
+locale
+-
+user.h
+/home/nick/twitSpam/src/user.h
 
 /home/nick/twitSpam/src/user.h
 twitcurl.h

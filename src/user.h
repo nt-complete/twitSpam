@@ -18,5 +18,7 @@ class User
   void setFollowers(TiXmlHandle);
   void setFriends(TiXmlHandle);
   std::string printFriendNames();
-  
+  std::string getUserXML();
 };
+
+std::ostream& operator<< (std::ostream& str, User& user);

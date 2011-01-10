@@ -8,6 +8,9 @@
 #include <tinystr.h>
 #include <sstream>
 #include <vector>
+#include <boost/date_time.hpp>
+#include <boost/date_time/local_time/local_time.hpp>
+#include <locale>
 #include "user.h"
 
 
@@ -29,15 +32,41 @@ bool mutualFriends(long id1, long id2)
   return true;
 }*/
 
-
-std::ostream& operator<< (std::ostream& str, User& user)
+bool userCheck(TiXmlHandle userRootHandle)
 {
-  str << "ScreenName: " << user.m_screenName;
-  str << "\nName: " << user.m_name;
-  str << "\nId: " << user.m_id;
-  str << "\nFriendsCount: " << user.m_friendsCount;
-  str << "\nFollowersCount: " << user.m_followersCount;
-  return str;
+
+
+  int userCount = 0;
+  if(userRootHandle.FirstChild("user").ToNode())
+    {
+      userCount++;
+    
+
+
+      const char* createdAtStr = userRootHandle.FirstChild("user").FirstChild("status").FirstChild("created_at").ToElement()->GetText();
+
+      if(!(createdAtStr == NULL))
+	{
+	  userCount++;
+	  std::string weekday, month, day, time, year, tmpStr;
+	  std::stringstream ss;
+	  ss << createdAtStr;
+	  ss >> weekday;
+	  ss >> month;
+	  ss >> day;
+	  ss >> time;
+	  ss >> tmpStr;
+	  ss >> year;
+	  std::cout << weekday << "-" << month << "-" << day << "-" << time << "-" << year << "\n";
+
+
+	  ss.imbue(std::locale(std::locale::classic(),
+			  new boost::local_time::local_time_input_facet("%a, %d %b %Y " "%H:%M:%S")));
+
+	}
+  
+    }
+  return (userCount == 2);
 }
 
 
@@ -50,17 +79,17 @@ int main()
   /* OAuth flegins */
   /* Step 0: Set OAuth related params. These are got by registering your app at twitter.com */
   twitterObj.getOAuth().setConsumerKey( std::string( "hbmV8ajouKJxB0hl8oeow" ) );
-  twitterObj.getOAuth().setConsumerSecret( std::string( "ijGXssaTltaaqPaFouVPt733mkxDnwIUSokUJxOCE" ) );
+  twitterObj.getOAuth().setConsumerSecret( std::string( "ijGXssaTltaaqPaFouVPt733mkxDnwIUSokUJxOCE"));
 
-  /* Step 1: Check if we alredy have OAuth access token from a previous run */
+  /* Step 1: Check if we already have OAuth access token from a previous run */
   char szKey[1024];
   std::string myOAuthAccessTokenKey("");
   std::string myOAuthAccessTokenSecret("");
   std::ifstream oAuthTokenKeyIn;
   std::ifstream oAuthTokenSecretIn;
 
-  oAuthTokenKeyIn.open( "twitterClient_token_key.txt" );
-  oAuthTokenSecretIn.open( "twitterClient_token_secret.txt" );
+  oAuthTokenKeyIn.open( "twitClient_token_key.txt" );
+  oAuthTokenSecretIn.open( "twitClient_token_secret.txt" );
 
   memset( szKey, 0, 1024 );
   oAuthTokenKeyIn >> szKey;
@@ -102,12 +131,13 @@ int main()
       twitterObj.getOAuth().getOAuthTokenKey( myOAuthAccessTokenKey );
       twitterObj.getOAuth().getOAuthTokenSecret( myOAuthAccessTokenSecret );
 
+
       /* Step 6: Save these keys in a file or wherever */
       std::ofstream oAuthTokenKeyOut;
       std::ofstream oAuthTokenSecretOut;
 
-      oAuthTokenKeyOut.open( "twitterClient_token_key.txt" );
-      oAuthTokenSecretOut.open( "twitterClient_token_secret.txt" );
+      oAuthTokenKeyOut.open( "twitClient_token_key.txt" );
+      oAuthTokenSecretOut.open( "twitClient_token_secret.txt" );
 
       oAuthTokenKeyOut.clear();
       oAuthTokenSecretOut.clear();
@@ -120,11 +150,14 @@ int main()
     }
   /* OAuth flow ends */
 
-
   std::string userStr = "ntiller";
+
+  
   twitterObj.userGet(userStr);
   
   twitterObj.getLastWebResponse(userStr);
+
+
 
   TiXmlDocument userDoc;
   userDoc.Parse(userStr.c_str());
@@ -133,11 +166,15 @@ int main()
   TiXmlHandle userRoot(&userDoc);
 
   TiXmlHandle userRootHandle = userRoot.FirstChild("user");
+  //  std::cout << userStr;
 
-  User primUser(userRootHandle);
-  std::cout << primUser << "\n";
-  //  std::cout << userStr << "\n";
-  /***        Followers           ***/
+
+
+  
+  //  std::cout << primUser << "\n";
+
+  std::cout << "BEGIN: \n";
+  /***        Followers           ***
 
   twitterObj.followersGet();
 
@@ -149,60 +186,85 @@ int main()
   followersDoc.Parse(followersStr.c_str());
   TiXmlHandle followersRootHandle(&followersDoc);
   //  std::cout << followersStr ;
-
+  std::cout << "BEGIN: \n";
     primUser.setFollowers(followersRootHandle);
 
-    /***         Friends             **/
-
- 
+    /***         Friends             **
+  std::cout << "BEGIN: \n";
   twitterObj.friendsGet();
 
+  
   std::string friendsStr;
   twitterObj.getLastWebResponse(friendsStr);
-
+  std::cout << "BEGIN: \n";
 
   //  std::cout << friendsStr;
   TiXmlDocument friendsDoc;
   friendsDoc.Parse(friendsStr.c_str());
   TiXmlHandle friendsRootHandle(&friendsDoc);
-  
+    std::cout << "BEGIN: \n";
   primUser.setFriends(friendsRootHandle);
+
+  //  std::cout << primUser.printFriendNames();
   
-  std::cout << primUser.printFriendNames();
-  /*
 
-  twitCurl nellObj;
+  
+  
+  std::cout << "BEGIN: \n";
+  tmpStr = "uotwitspam";
+  twitterObj.userGet(tmpStr);
 
-  tmpStr = "128346877";
-  nellObj.userGet(tmpStr, true);
-
-  nellObj.getLastWebResponse(userStr);
+  twitterObj.getLastWebResponse(userStr);
 
   //  std::cout << userStr;
 
-  TiXmlDocument tmpDoc;
-  tmpDoc.Parse(userStr.c_str());
-
-  TiXmlHandle tmpRoot(&tmpDoc);
-
-
-  tmpStr = "16369144";
-  nellObj.friendsGet(tmpStr, true);
-  nellObj.getLastWebResponse(tmpStr);
-  //  std::cout << tmpStr;
-
-
-
-  if(nellObj.friendsGet(tmpStr, true))
-    {
-      std::cout << "Should not be true.";
-      nellObj.getLastWebResponse(userStr);
-      //      std::cout << userStr;
-    }
-  else
-    {
-      std::cout << "TRUE. Perfect.";
-    }
   */
+
+  
+
+  long maxIdNum = 235314984;
+
+  srand48(time(NULL));
+
+
+  for(int i = 0; i < 1; )
+    {
+
+      double randNum = drand48();
+
+      long idNum = maxIdNum * randNum;
+      std::stringstream ss;
+      ss << idNum;
+
+
+
+      tmpStr = ss.str();
+      twitterObj.userGet(tmpStr, true);
+      twitterObj.getLastWebResponse(tmpStr);
+      
+      TiXmlDocument tmpDoc;
+      tmpDoc.Parse(tmpStr.c_str());
+      
+
+      std::cout << tmpStr;
+      TiXmlHandle tmpRoot(&tmpDoc);
+      std::cout << "here\n";
+      if(!userCheck(tmpRoot))
+	{
+	  //	  std::cout << ss.str() << "\n";
+	  //	  std::cout << tmpStr;
+	}
+      else
+	{
+	  std::cout << i << ", ";
+	  i++;
+	}
+
+    }
+
+
   return 0;
 }
+
+
+
