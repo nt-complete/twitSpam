@@ -10,6 +10,7 @@
 #include <vector>
 #include <boost/date_time.hpp>
 #include <boost/date_time/local_time/local_time.hpp>
+#include <boost/date_time/posix_time/posix_time.hpp>
 #include <locale>
 #include "user.h"
 
@@ -17,20 +18,7 @@
 twitCurl twitterObj;
 
 
-/*
-bool mutualFriends(long id1, long id2)
-{
-  bool friend1, friend2;
-  std::string str;
-  friend1 = friend2 = false;
-  
-  twitterObj.userGet(id1, true);
 
-  twitterObj.getLastWebResponse(str);
-
-  std::cout << str;
-  return true;
-}*/
 
 bool userCheck(TiXmlHandle userRootHandle)
 {
@@ -41,30 +29,43 @@ bool userCheck(TiXmlHandle userRootHandle)
     {
       userCount++;
     
-
-
-      const char* createdAtStr = userRootHandle.FirstChild("user").FirstChild("status").FirstChild("created_at").ToElement()->GetText();
-
-      if(!(createdAtStr == NULL))
+      TiXmlHandle statusRootHandle = userRootHandle.FirstChild("user").FirstChild("status");
+      if(statusRootHandle.ToNode())
 	{
-	  userCount++;
-	  std::string weekday, month, day, time, year, tmpStr;
-	  std::stringstream ss;
-	  ss << createdAtStr;
-	  ss >> weekday;
-	  ss >> month;
-	  ss >> day;
-	  ss >> time;
-	  ss >> tmpStr;
-	  ss >> year;
-	  std::cout << weekday << "-" << month << "-" << day << "-" << time << "-" << year << "\n";
+	  const char* createdAtStr = statusRootHandle.FirstChild("created_at").ToElement()->GetText();
+
+	  if(!(createdAtStr == NULL))
+	    {
+	      userCount++;
+	      std::string weekday, month, day, time, year, tmpStr;
+	      std::stringstream ss;
+	      ss << createdAtStr;
+	      ss >> weekday;
+	      ss >> month;
+	      ss >> day;
+	      ss >> time;
+	      ss >> tmpStr;
+	      ss >> year;
+
+	      tmpStr = weekday + " " + month + " " + day + " " + year + " " + time;
+	      
+	      std::stringstream strstream;
+	      strstream << tmpStr;
+
+	      strstream.imbue(std::locale(std::locale::classic(),
+				   new boost::local_time::local_time_input_facet("%a %b %d %Y " "%H:%M:%S")));
 
 
-	  ss.imbue(std::locale(std::locale::classic(),
-			  new boost::local_time::local_time_input_facet("%a, %d %b %Y " "%H:%M:%S")));
-
-	}
+	      boost::posix_time::ptime pt;
+	     
+	      strstream >> pt;
+	      tmpStr = strstream.str();
+	      std::cout << "Date: " << tmpStr << "\n";
+	      std::cout << "PTime Date: " << pt.date() << "\n";
+	      std::cout << "TimeOfDay: " << pt.time_of_day() << "\n";
+	    }
   
+	}
     }
   return (userCount == 2);
 }
@@ -227,40 +228,40 @@ int main()
   srand48(time(NULL));
 
 
-  for(int i = 0; i < 1; )
+
+
+  double randNum = drand48();
+
+  long idNum = maxIdNum * randNum;
+  std::stringstream ss;
+  ss << idNum;
+
+
+
+  tmpStr = ss.str();
+  //      tmpStr = "60239787";
+  twitterObj.userGet(tmpStr, true);
+  twitterObj.getLastWebResponse(tmpStr);
+      
+  TiXmlDocument tmpDoc;
+  tmpDoc.Parse(tmpStr.c_str());
+      
+
+  std::cout << tmpStr;
+  TiXmlHandle tmpRoot(&tmpDoc);
+  userCheck(tmpRoot);
+  /* if(!userCheck(tmpRoot))
     {
-
-      double randNum = drand48();
-
-      long idNum = maxIdNum * randNum;
-      std::stringstream ss;
-      ss << idNum;
-
-
-
-      tmpStr = ss.str();
-      twitterObj.userGet(tmpStr, true);
-      twitterObj.getLastWebResponse(tmpStr);
-      
-      TiXmlDocument tmpDoc;
-      tmpDoc.Parse(tmpStr.c_str());
-      
-
-      std::cout << tmpStr;
-      TiXmlHandle tmpRoot(&tmpDoc);
-      std::cout << "here\n";
-      if(!userCheck(tmpRoot))
-	{
-	  //	  std::cout << ss.str() << "\n";
-	  //	  std::cout << tmpStr;
-	}
-      else
-	{
-	  std::cout << i << ", ";
-	  i++;
-	}
-
+      //	  std::cout << ss.str() << "\n";
+      //	  std::cout << tmpStr;
     }
+  else
+    {
+      std::cout << i << ", ";
+      i++;
+    }
+  */
+
 
 
   return 0;
