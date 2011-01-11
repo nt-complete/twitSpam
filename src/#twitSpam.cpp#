@@ -255,7 +255,7 @@ int main()
   twitterObj.userGet(tmpStr, true);
   twitterObj.getLastWebResponse(tmpStr);
 
-
+  twitterObj.timelinePublicGet();
 
 #else
   std::string line;
