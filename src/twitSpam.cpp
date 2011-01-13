@@ -12,6 +12,7 @@
 #include <boost/date_time/local_time/local_time.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <boost/date_time/gregorian/gregorian.hpp>
+#include <sqlite3.h>
 #include <locale>
 #include "user.h"
 
@@ -79,6 +80,42 @@ bool userCheck(TiXmlHandle userRootHandle)
   std::cout << "USER COUNT: " << userCount << "\n";
   return (userCount == 3);
 }
+
+
+void addUserToDb(TiXmlHandle rootHandle, sqlite3 *database)
+{
+  User tmpUser(rootHandle.FirstChild("user"));
+  
+  sqlite3_stmt *statement;
+  std::string stmtStr = "INSERT INTO [Users] (userId, name, screenName, friendsCount, followersCount) VALUES (" ;
+
+
+  std::stringstream ss;
+  ss << tmpUser.m_id;
+  std::string tmpStr;
+  ss >> tmpStr;
+  stmtStr += tmpStr + ", \"" + tmpUser.m_name + "\", \"" + tmpUser.m_screenName + "\", ";
+  ss.clear();
+  ss << tmpUser.m_friendsCount;
+  ss >> tmpStr;
+  stmtStr += tmpStr + ", ";
+  ss.clear();
+  ss << tmpUser.m_followersCount;
+  ss >> tmpStr;
+  stmtStr += tmpStr + ")";
+
+  std::cout << stmtStr << "\n";
+
+  if(sqlite3_prepare_v2(database, stmtStr.c_str(), -1, &statement, 0) == SQLITE_OK)
+    {
+      sqlite3_step(statement);
+      sqlite3_finalize(statement);
+      std::cout << "Done. Check it out\n";
+    }
+
+
+}
+
 
 
 int main()
@@ -279,9 +316,18 @@ int main()
   tmpDoc.Parse(tmpStr.c_str());
       
 
-  std::cout << tmpStr;
+  //  std::cout << tmpStr;
   TiXmlHandle tmpRoot(&tmpDoc);
   userCheck(tmpRoot);
+  sqlite3 *database;
+  if(sqlite3_open("../twitSpam.db", &database) == SQLITE_OK)
+    {
+      addUserToDb(tmpRoot, database);
+
+
+    }  
+  sqlite3_close(database);
+
 
   /* if(!userCheck(tmpRoot))
     {

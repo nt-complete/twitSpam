@@ -1,1 +1,1 @@
-/usr/bin/c++      CMakeFiles/twitSpam.dir/twitSpam.o CMakeFiles/twitSpam.dir/user.o CMakeFiles/twitSpam.dir/tinystr.o CMakeFiles/twitSpam.dir/tinyxml.o CMakeFiles/twitSpam.dir/tinyxmlerror.o CMakeFiles/twitSpam.dir/tinyxmlparser.o  -o twitSpam -rdynamic -ltwitcurl 
+/usr/bin/c++      CMakeFiles/twitSpam.dir/twitSpam.o CMakeFiles/twitSpam.dir/user.o CMakeFiles/twitSpam.dir/tinystr.o CMakeFiles/twitSpam.dir/tinyxml.o CMakeFiles/twitSpam.dir/tinyxmlerror.o CMakeFiles/twitSpam.dir/tinyxmlparser.o  -o twitSpam -rdynamic -ltwitcurl -lsqlite3 
