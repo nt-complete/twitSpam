@@ -22,15 +22,22 @@ twitCurl twitterObj;
 #define DEBUG 1
 
 
-bool userCheck(TiXmlHandle userRootHandle)
+bool userCheck(TiXmlHandle userRootHandle, TiXmlHandle timelineRootHandle)
 {
+  std::string weekday, month, day, time, year, tmpStr;
+
+  std::stringstream ss;
+  std::stringstream strstream;
+  boost::posix_time::ptime ptime, pt, currentTime, mostRecentTweetTime;
+  boost::posix_time::time_duration hourDiff;
 
 
   int userCount = 0;
   if(userRootHandle.FirstChild("user").ToNode())
     {
-      userCount++;
-    
+      // Checks to see if the most recent status update
+      // occured in the past 48 hours
+
       TiXmlHandle statusRootHandle = userRootHandle.FirstChild("user").FirstChild("status");
       if(statusRootHandle.ToNode())
 	{
@@ -38,9 +45,8 @@ bool userCheck(TiXmlHandle userRootHandle)
 
 	  if(!(createdAtStr == NULL))
 	    {
-	      userCount++;
-	      std::string weekday, month, day, time, year, tmpStr;
-	      std::stringstream ss;
+
+
 	      ss << createdAtStr;
 	      ss >> weekday;
 	      ss >> month;
@@ -51,25 +57,19 @@ bool userCheck(TiXmlHandle userRootHandle)
 
 	      tmpStr = weekday + " " + month + " " + day + " " + year + " " + time;
 	      
-	      std::stringstream strstream;
+
 	      strstream << tmpStr;
 
-	      strstream.imbue(std::locale(std::locale::classic(),
-				   new boost::local_time::local_time_input_facet("%a %b %d %Y " "%H:%M:%S")));
+	      strstream.imbue(std::locale(std::locale::classic(), new boost::local_time::local_time_input_facet("%a %b %d %Y " "%H:%M:%S")));
 
-
-	      boost::posix_time::ptime pt;
-	      boost::posix_time::ptime currentTime = boost::posix_time::second_clock::local_time();
+	      currentTime = boost::posix_time::second_clock::local_time();
 	      
-	      strstream >> pt;
+	      strstream >> mostRecentTweetTime;
 	      tmpStr = strstream.str();
-	      /*	      std::cout << "Date: " << tmpStr << "\n";
-	      std::cout << "PTime Date: " << pt.date() << "\n";
-	      std::cout << "TimeOfDay: " << pt.time_of_day() << "\n";*/
 
-	      boost::posix_time::time_duration hourDiff = currentTime - pt;
+	      boost::posix_time::time_duration hourDiff = currentTime - mostRecentTweetTime;
 
-	      std::cout << currentTime << " - " << pt << " = " << hourDiff << "\n";
+	      std::cout << currentTime << " - " << mostRecentTweetTime << " = " << hourDiff << "\n";
 
 	      if(hourDiff.hours() < 48)
 		userCount++;
@@ -77,8 +77,55 @@ bool userCheck(TiXmlHandle userRootHandle)
   
 	}
     }
+
+  
+  // Checks whether the most recent other tweet occurred recently
+
+
+  TiXmlHandle statusRootHandle = timelineRootHandle.Child("status", 1);
+  if(statusRootHandle.ToNode())
+    {
+
+
+      const char* createdAtStr = statusRootHandle.FirstChild("created_at").ToElement()->GetText();
+
+      if(!(createdAtStr == NULL))
+	{
+	  ss.clear();
+	  ss << createdAtStr;
+	  ss >> weekday;
+	  ss >> month;
+	  ss >> day;
+	  ss >> time;
+	  ss >> tmpStr;
+	  ss >> year;
+
+	  tmpStr = weekday + " " + month + " " + day + " " + year + " " + time;
+
+	  strstream.clear();
+	  strstream << tmpStr;
+
+	  strstream.imbue(std::locale(std::locale::classic(),
+				      new boost::local_time::local_time_input_facet("%a %b %d %Y " "%H:%M:%S")));
+	      
+
+	  strstream >> pt;
+	  tmpStr = strstream.str();
+
+	  hourDiff = mostRecentTweetTime - pt;
+
+	  std::cout << mostRecentTweetTime << " - " << pt << " = " << hourDiff << "\n";
+
+	  if(hourDiff.hours() < (7 * 24))
+	    {
+	      userCount++;
+	    }
+	}
+    }
+
+
   std::cout << "USER COUNT: " << userCount << "\n";
-  return (userCount == 3);
+  return (userCount == 2);
 }
 
 
@@ -87,35 +134,54 @@ void addUserToDb(TiXmlHandle rootHandle, sqlite3 *database)
   User tmpUser(rootHandle.FirstChild("user"));
   
   sqlite3_stmt *statement;
-  std::string stmtStr = "INSERT INTO [Users] (userId, name, screenName, friendsCount, followersCount) VALUES (" ;
-
-
+  std::string stmtStr;
   std::stringstream ss;
-  ss << tmpUser.m_id;
   std::string tmpStr;
+  stmtStr = "SELECT * FROM [USERS] WHERE userId = ";
+  ss << tmpUser.m_id;
   ss >> tmpStr;
-  stmtStr += tmpStr + ", \"" + tmpUser.m_name + "\", \"" + tmpUser.m_screenName + "\", ";
   ss.clear();
-  ss << tmpUser.m_friendsCount;
-  ss >> tmpStr;
-  stmtStr += tmpStr + ", ";
-  ss.clear();
-  ss << tmpUser.m_followersCount;
-  ss >> tmpStr;
-  stmtStr += tmpStr + ")";
+  stmtStr += tmpStr;
+  
 
-  std::cout << stmtStr << "\n";
 
   if(sqlite3_prepare_v2(database, stmtStr.c_str(), -1, &statement, 0) == SQLITE_OK)
     {
-      sqlite3_step(statement);
-      sqlite3_finalize(statement);
-      std::cout << "Done. Check it out\n";
+      if( sqlite3_step(statement) == SQLITE_ROW)
+	{
+	  std::cout << "That user already exists in the database.\n";
+	  return;
+	}
+      else
+	{
+
+	  stmtStr = "INSERT INTO [Users] (userId, name, screenName, friendsCount, followersCount) VALUES (" ;
+
+	  ss << tmpUser.m_id;
+
+	  ss >> tmpStr;
+	  stmtStr += tmpStr + ", \"" + tmpUser.m_name + "\", \"" + tmpUser.m_screenName + "\", ";
+	  ss.clear();
+	  ss << tmpUser.m_friendsCount;
+	  ss >> tmpStr;
+	  stmtStr += tmpStr + ", ";
+	  ss.clear();
+	  ss << tmpUser.m_followersCount;
+	  ss >> tmpStr;
+	  stmtStr += tmpStr + ")";
+
+	  std::cout << stmtStr << "\n";
+
+	  if(sqlite3_prepare_v2(database, stmtStr.c_str(), -1, &statement, 0) == SQLITE_OK)
+	    {
+	      sqlite3_step(statement);
+	      sqlite3_finalize(statement);
+	      std::cout << "A user has been added to the database.\n";
+	    }
+
+	}
     }
-
-
 }
-
 
 
 int main()
@@ -124,12 +190,12 @@ int main()
   std::string tmpStr( "" );
   std::string replyMsg( "" );
 
-#ifndef DEBUG
+ #ifndef DEBUG
   
   /* OAuth flegins */
   /* Step 0: Set OAuth related params. These are got by registering your app at twitter.com */
-  twitterObj.getOAuth().setConsumerKey( std::string( "hbmV8ajouKJxB0hl8oeow" ) );
-  twitterObj.getOAuth().setConsumerSecret( std::string( "ijGXssaTltaaqPaFouVPt733mkxDnwIUSokUJxOCE"));
+  twitterObj.getOAuth().setConsumerKey( std::string( "mlzPWIdVN4FACcOnaOGFA"));
+  twitterObj.getOAuth().setConsumerSecret( std::string( "ywhe43wccaFahINu5jlzPjiT6V2H0UZuGyq3vXJz40"));
 
   /* Step 1: Check if we already have OAuth access token from a previous run */
   char szKey[1024];
@@ -318,28 +384,75 @@ int main()
 
   //  std::cout << tmpStr;
   TiXmlHandle tmpRoot(&tmpDoc);
-  userCheck(tmpRoot);
-  sqlite3 *database;
-  if(sqlite3_open("../twitSpam.db", &database) == SQLITE_OK)
+
+#ifndef DEBUG
+
+  twitterObj.timelineUserGet("185097526", true);
+  twitterObj.getLastWebResponse(tmpStr);
+  
+
+
+  std::ofstream outStream;
+  outStream.open("xmlUserTimeline.txt");
+  if(outStream.is_open())
     {
-      addUserToDb(tmpRoot, database);
-
-
-    }  
-  sqlite3_close(database);
-
-
-  /* if(!userCheck(tmpRoot))
-    {
-      //	  std::cout << ss.str() << "\n";
-      //	  std::cout << tmpStr;
+      outStream << tmpStr;
+      outStream.close();
     }
-  else
+
+#else
+
+  sampleXML.open("xmlUserTimeline.txt");
+  if(sampleXML.is_open())
     {
-      std::cout << i << ", ";
-      i++;
+      while(sampleXML.good() )
+	{
+	  getline (sampleXML, line);
+	  tmpStr += line + "\n";
+	}
     }
-  */
+
+  sampleXML.close();
+
+
+#endif
+
+  tmpDoc.Parse(tmpStr.c_str());
+
+  //  std::cout << tmpStr;
+      
+  TiXmlHandle timelineRootHandle(&tmpDoc);
+  timelineRootHandle = timelineRootHandle.FirstChild("statuses");
+  if(timelineRootHandle.ToNode())
+
+
+
+    //  if( userCheck(tmpRoot, timelineRootHandle))
+    {
+      sqlite3 *database;
+      if(sqlite3_open("../twitSpam.db", &database) == SQLITE_OK)
+	{
+	  addUserToDb(tmpRoot, database);
+
+#ifndef DEBUG
+	  twitterObj.friendsGet
+
+
+
+#else
+
+
+
+#endif
+
+	  addFriends(tmpRoot,
+	}  
+      sqlite3_close(database);
+
+
+    }
+
+
 
 
 

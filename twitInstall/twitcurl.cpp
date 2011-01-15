@@ -508,7 +508,7 @@ bool twitCurl::timelineUserGet( std::string userInfo, bool isUserId )
     bool retVal = false;
     if( isCurlInit() )
     {
-        /* Prepare URL */
+      /* Prepare URL */
         std::string buildUrl( "" );
         utilMakeUrlForUser( buildUrl, twitterDefaults::TWITCURL_USERTIMELINE_URL, userInfo, isUserId );
 
