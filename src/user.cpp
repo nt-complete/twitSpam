@@ -80,15 +80,19 @@ User::User(TiXmlHandle userRootHandle)
 
 }
 
+
+User::User()
+{}
+
 void User::setFollowers(TiXmlHandle followersRootHandle)
 {
   followersRootHandle = followersRootHandle.FirstChild("users");
 
   for(int i = 0; i < m_followersCount; i++)
     {
-      TiXmlHandle singleFollowerRootHandle = followersRootHandle.FirstChild("user");
-      User tmpUser(singleFollowerRootHandle);
-      m_followers.push_back(&tmpUser);
+      TiXmlHandle singleFollowerRootHandle = followersRootHandle.Child("user", i);
+      User * tmpUser = new User(singleFollowerRootHandle);
+      m_followers.push_back(tmpUser);
 
     }
 

@@ -10,6 +10,7 @@ class User
 {
  public:
   User(TiXmlHandle);
+  User();
   std::vector<User*> m_friends;
   std::vector<User*> m_followers;
   long m_id;
