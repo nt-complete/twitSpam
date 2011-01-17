@@ -204,57 +204,93 @@ void addFollowerToDb(std::string userIdStr, std::string followerIdStr, sqlite3 *
 void addTweetsToDb(TiXmlHandle timelineRootHandle, sqlite3 *database)
 {
   TiXmlHandle rootHandle = timelineRootHandle;
-  std::string statusText, dateTime, tweetId, replyToTweetId, replyToUserId, sourceURL, stmtStr;
+  std::string statusText, dateTime, tweetId, replyToTweetId, replyToUserId, stmtStr, userId, retweetedCount;
   std::string weekday, month, day, time, tmpStr, year;
-  int userId, retweetedCount;
   std::stringstream ss, strstream;
   sqlite3_stmt *statement;
 
-  for(int i = 0; i < 10; i++)
+
+  for(int i = 0; i < 10; )
     {
       rootHandle = timelineRootHandle.Child("status", i);
       if(rootHandle.ToNode())
 	{
-	  stmtStr = "INSERT INTO [TWEETS] (statusText, dateTime, tweetId, replyToTweetId, replyToUserId, sourceURL, userId, retweetedCount) VALUES (";
-	  statusText = rootHandle.FirstChild("text").ToElement()->GetText();
-	  stmtStr += statusText + ", ";
 
-	  dateTime = rootHandle.FirstChild("created_at").ToElement()->GetText();
+	  tweetId = rootHandle.FirstChild("id").ToElement()->GetText();
+	  userId = rootHandle.FirstChild("user").FirstChild("id").ToElement()->GetText();
 
-	  //if(!(dateTime == NULL))
+	  stmtStr = "SELECT * FROM [TWEETS] WHERE userId = " + userId + " AND tweetId = " + tweetId;
+	  
+
+	  if(sqlite3_prepare_v2(database, stmtStr.c_str(), -1, &statement, 0) == SQLITE_OK)
 	    {
-	      ss << dateTime;
-	      ss >> weekday;
-	      ss >> month;
-	      ss >> day;
-	      ss >> time;
-	      ss >> tmpStr;
-	      ss >> year;
+	      if( sqlite3_step(statement) == SQLITE_ROW)
+		{
+		  std::cout << "That tweet already exists in the database.\n";
+		  
+		}
+	      else
+		{
 
-	      tmpStr = weekday + " " + month + " " + day + " " + year + " " + time;
-	      stmtStr += tmpStr + ", ";
+		  stmtStr = "INSERT INTO [TWEETS] (statusText, dateTime, tweetId, replyToTweetId, replyToUserId, userId, retweetedCount) VALUES (";
+		  statusText = rootHandle.FirstChild("text").ToElement()->GetText();
+		  stmtStr += "\"" + statusText + "\", ";
+
+		  dateTime = rootHandle.FirstChild("created_at").ToElement()->GetText();
+		  ss.clear();
+		  ss << dateTime;
+		  ss >> weekday;
+		  ss >> month;
+		  ss >> day;
+		  ss >> time;
+		  ss >> tmpStr;
+		  ss >> year;
+
+		  tmpStr = weekday + " " + month + " " + day + " " + year + " " + time;
+		  stmtStr += "\"" + tmpStr + "\", ";
+
+		  stmtStr += "\"" + tweetId + "\", ";
+
+
+		  if(rootHandle.FirstChild("in_reply_to_status_id").ToElement()->GetText())
+		    {
+		      replyToTweetId = rootHandle.FirstChild("in_reply_to_status_id").ToElement()->GetText();
+		    }
+
+		  stmtStr += "\"" + replyToTweetId + "\", ";
+
+
+		  if(rootHandle.FirstChild("in_reply_to_user_id").ToElement()->GetText())
+		    {
+		      replyToUserId = rootHandle.FirstChild("in_reply_to_user_id").ToElement()->GetText();
+		    }
+		  stmtStr += "\"" + replyToUserId + "\", ";
+
+
+		  stmtStr += userId + ", ";
+
+		  retweetedCount = rootHandle.FirstChild("retweet_count").ToElement()->GetText();
+		  stmtStr += retweetedCount + ")"; 
+	  
+
+	
+		  if(sqlite3_prepare_v2(database, stmtStr.c_str(), -1, &statement, 0) == SQLITE_OK)
+		    {
+
+		      sqlite3_step(statement);
+		      sqlite3_finalize(statement);
+		      std::cout << "A tweet has been added to the database.\n";
+		      i++;
+		    }
+
+
+
+		}
 	    }
 
-	    tweetId = rootHandle.FirstChild("id").ToElement()->GetText();
-	    stmtStr += tweetId + ", ";
-
-	    replyToTweetId = rootHandle.FirstChild("in_reply_to_status_id").ToElement()->GetText();
-	    stmtStr += replyToTweetId + ", ";
-
-	    replyToUserId = rootHandle.FirstChild("in_reply_to_user_id").ToElement()->GetText();
-	    stmtStr += replyToUserId + ", ";
-
-
-
 	}
-
-
     }
-
-
-
 }
-
 
 
 
@@ -276,7 +312,7 @@ void addUserToDb(User tmpUser, sqlite3 *database)
     {
       if( sqlite3_step(statement) == SQLITE_ROW)
 	{
-	  //	  std::cout << "That user already exists in the database.\n";
+	  std::cout << "That user already exists in the database.\n";
 	  return;
 	}
       else
@@ -673,7 +709,7 @@ int main()
 	      ss.clear();
 	      ss << tmpUser.m_id;
 	      ss >> userIdStr;
-	      std::cout << "USERID: " << userIdStr << "  FOLLOWERID: " << followerIdStr << "\n";
+
 	      addFriendToDb(followerIdStr, userIdStr, database);
 
 
