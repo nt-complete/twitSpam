@@ -1,0 +1,2034 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users type="array">
+<user>
+  <id>126602190</id>
+  <name>Rifdah Ayuni T.N</name>
+  <screen_name>Rifdah_Cyrus</screen_name>
+  <location>Indonesia</location>
+  <description>Hi! i Really Love Miley!</description>
+  <profile_image_url>http://a3.twimg.com/profile_images/776427913/miley-cyrus_4__normal.jpg</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>28</followers_count>
+  <profile_background_color>FF6699</profile_background_color>
+  <profile_text_color>362720</profile_text_color>
+  <profile_link_color>B40B43</profile_link_color>
+  <profile_sidebar_fill_color>E5507E</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>CC3366</profile_sidebar_border_color>
+  <friends_count>27</friends_count>
+  <created_at>Fri Mar 26 11:43:18 +0000 2010</created_at>
+  <favourites_count>0</favourites_count>
+  <utc_offset></utc_offset>
+  <time_zone></time_zone>
+  <profile_background_image_url>http://a0.twimg.com/profile_background_images/86304932/hanna.jpg</profile_background_image_url>
+  <profile_background_tile>true</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>4</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Wed Oct 06 04:49:43 +0000 2010</created_at>
+    <id>26523764174</id>
+    <text>RT @xxGomezFerland: R-Pattz is NEVER want being an idol</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweet_count>1</retweet_count>
+    <retweeted>false</retweeted>
+    <retweeted_status>
+      <created_at>Sun Oct 03 07:13:40 +0000 2010</created_at>
+      <id>26246583393</id>
+      <text>R-Pattz is NEVER want being an idol</text>
+      <source>&lt;a href=&quot;http://mobile.twitter.com&quot; rel=&quot;nofollow&quot;&gt;Mobile Web&lt;/a&gt;</source>
+      <truncated>false</truncated>
+      <favorited>false</favorited>
+      <in_reply_to_status_id></in_reply_to_status_id>
+      <in_reply_to_user_id></in_reply_to_user_id>
+      <in_reply_to_screen_name></in_reply_to_screen_name>
+      <retweet_count>1</retweet_count>
+      <retweeted>false</retweeted>
+      <geo/>
+      <coordinates/>
+      <place/>
+      <contributors/>
+    </retweeted_status>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>238866161</id>
+  <name>Rifdah ayuni</name>
+  <screen_name>RifdahNasution</screen_name>
+  <location></location>
+  <description></description>
+  <profile_image_url>http://a0.twimg.com/profile_images/1216983778/148243_1418077186909_1682020794_809080_7993468_n_normal.jpg</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>4</followers_count>
+  <profile_background_color>C0DEED</profile_background_color>
+  <profile_text_color>333333</profile_text_color>
+  <profile_link_color>0084B4</profile_link_color>
+  <profile_sidebar_fill_color>DDEEF6</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>C0DEED</profile_sidebar_border_color>
+  <friends_count>11</friends_count>
+  <created_at>Sun Jan 16 06:23:45 +0000 2011</created_at>
+  <favourites_count>0</favourites_count>
+  <utc_offset>-28800</utc_offset>
+  <time_zone>Pacific Time (US &amp; Canada)</time_zone>
+  <profile_background_image_url>http://a3.twimg.com/a/1295051201/images/themes/theme1/bg.png</profile_background_image_url>
+  <profile_background_tile>false</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>4</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Sun Jan 16 12:32:37 +0000 2011</created_at>
+    <id>26617821089763328</id>
+    <text>RT @evaepoy: Iyesih bukan urusan gua, tp gerah juga liatnya.</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweet_count>1</retweet_count>
+    <retweeted>false</retweeted>
+    <retweeted_status>
+      <created_at>Sun Jan 16 12:31:43 +0000 2011</created_at>
+      <id>26617591510343680</id>
+      <text>Iyesih bukan urusan gua, tp gerah juga liatnya.</text>
+      <source>&lt;a href=&quot;http://blackberry.com/twitter&quot; rel=&quot;nofollow&quot;&gt;Twitter for BlackBerry&#174;&lt;/a&gt;</source>
+      <truncated>false</truncated>
+      <favorited>false</favorited>
+      <in_reply_to_status_id></in_reply_to_status_id>
+      <in_reply_to_user_id></in_reply_to_user_id>
+      <in_reply_to_screen_name></in_reply_to_screen_name>
+      <retweet_count>1</retweet_count>
+      <retweeted>false</retweeted>
+      <geo/>
+      <coordinates/>
+      <place/>
+      <contributors/>
+    </retweeted_status>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>232523564</id>
+  <name>RahayuDinni</name>
+  <screen_name>RahayuDiiNni17</screen_name>
+  <location></location>
+  <description></description>
+  <profile_image_url>http://a1.twimg.com/profile_images/1203225254/dini_normal.jpg</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>10</followers_count>
+  <profile_background_color>C0DEED</profile_background_color>
+  <profile_text_color>333333</profile_text_color>
+  <profile_link_color>0084B4</profile_link_color>
+  <profile_sidebar_fill_color>DDEEF6</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>C0DEED</profile_sidebar_border_color>
+  <friends_count>99</friends_count>
+  <created_at>Fri Dec 31 11:41:05 +0000 2010</created_at>
+  <favourites_count>2</favourites_count>
+  <utc_offset>-28800</utc_offset>
+  <time_zone>Pacific Time (US &amp; Canada)</time_zone>
+  <profile_background_image_url>http://a3.twimg.com/a/1294279085/images/themes/theme1/bg.png</profile_background_image_url>
+  <profile_background_tile>false</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications>false</notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following>false</following>
+  <statuses_count>22</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent>false</follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Thu Jan 13 07:51:43 +0000 2011</created_at>
+    <id>25459964680077312</id>
+    <text>I LOVE INDONESIA</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>218747667</id>
+  <name>andiny indah</name>
+  <screen_name>pandinyindah</screen_name>
+  <location>tanjung pinang</location>
+  <description>ingin menjadi diri sendiri dan menyenangi orang2 disekitar ku!!</description>
+  <profile_image_url>http://a1.twimg.com/profile_images/1173575773/dini_di_pelaminan_normal.jpg</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>67</followers_count>
+  <profile_background_color>0099B9</profile_background_color>
+  <profile_text_color>3C3940</profile_text_color>
+  <profile_link_color>0099B9</profile_link_color>
+  <profile_sidebar_fill_color>95E8EC</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>5ED4DC</profile_sidebar_border_color>
+  <friends_count>1028</friends_count>
+  <created_at>Tue Nov 23 04:45:32 +0000 2010</created_at>
+  <favourites_count>35</favourites_count>
+  <utc_offset></utc_offset>
+  <time_zone></time_zone>
+  <profile_background_image_url>http://a2.twimg.com/profile_background_images/190827633/muslimah-berjilbab-4.jpg</profile_background_image_url>
+  <profile_background_tile>true</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications>false</notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following>false</following>
+  <statuses_count>74</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent>false</follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Sun Jan 09 10:51:06 +0000 2011</created_at>
+    <id>24055558654926848</id>
+    <text>@tika_tiky :sama2....</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id>24055278332809216</in_reply_to_status_id>
+    <in_reply_to_user_id>177798048</in_reply_to_user_id>
+    <in_reply_to_screen_name>tika_tiky</in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>125899747</id>
+  <name>FeRaRi</name>
+  <screen_name>FeRaRi_FiDella</screen_name>
+  <location></location>
+  <description>Kami adalah satu, selamanya selalu cintaa...</description>
+  <profile_image_url>http://a2.twimg.com/profile_images/1211539291/60194_1441170074210_1381824141_31130261_2550273_n_normal.jpg</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>12</followers_count>
+  <profile_background_color>C0DEED</profile_background_color>
+  <profile_text_color>333333</profile_text_color>
+  <profile_link_color>0084B4</profile_link_color>
+  <profile_sidebar_fill_color>DDEEF6</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>C0DEED</profile_sidebar_border_color>
+  <friends_count>34</friends_count>
+  <created_at>Wed Mar 24 06:04:07 +0000 2010</created_at>
+  <favourites_count>0</favourites_count>
+  <utc_offset></utc_offset>
+  <time_zone></time_zone>
+  <profile_background_image_url>http://a3.twimg.com/a/1294279085/images/themes/theme1/bg.png</profile_background_image_url>
+  <profile_background_tile>false</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>4</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Mon Jan 10 03:34:20 +0000 2011</created_at>
+    <id>24308030657003520</id>
+    <text>iyaa sayaaang...@Ferayna</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id>24300566830129153</in_reply_to_status_id>
+    <in_reply_to_user_id>235886197</in_reply_to_user_id>
+    <in_reply_to_screen_name>Ferayna</in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>235886197</id>
+  <name>Annasya FeRaRi</name>
+  <screen_name>Ferayna</screen_name>
+  <location></location>
+  <description>My Little Angel@Heaven...</description>
+  <profile_image_url>http://a3.twimg.com/profile_images/1210825994/fR.2_normal.JPG</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>29</followers_count>
+  <profile_background_color>C0DEED</profile_background_color>
+  <profile_text_color>333333</profile_text_color>
+  <profile_link_color>0084B4</profile_link_color>
+  <profile_sidebar_fill_color>DDEEF6</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>C0DEED</profile_sidebar_border_color>
+  <friends_count>160</friends_count>
+  <created_at>Sun Jan 09 08:58:01 +0000 2011</created_at>
+  <favourites_count>1</favourites_count>
+  <utc_offset></utc_offset>
+  <time_zone></time_zone>
+  <profile_background_image_url>http://a3.twimg.com/a/1294279085/images/themes/theme1/bg.png</profile_background_image_url>
+  <profile_background_tile>false</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>115</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Fri Jan 14 09:50:03 +0000 2011</created_at>
+    <id>25852133026824192</id>
+    <text>@ye_lou @ratoe_fadjar wkwkkwkwk.....kebanyakan di rumah kali mba..xixiix</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id>25829911633600512</in_reply_to_status_id>
+    <in_reply_to_user_id>143294758</in_reply_to_user_id>
+    <in_reply_to_screen_name>ye_lou</in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>234697635</id>
+  <name>muhamad haris</name>
+  <screen_name>muhamad_haris17</screen_name>
+  <location></location>
+  <description></description>
+  <profile_image_url>http://a2.twimg.com/profile_images/1208990422/asd_normal.jpg</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>6</followers_count>
+  <profile_background_color>0099B9</profile_background_color>
+  <profile_text_color>3C3940</profile_text_color>
+  <profile_link_color>0099B9</profile_link_color>
+  <profile_sidebar_fill_color>95E8EC</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>5ED4DC</profile_sidebar_border_color>
+  <friends_count>55</friends_count>
+  <created_at>Thu Jan 06 10:05:43 +0000 2011</created_at>
+  <favourites_count>0</favourites_count>
+  <utc_offset>25200</utc_offset>
+  <time_zone>Jakarta</time_zone>
+  <profile_background_image_url>http://a0.twimg.com/profile_background_images/190103458/Subaru-Impreza-WRX-STi-2-1.jpg</profile_background_image_url>
+  <profile_background_tile>false</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>true</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>5</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Sat Jan 08 06:01:40 +0000 2011</created_at>
+    <id>23620330002055168</id>
+    <text>irfan hasyim..
+ckckckckckckc...</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>235023950</id>
+  <name>sarah nurhaliza</name>
+  <screen_name>sarah_Dmasiv</screen_name>
+  <location></location>
+  <description></description>
+  <profile_image_url>http://a3.twimg.com/profile_images/1208957587/bgz_normal.png</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>8</followers_count>
+  <profile_background_color>C0DEED</profile_background_color>
+  <profile_text_color>333333</profile_text_color>
+  <profile_link_color>0084B4</profile_link_color>
+  <profile_sidebar_fill_color>DDEEF6</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>C0DEED</profile_sidebar_border_color>
+  <friends_count>125</friends_count>
+  <created_at>Fri Jan 07 04:39:59 +0000 2011</created_at>
+  <favourites_count>0</favourites_count>
+  <utc_offset></utc_offset>
+  <time_zone></time_zone>
+  <profile_background_image_url>http://a2.twimg.com/profile_background_images/189683483/twitt.jpg</profile_background_image_url>
+  <profile_background_tile>true</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>1</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Fri Jan 07 05:00:28 +0000 2011</created_at>
+    <id>23242543571410945</id>
+    <text>RT @savalimuk mw EXIT dlu ah ~bye all~</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id>22613395291250688</in_reply_to_status_id>
+    <in_reply_to_user_id>124940210</in_reply_to_user_id>
+    <in_reply_to_screen_name>savalimuk</in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>122833491</id>
+  <name>Nabilla  Ayunindita</name>
+  <screen_name>NabilzCutezz</screen_name>
+  <location>south tangerang</location>
+  <description>berjuang untuk mendapatkan nilai bagus saat UASBN dan mendapatkan SMP 9</description>
+  <profile_image_url>http://a2.twimg.com/profile_images/751349745/nabill_normal.jpg</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>30</followers_count>
+  <profile_background_color>FF6699</profile_background_color>
+  <profile_text_color>362720</profile_text_color>
+  <profile_link_color>B40B43</profile_link_color>
+  <profile_sidebar_fill_color>E5507E</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>CC3366</profile_sidebar_border_color>
+  <friends_count>33</friends_count>
+  <created_at>Sun Mar 14 02:40:32 +0000 2010</created_at>
+  <favourites_count>1</favourites_count>
+  <utc_offset></utc_offset>
+  <time_zone></time_zone>
+  <profile_background_image_url>http://a3.twimg.com/a/1295051201/images/themes/theme11/bg.gif</profile_background_image_url>
+  <profile_background_tile>true</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>22</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Sun Jan 16 02:13:40 +0000 2011</created_at>
+    <id>26462056458747905</id>
+    <text>Dooohh nie org brisik bgt ganggu aj</text>
+    <source>&lt;a href=&quot;http://blackberry.com/twitter&quot; rel=&quot;nofollow&quot;&gt;Twitter for BlackBerry&#174;&lt;/a&gt;</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>231764345</id>
+  <name>azka RJ</name>
+  <screen_name>azka_azkAzka</screen_name>
+  <location></location>
+  <description></description>
+  <profile_image_url>http://a3.twimg.com/profile_images/1201592489/148132_168079096548807_100000401528373_398438_7017514_n_normal.jpg</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>38</followers_count>
+  <profile_background_color>c0deed</profile_background_color>
+  <profile_text_color>000000</profile_text_color>
+  <profile_link_color>000000</profile_link_color>
+  <profile_sidebar_fill_color>ab30db</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>1786bd</profile_sidebar_border_color>
+  <friends_count>136</friends_count>
+  <created_at>Wed Dec 29 11:52:51 +0000 2010</created_at>
+  <favourites_count>0</favourites_count>
+  <utc_offset></utc_offset>
+  <time_zone></time_zone>
+  <profile_background_image_url>http://a0.twimg.com/profile_background_images/186464737/bismakarisma.jpg</profile_background_image_url>
+  <profile_background_tile>true</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>17</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Fri Jan 07 12:42:06 +0000 2011</created_at>
+    <id>23358717940469760</id>
+    <text>@afifahw parah :'( 
+fb rusak :'(</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id>156181774</in_reply_to_user_id>
+    <in_reply_to_screen_name>afifahw</in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>232010992</id>
+  <name>XswiftXlove</name>
+  <screen_name>swftlove</screen_name>
+  <location></location>
+  <description>gw tau lo gak suka gw,gw tau lo udh pny pacar,N lain lain,tapi anggap gw napa gw suka ma lo,knp lo selalu nganggap gw gak ad tu gak adil!!!</description>
+  <profile_image_url>http://a3.twimg.com/profile_images/1203050349/taylor_swift_1_normal.jpg</profile_image_url>
+  <url>http://index-of-mp3.com/</url>
+  <protected>false</protected>
+  <followers_count>6</followers_count>
+  <profile_background_color>C0DEED</profile_background_color>
+  <profile_text_color>333333</profile_text_color>
+  <profile_link_color>0084B4</profile_link_color>
+  <profile_sidebar_fill_color>DDEEF6</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>C0DEED</profile_sidebar_border_color>
+  <friends_count>36</friends_count>
+  <created_at>Thu Dec 30 01:58:08 +0000 2010</created_at>
+  <favourites_count>0</favourites_count>
+  <utc_offset>-28800</utc_offset>
+  <time_zone>Pacific Time (US &amp; Canada)</time_zone>
+  <profile_background_image_url>http://a3.twimg.com/profile_background_images/186711197/Anime_Babes_004.jpg</profile_background_image_url>
+  <profile_background_tile>false</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>27</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Thu Jan 13 06:48:15 +0000 2011</created_at>
+    <id>25443994796302336</id>
+    <text>@xMeandGomezx idh ANEH</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id>25430843488997377</in_reply_to_status_id>
+    <in_reply_to_user_id>102911913</in_reply_to_user_id>
+    <in_reply_to_screen_name>AyeItsSilmi_</in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>230579044</id>
+  <name>Rahmah Wulandari</name>
+  <screen_name>rahmaulan</screen_name>
+  <location></location>
+  <description>I am a big fan of Justin Bieber</description>
+  <profile_image_url>http://a2.twimg.com/profile_images/1198829772/IMG004993_normal.jpg</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>11</followers_count>
+  <profile_background_color>022330</profile_background_color>
+  <profile_text_color>333333</profile_text_color>
+  <profile_link_color>0084B4</profile_link_color>
+  <profile_sidebar_fill_color>C0DFEC</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>a8c7f7</profile_sidebar_border_color>
+  <friends_count>43</friends_count>
+  <created_at>Sun Dec 26 01:26:15 +0000 2010</created_at>
+  <favourites_count>3</favourites_count>
+  <utc_offset>-28800</utc_offset>
+  <time_zone>Pacific Time (US &amp; Canada)</time_zone>
+  <profile_background_image_url>http://a0.twimg.com/profile_background_images/185345794/IMG004923.jpg</profile_background_image_url>
+  <profile_background_tile>true</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>128</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Tue Jan 04 09:27:05 +0000 2011</created_at>
+    <id>22222475177762816</id>
+    <text>RT @FaktanyaAdalah: #faktanya temperatur terendah yang pernah diukur di bumi adalah &#8722;89.2 &#176;C di  Russian Vostok Station, Antartica pada  ...</text>
+    <source>&lt;a href=&quot;http://m.tuitwit.com&quot; rel=&quot;nofollow&quot;&gt;Tuitwit&lt;/a&gt;</source>
+    <truncated>true</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweet_count>100+</retweet_count>
+    <retweeted>false</retweeted>
+    <retweeted_status>
+      <created_at>Wed Jan 05 00:23:58 +0000 2011</created_at>
+      <id>22221808124035072</id>
+      <text>#faktanya temperatur terendah yang pernah diukur di bumi adalah &#8722;89.2 &#176;C di  Russian Vostok Station, Antartica pada 21 Juli 1983.</text>
+      <source>web</source>
+      <truncated>false</truncated>
+      <favorited>false</favorited>
+      <in_reply_to_status_id></in_reply_to_status_id>
+      <in_reply_to_user_id></in_reply_to_user_id>
+      <in_reply_to_screen_name></in_reply_to_screen_name>
+      <retweet_count>100+</retweet_count>
+      <retweeted>false</retweeted>
+      <geo/>
+      <coordinates/>
+      <place/>
+      <contributors/>
+    </retweeted_status>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>189942231</id>
+  <name>THENAMMZ</name>
+  <screen_name>ll_NAMMzZ_ll</screen_name>
+  <location></location>
+  <description></description>
+  <profile_image_url>http://a0.twimg.com/profile_images/1198598327/IMG00528-20101213-1654___1_normal.jpg</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>4</followers_count>
+  <profile_background_color>131516</profile_background_color>
+  <profile_text_color>333333</profile_text_color>
+  <profile_link_color>009999</profile_link_color>
+  <profile_sidebar_fill_color>efefef</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>eeeeee</profile_sidebar_border_color>
+  <friends_count>27</friends_count>
+  <created_at>Sun Sep 12 17:15:37 +0000 2010</created_at>
+  <favourites_count>0</favourites_count>
+  <utc_offset></utc_offset>
+  <time_zone></time_zone>
+  <profile_background_image_url>http://a1.twimg.com/profile_background_images/185182037/IMG00535-20101213-1702___1___1.jpg</profile_background_image_url>
+  <profile_background_tile>true</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>1</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Sat Dec 25 17:13:43 +0000 2010</created_at>
+    <id>18716029198798848</id>
+    <text>I'm lonely!!</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>229764152</id>
+  <name>nur nina kc.</name>
+  <screen_name>ninabp20</screen_name>
+  <location>Jakarta-Indonesia</location>
+  <description>gw anak the jack dan gw lylaku sejati...</description>
+  <profile_image_url>http://a2.twimg.com/a/1294279085/images/default_profile_2_normal.png</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>4</followers_count>
+  <profile_background_color>C0DEED</profile_background_color>
+  <profile_text_color>333333</profile_text_color>
+  <profile_link_color>0084B4</profile_link_color>
+  <profile_sidebar_fill_color>DDEEF6</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>C0DEED</profile_sidebar_border_color>
+  <friends_count>11</friends_count>
+  <created_at>Thu Dec 23 07:50:22 +0000 2010</created_at>
+  <favourites_count>0</favourites_count>
+  <utc_offset>-28800</utc_offset>
+  <time_zone>Pacific Time (US &amp; Canada)</time_zone>
+  <profile_background_image_url>http://a3.twimg.com/a/1294279085/images/themes/theme1/bg.png</profile_background_image_url>
+  <profile_background_tile>false</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>12</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Sat Jan 08 04:20:13 +0000 2011</created_at>
+    <id>23594799957282816</id>
+    <text>om @bepe20,apa kabar nih ??</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>229761520</id>
+  <name>rafli fadilah akbar</name>
+  <screen_name>raflifadilakbr</screen_name>
+  <location>Jakarta-Indonesia</location>
+  <description>my name is rafli fadilah akbar
+I LOVE MY GIRLFRIEND</description>
+  <profile_image_url>http://a2.twimg.com/a/1294279085/images/default_profile_2_normal.png</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>4</followers_count>
+  <profile_background_color>C0DEED</profile_background_color>
+  <profile_text_color>333333</profile_text_color>
+  <profile_link_color>0084B4</profile_link_color>
+  <profile_sidebar_fill_color>DDEEF6</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>C0DEED</profile_sidebar_border_color>
+  <friends_count>5</friends_count>
+  <created_at>Thu Dec 23 07:36:40 +0000 2010</created_at>
+  <favourites_count>0</favourites_count>
+  <utc_offset></utc_offset>
+  <time_zone></time_zone>
+  <profile_background_image_url>http://a3.twimg.com/a/1294279085/images/themes/theme1/bg.png</profile_background_image_url>
+  <profile_background_tile>false</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>4</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Thu Dec 23 07:47:09 +0000 2010</created_at>
+    <id>17848670460313600</id>
+    <text>@rahmahwulandari hy cewek... :)</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id>17831721164611584</in_reply_to_status_id>
+    <in_reply_to_user_id>156568504</in_reply_to_user_id>
+    <in_reply_to_screen_name>rhmhwlndri</in_reply_to_screen_name>
+    <retweet_count>1</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>220546750</id>
+  <name>lovely</name>
+  <screen_name>widysyamgazela</screen_name>
+  <location></location>
+  <description></description>
+  <profile_image_url>http://a0.twimg.com/profile_images/1195314343/lima_normal.jpg</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>6</followers_count>
+  <profile_background_color>C0DEED</profile_background_color>
+  <profile_text_color>333333</profile_text_color>
+  <profile_link_color>0084B4</profile_link_color>
+  <profile_sidebar_fill_color>DDEEF6</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>C0DEED</profile_sidebar_border_color>
+  <friends_count>16</friends_count>
+  <created_at>Sun Nov 28 03:13:29 +0000 2010</created_at>
+  <favourites_count>0</favourites_count>
+  <utc_offset>-28800</utc_offset>
+  <time_zone>Pacific Time (US &amp; Canada)</time_zone>
+  <profile_background_image_url>http://a2.twimg.com/profile_background_images/183774316/Anime_Babes_004.jpg</profile_background_image_url>
+  <profile_background_tile>false</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>14</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Wed Dec 29 08:39:47 +0000 2010</created_at>
+    <id>20036245493129216</id>
+    <text>gw suka banget ma lo tolong anggap gw napa!!</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>228039849</id>
+  <name>sri rezeky indiani </name>
+  <screen_name>indiani_husnita</screen_name>
+  <location></location>
+  <description></description>
+  <profile_image_url>http://a2.twimg.com/profile_images/1193428221/botoh_normal.jpg</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>6</followers_count>
+  <profile_background_color>B2DFDA</profile_background_color>
+  <profile_text_color>333333</profile_text_color>
+  <profile_link_color>93A644</profile_link_color>
+  <profile_sidebar_fill_color>ffffff</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>eeeeee</profile_sidebar_border_color>
+  <friends_count>10</friends_count>
+  <created_at>Sat Dec 18 14:58:02 +0000 2010</created_at>
+  <favourites_count>0</favourites_count>
+  <utc_offset></utc_offset>
+  <time_zone></time_zone>
+  <profile_background_image_url>http://a1.twimg.com/a/1295051201/images/themes/theme13/bg.gif</profile_background_image_url>
+  <profile_background_tile>false</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>2</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Sat Dec 25 13:29:10 +0000 2010</created_at>
+    <id>18659517579403265</id>
+    <text>mau maen ahh</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>191393240</id>
+  <name>alya rafika</name>
+  <screen_name>Alya_Rafika</screen_name>
+  <location></location>
+  <description>My name Alya Rafika rahma, my singles.
+I'm like someone who is more than ever. hehe: D
+
+
+DZ ;)</description>
+  <profile_image_url>http://a2.twimg.com/profile_images/1216190889/IMG_1002_normal.JPG</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>141</followers_count>
+  <profile_background_color>642D8B</profile_background_color>
+  <profile_text_color>3D1957</profile_text_color>
+  <profile_link_color>FF0000</profile_link_color>
+  <profile_sidebar_fill_color>7AC3EE</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>65B0DA</profile_sidebar_border_color>
+  <friends_count>204</friends_count>
+  <created_at>Thu Sep 16 10:27:11 +0000 2010</created_at>
+  <favourites_count>0</favourites_count>
+  <utc_offset>-28800</utc_offset>
+  <time_zone>Pacific Time (US &amp; Canada)</time_zone>
+  <profile_background_image_url>http://a3.twimg.com/profile_background_images/193001420/Hhahayy.jpg</profile_background_image_url>
+  <profile_background_tile>true</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>1218</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Sun Jan 16 14:34:38 +0000 2011</created_at>
+    <id>26648526905675776</id>
+    <text>RT @Cynthiaayut: Belajar merelakan orang yang kita sayang bersama orang lain PASTI BISA! SEMANGAT! :')</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <retweeted_status>
+      <created_at>Sun Jan 16 14:33:03 +0000 2011</created_at>
+      <id>26648126496444416</id>
+      <text>Belajar merelakan orang yang kita sayang bersama orang lain PASTI BISA! SEMANGAT! :')</text>
+      <source>web</source>
+      <truncated>false</truncated>
+      <favorited>false</favorited>
+      <in_reply_to_status_id></in_reply_to_status_id>
+      <in_reply_to_user_id></in_reply_to_user_id>
+      <in_reply_to_screen_name></in_reply_to_screen_name>
+      <retweet_count>0</retweet_count>
+      <retweeted>false</retweeted>
+      <geo/>
+      <coordinates/>
+      <place/>
+      <contributors/>
+    </retweeted_status>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>206964666</id>
+  <name>Resty Amelia Murti</name>
+  <screen_name>resty_am</screen_name>
+  <location>Cirebon,Indonesia</location>
+  <description>for all my friends...follow me please....</description>
+  <profile_image_url>http://a3.twimg.com/profile_images/1187788115/Foto0136_normal.jpg</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>124</followers_count>
+  <profile_background_color>B2DFDA</profile_background_color>
+  <profile_text_color>333333</profile_text_color>
+  <profile_link_color>93A644</profile_link_color>
+  <profile_sidebar_fill_color>ffffff</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>eeeeee</profile_sidebar_border_color>
+  <friends_count>227</friends_count>
+  <created_at>Sun Oct 24 05:07:45 +0000 2010</created_at>
+  <favourites_count>0</favourites_count>
+  <utc_offset></utc_offset>
+  <time_zone></time_zone>
+  <profile_background_image_url>http://a1.twimg.com/a/1294279085/images/themes/theme13/bg.gif</profile_background_image_url>
+  <profile_background_tile>false</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications>false</notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following>false</following>
+  <statuses_count>207</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent>false</follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Sun Jan 09 11:57:26 +0000 2011</created_at>
+    <id>24072249917054977</id>
+    <text>get ready to go to school tomorrow</text>
+    <source>&lt;a href=&quot;http://mobile.twitter.com&quot; rel=&quot;nofollow&quot;&gt;Mobile Web&lt;/a&gt;</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>156568504</id>
+  <name>Rahmah Wulandari</name>
+  <screen_name>rhmhwlndri</screen_name>
+  <location>indonesia</location>
+  <description>Ik hou van Justin Bieber
+</description>
+  <profile_image_url>http://a2.twimg.com/profile_images/1197731799/IMG004923_normal.jpg</profile_image_url>
+  <url>http://www.facebook.com/profile.php?id=100001251715773</url>
+  <protected>false</protected>
+  <followers_count>80</followers_count>
+  <profile_background_color>FF6699</profile_background_color>
+  <profile_text_color>362720</profile_text_color>
+  <profile_link_color>B40B43</profile_link_color>
+  <profile_sidebar_fill_color>E5507E</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>CC3366</profile_sidebar_border_color>
+  <friends_count>239</friends_count>
+  <created_at>Thu Jun 17 08:18:53 +0000 2010</created_at>
+  <favourites_count>24</favourites_count>
+  <utc_offset>25200</utc_offset>
+  <time_zone>Jakarta</time_zone>
+  <profile_background_image_url>http://a2.twimg.com/profile_background_images/184861619/screaming.jpg</profile_background_image_url>
+  <profile_background_tile>true</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>1674</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Sat Jan 15 15:11:39 +0000 2011</created_at>
+    <id>26295455646224384</id>
+    <text>yang jdi pendinginnya kulkas lah.. Wkwkwk.. :p</text>
+    <source>&lt;a href=&quot;http://m.tuitwit.com&quot; rel=&quot;nofollow&quot;&gt;Tuitwit&lt;/a&gt;</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>125261746</id>
+  <name>Lucyana t indriani</name>
+  <screen_name>luc_indri</screen_name>
+  <location>&#220;T: -6.203678,106.650015</location>
+  <description>This is me and I'm realy love &#9728;ALLAH ,MUHAMMAD&#9728; love my idola &#9829;GREYSON CHANCE, and ANDREA BLITAR &#9829;</description>
+  <profile_image_url>http://a3.twimg.com/profile_images/1214948744/IMG00897-20110112-0908_normal.jpg</profile_image_url>
+  <url>http://www.facebook.com</url>
+  <protected>false</protected>
+  <followers_count>132</followers_count>
+  <profile_background_color>8B542B</profile_background_color>
+  <profile_text_color>333333</profile_text_color>
+  <profile_link_color>9D582E</profile_link_color>
+  <profile_sidebar_fill_color>EADEAA</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>c8c7de</profile_sidebar_border_color>
+  <friends_count>252</friends_count>
+  <created_at>Mon Mar 22 07:07:37 +0000 2010</created_at>
+  <favourites_count>16</favourites_count>
+  <utc_offset>-28800</utc_offset>
+  <time_zone>Pacific Time (US &amp; Canada)</time_zone>
+  <profile_background_image_url>http://a0.twimg.com/profile_background_images/106575283/evanescence.jpg</profile_background_image_url>
+  <profile_background_tile>true</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>1318</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>2</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Sat Jan 15 06:14:06 +0000 2011</created_at>
+    <id>26160177099055104</id>
+    <text>@Dheaadjani17 knapa lu aja yg follow dya bilang folback</text>
+    <source>&lt;a href=&quot;http://blackberry.com/twitter&quot; rel=&quot;nofollow&quot;&gt;Twitter for BlackBerry&#174;&lt;/a&gt;</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id>178213641</in_reply_to_user_id>
+    <in_reply_to_screen_name>Dheaadjani17</in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>199628489</id>
+  <name>vivian novita</name>
+  <screen_name>vivianmanroe</screen_name>
+  <location>north sumatra</location>
+  <description>skulll di methosa...
+baek..
+imoet/..
+cuanteekk..
+agak gemuk...
+tpi, lemot...
+wkwkwkwkwk...</description>
+  <profile_image_url>http://a2.twimg.com/profile_images/1139232763/images_g8utuyiihi_normal.jpg</profile_image_url>
+  <url>http://www.google.com</url>
+  <protected>false</protected>
+  <followers_count>353</followers_count>
+  <profile_background_color>EBEBEB</profile_background_color>
+  <profile_text_color>333333</profile_text_color>
+  <profile_link_color>990000</profile_link_color>
+  <profile_sidebar_fill_color>F3F3F3</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>DFDFDF</profile_sidebar_border_color>
+  <friends_count>1002</friends_count>
+  <created_at>Thu Oct 07 10:49:08 +0000 2010</created_at>
+  <favourites_count>13</favourites_count>
+  <utc_offset></utc_offset>
+  <time_zone></time_zone>
+  <profile_background_image_url>http://a1.twimg.com/a/1292975674/images/themes/theme7/bg.gif</profile_background_image_url>
+  <profile_background_tile>false</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>20</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Sun Jan 16 06:26:02 +0000 2011</created_at>
+    <id>26525567478136832</id>
+    <text>happy sunday all! love &amp; grace of God always be with us</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>152924800</id>
+  <name>Raisya Tamimi </name>
+  <screen_name>raisyachaca</screen_name>
+  <location></location>
+  <description>hello, my name raisya. you can call me chaca. don't forget to follow me ;)</description>
+  <profile_image_url>http://a0.twimg.com/profile_images/1204742055/Photo_1721_normal.jpg</profile_image_url>
+  <url></url>
+  <protected>true</protected>
+  <followers_count>204</followers_count>
+  <profile_background_color>000000</profile_background_color>
+  <profile_text_color>7d7d7d</profile_text_color>
+  <profile_link_color>4ADDE5</profile_link_color>
+  <profile_sidebar_fill_color>000000</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>63E521</profile_sidebar_border_color>
+  <friends_count>303</friends_count>
+  <created_at>Mon Jun 07 06:36:02 +0000 2010</created_at>
+  <favourites_count>4</favourites_count>
+  <utc_offset>-28800</utc_offset>
+  <time_zone>Pacific Time (US &amp; Canada)</time_zone>
+  <profile_background_image_url>http://a0.twimg.com/profile_background_images/185973876/nvbasmentglow_twitter.br.jpg</profile_background_image_url>
+  <profile_background_tile>false</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications>false</notifications>
+  <geo_enabled>true</geo_enabled>
+  <verified>false</verified>
+  <following>false</following>
+  <statuses_count>1385</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent>false</follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+</user>
+<user>
+  <id>158333110</id>
+  <name>hana ramadhika</name>
+  <screen_name>hanabignose</screen_name>
+  <location></location>
+  <description></description>
+  <profile_image_url>http://a0.twimg.com/profile_images/1019721074/Picture0073_normal.jpg</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>49</followers_count>
+  <profile_background_color>709397</profile_background_color>
+  <profile_text_color>333333</profile_text_color>
+  <profile_link_color>FF3300</profile_link_color>
+  <profile_sidebar_fill_color>A0C5C7</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>86A4A6</profile_sidebar_border_color>
+  <friends_count>64</friends_count>
+  <created_at>Tue Jun 22 11:20:45 +0000 2010</created_at>
+  <favourites_count>1</favourites_count>
+  <utc_offset></utc_offset>
+  <time_zone></time_zone>
+  <profile_background_image_url>http://a1.twimg.com/a/1295051201/images/themes/theme6/bg.gif</profile_background_image_url>
+  <profile_background_tile>false</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>35</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Fri Sep 24 11:19:06 +0000 2010</created_at>
+    <id>25394683233</id>
+    <text>enakan sma..</text>
+    <source>&lt;a href=&quot;http://m.tuitwit.com&quot; rel=&quot;nofollow&quot;&gt;Tuitwit&lt;/a&gt;</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>121717100</id>
+  <name>Andisha Faudina</name>
+  <screen_name>disha_faudina</screen_name>
+  <location></location>
+  <description></description>
+  <profile_image_url>http://a2.twimg.com/profile_images/940257174/DSC04408_normal.JPG</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>225</followers_count>
+  <profile_background_color>C0DEED</profile_background_color>
+  <profile_text_color>333333</profile_text_color>
+  <profile_link_color>0084B4</profile_link_color>
+  <profile_sidebar_fill_color>DDEEF6</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>C0DEED</profile_sidebar_border_color>
+  <friends_count>357</friends_count>
+  <created_at>Wed Mar 10 10:52:18 +0000 2010</created_at>
+  <favourites_count>0</favourites_count>
+  <utc_offset>-28800</utc_offset>
+  <time_zone>Pacific Time (US &amp; Canada)</time_zone>
+  <profile_background_image_url>http://a3.twimg.com/a/1292628660/images/themes/theme1/bg.png</profile_background_image_url>
+  <profile_background_tile>false</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>0</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+</user>
+<user>
+  <id>89691374</id>
+  <name>shifa yulivia</name>
+  <screen_name>shifaisnoing</screen_name>
+  <location></location>
+  <description></description>
+  <profile_image_url>http://a0.twimg.com/profile_images/1188031096/Picture0212_normal.jpg</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>42</followers_count>
+  <profile_background_color>C0DEED</profile_background_color>
+  <profile_text_color>333333</profile_text_color>
+  <profile_link_color>0084B4</profile_link_color>
+  <profile_sidebar_fill_color>DDEEF6</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>C0DEED</profile_sidebar_border_color>
+  <friends_count>73</friends_count>
+  <created_at>Fri Nov 13 12:48:16 +0000 2009</created_at>
+  <favourites_count>2</favourites_count>
+  <utc_offset>-28800</utc_offset>
+  <time_zone>Pacific Time (US &amp; Canada)</time_zone>
+  <profile_background_image_url>http://a2.twimg.com/profile_background_images/180465920/Picture0206.jpg</profile_background_image_url>
+  <profile_background_tile>false</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>true</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>90</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>2</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Fri Jan 14 14:25:48 +0000 2011</created_at>
+    <id>25921529476816897</id>
+    <text>dih bneran sel. RT @sellyfidyas: elebay amat ye RT @shifaisnoing: gara2 skit gw gk mandi satu hari 1/2bisa diblang 2 http://mtw.tl/lnqr31</text>
+    <source>&lt;a href=&quot;http://m.tweete.net&quot; rel=&quot;nofollow&quot;&gt;m.tweete.net&lt;/a&gt;</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>56604703</id>
+  <name>faris hasbi ridha</name>
+  <screen_name>farishasbi</screen_name>
+  <location></location>
+  <description></description>
+  <profile_image_url>http://a3.twimg.com/profile_images/1107383200/27370_1783175721_7114_q_normal.jpg</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>35</followers_count>
+  <profile_background_color>FA1616</profile_background_color>
+  <profile_text_color>E7731A</profile_text_color>
+  <profile_link_color>C203FF</profile_link_color>
+  <profile_sidebar_fill_color>7783DD</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>5BDA29</profile_sidebar_border_color>
+  <friends_count>57</friends_count>
+  <created_at>Tue Jul 14 04:24:54 +0000 2009</created_at>
+  <favourites_count>0</favourites_count>
+  <utc_offset></utc_offset>
+  <time_zone></time_zone>
+  <profile_background_image_url>http://a1.twimg.com/profile_background_images/124081600/baby_picture_photo_2.jpg</profile_background_image_url>
+  <profile_background_tile>true</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>48</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Thu Jan 13 14:19:40 +0000 2011</created_at>
+    <id>25557595381039106</id>
+    <text>@OVJ_Trans7 lucu abisssssssssssssssss</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id>235079443</in_reply_to_user_id>
+    <in_reply_to_screen_name>OVJ_Trans7</in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>187534751</id>
+  <name>srianggrinipane</name>
+  <screen_name>anggieoioipane</screen_name>
+  <location>Medan.Indonesia</location>
+  <description>Don't forget Me.</description>
+  <profile_image_url>http://a3.twimg.com/profile_images/1213643215/164316_162725380440728_100001098013902_322667_4727201_n_normal.jpg</profile_image_url>
+  <url>http://twittwer.com/anggieoioipane</url>
+  <protected>false</protected>
+  <followers_count>88</followers_count>
+  <profile_background_color>FFF04D</profile_background_color>
+  <profile_text_color>333333</profile_text_color>
+  <profile_link_color>8b00cc</profile_link_color>
+  <profile_sidebar_fill_color>f6ffd1</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>fff8ad</profile_sidebar_border_color>
+  <friends_count>247</friends_count>
+  <created_at>Mon Sep 06 14:13:13 +0000 2010</created_at>
+  <favourites_count>0</favourites_count>
+  <utc_offset></utc_offset>
+  <time_zone></time_zone>
+  <profile_background_image_url>http://a0.twimg.com/profile_background_images/191771618/76830_152455811467685_100001098013902_264174_433755_n.jpg</profile_background_image_url>
+  <profile_background_tile>false</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications>false</notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following>false</following>
+  <statuses_count>15</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent>false</follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Wed Jan 12 12:33:07 +0000 2011</created_at>
+    <id>25168394483404800</id>
+    <text>Perut w keroncongan.
+:'(</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>151315953</id>
+  <name>dwina yuliana</name>
+  <screen_name>dwina_yuliana</screen_name>
+  <location>&#220;T: -6.198537,106.943569</location>
+  <description></description>
+  <profile_image_url>http://a1.twimg.com/profile_images/1113669553/propic2_normal.jpg</profile_image_url>
+  <url>http://null</url>
+  <protected>false</protected>
+  <followers_count>116</followers_count>
+  <profile_background_color>FF77DD</profile_background_color>
+  <profile_text_color>CC1199</profile_text_color>
+  <profile_link_color>FF77DD</profile_link_color>
+  <profile_sidebar_fill_color>FFCCFF</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>FFCCFF</profile_sidebar_border_color>
+  <friends_count>153</friends_count>
+  <created_at>Thu Jun 03 03:41:16 +0000 2010</created_at>
+  <favourites_count>0</favourites_count>
+  <utc_offset></utc_offset>
+  <time_zone></time_zone>
+  <profile_background_image_url>http://a2.twimg.com/profile_background_images/124749761/postcard-in-pink.br.jpg</profile_background_image_url>
+  <profile_background_tile>false</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>2090</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Sun Jan 16 15:29:58 +0000 2011</created_at>
+    <id>26662451420340224</id>
+    <text>Tidur ah..ngantuk.. (@ Wina's room @2nd floor) http://4sq.com/hfghPp</text>
+    <source>&lt;a href=&quot;http://foursquare.com&quot; rel=&quot;nofollow&quot;&gt;foursquare&lt;/a&gt;</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>185079081</id>
+  <name>Andini R.</name>
+  <screen_name>dinirizkya</screen_name>
+  <location>Indonesia</location>
+  <description>blablabla///</description>
+  <profile_image_url>http://a0.twimg.com/profile_images/1204594383/images_normal.jpeg</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>26</followers_count>
+  <profile_background_color>B2DFDA</profile_background_color>
+  <profile_text_color>333333</profile_text_color>
+  <profile_link_color>c9b2b1</profile_link_color>
+  <profile_sidebar_fill_color>827f82</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>eeeeee</profile_sidebar_border_color>
+  <friends_count>166</friends_count>
+  <created_at>Tue Aug 31 04:55:24 +0000 2010</created_at>
+  <favourites_count>1</favourites_count>
+  <utc_offset>-28800</utc_offset>
+  <time_zone>Pacific Time (US &amp; Canada)</time_zone>
+  <profile_background_image_url>http://a0.twimg.com/profile_background_images/143376594/background_andini.jpg</profile_background_image_url>
+  <profile_background_tile>false</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>2</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Wed Sep 01 05:28:49 +0000 2010</created_at>
+    <id>22681996233</id>
+    <text>RT @Brandon_lilhero :: brandon folback aku yha  :D</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>185139277</id>
+  <name>Andisha Faudina</name>
+  <screen_name>disha_shafa</screen_name>
+  <location></location>
+  <description></description>
+  <profile_image_url>http://a2.twimg.com/profile_images/1114442307/39981_1380225596245_1550085965_31037885_4154654_n_normal.jpg</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>82</followers_count>
+  <profile_background_color>C0DEED</profile_background_color>
+  <profile_text_color>333333</profile_text_color>
+  <profile_link_color>0084B4</profile_link_color>
+  <profile_sidebar_fill_color>DDEEF6</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>C0DEED</profile_sidebar_border_color>
+  <friends_count>110</friends_count>
+  <created_at>Tue Aug 31 09:44:22 +0000 2010</created_at>
+  <favourites_count>0</favourites_count>
+  <utc_offset></utc_offset>
+  <time_zone></time_zone>
+  <profile_background_image_url>http://a3.twimg.com/a/1294279085/images/themes/theme1/bg.png</profile_background_image_url>
+  <profile_background_tile>false</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>8</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Sat Sep 18 12:54:01 +0000 2010</created_at>
+    <id>24845806598</id>
+    <text>hm .. skrng uda lumayan bisa main twitter :)
+makasih ya alyaa</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>178213641</id>
+  <name>Dhea Adjani</name>
+  <screen_name>Dheaadjani17</screen_name>
+  <location>Jakarta Indonesia</location>
+  <description>I Very Very Very Love Justin Drew Bieber So much!!!!! 
+and I Love My Sister Darcy Poller I love IRFAN HAARYS BACHDIM he very handsome i love you all  </description>
+  <profile_image_url>http://a3.twimg.com/profile_images/1209939917/dhea_normal.jpg</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>200</followers_count>
+  <profile_background_color>022330</profile_background_color>
+  <profile_text_color>333333</profile_text_color>
+  <profile_link_color>0084B4</profile_link_color>
+  <profile_sidebar_fill_color>C0DFEC</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>a8c7f7</profile_sidebar_border_color>
+  <friends_count>312</friends_count>
+  <created_at>Sat Aug 14 04:27:59 +0000 2010</created_at>
+  <favourites_count>128</favourites_count>
+  <utc_offset>25200</utc_offset>
+  <time_zone>Jakarta</time_zone>
+  <profile_background_image_url>http://a1.twimg.com/profile_background_images/184880194/my_ex_2.jpg</profile_background_image_url>
+  <profile_background_tile>true</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>true</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>3137</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>3</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Sun Jan 16 07:05:45 +0000 2011</created_at>
+    <id>26535560990425088</id>
+    <text>@dwianisasepti oh gk ganggu kok malah ak seneng di sapa mulu ma kmu @Jennifer1Lovers gk tw plng seperti biasa plsanya abis hehehe</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id>26531706320195584</in_reply_to_status_id>
+    <in_reply_to_user_id>179821730</in_reply_to_user_id>
+    <in_reply_to_screen_name>dwianisasepti</in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>185039550</id>
+  <name>RP Update</name>
+  <screen_name>rpblogupdate</screen_name>
+  <location>Indonesia</location>
+  <description></description>
+  <profile_image_url>http://a0.twimg.com/profile_images/1140570959/Rizky_Prawinto_PNG_normal.png</profile_image_url>
+  <url>http://rizkyprawinto.blogspot.com</url>
+  <protected>false</protected>
+  <followers_count>578</followers_count>
+  <profile_background_color>8B542B</profile_background_color>
+  <profile_text_color>333333</profile_text_color>
+  <profile_link_color>9D582E</profile_link_color>
+  <profile_sidebar_fill_color>EADEAA</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>D9B17E</profile_sidebar_border_color>
+  <friends_count>1988</friends_count>
+  <created_at>Tue Aug 31 02:36:09 +0000 2010</created_at>
+  <favourites_count>0</favourites_count>
+  <utc_offset>25200</utc_offset>
+  <time_zone>Jakarta</time_zone>
+  <profile_background_image_url>http://a2.twimg.com/profile_background_images/142564413/aaaaaaa.png</profile_background_image_url>
+  <profile_background_tile>true</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications>false</notifications>
+  <geo_enabled>true</geo_enabled>
+  <verified>false</verified>
+  <following>false</following>
+  <statuses_count>2676</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent>false</follow_request_sent>
+  <listed_count>3</listed_count>
+  <show_all_inline_media>true</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Sun Jan 16 08:26:39 +0000 2011</created_at>
+    <id>26555920318210048</id>
+    <text>5 Situs Untuk Mengetahui Siapa yang Unfollow Kamu di Twitter http://goo.gl/fb/96dXg</text>
+    <source>&lt;a href=&quot;http://www.google.com/support/youtube/bin/answer.py?hl=en&amp;answer=164577&quot; rel=&quot;nofollow&quot;&gt;Google&lt;/a&gt;</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>143373015</id>
+  <name>azka raudhatul janna</name>
+  <screen_name>azka_afgannisme</screen_name>
+  <location>tangerang</location>
+  <description></description>
+  <profile_image_url>http://a3.twimg.com/profile_images/1095441801/DSC01760_normal.JPG</profile_image_url>
+  <url>http://twitter.com</url>
+  <protected>false</protected>
+  <followers_count>29</followers_count>
+  <profile_background_color>000000</profile_background_color>
+  <profile_text_color>000000</profile_text_color>
+  <profile_link_color>CC3300</profile_link_color>
+  <profile_sidebar_fill_color>F7DA93</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>FFFFFF</profile_sidebar_border_color>
+  <friends_count>82</friends_count>
+  <created_at>Thu May 13 08:47:12 +0000 2010</created_at>
+  <favourites_count>1</favourites_count>
+  <utc_offset></utc_offset>
+  <time_zone></time_zone>
+  <profile_background_image_url>http://a0.twimg.com/profile_background_images/142834419/Afgan-Olivia-Lubis.jpg</profile_background_image_url>
+  <profile_background_tile>false</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>12</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Wed Sep 01 01:59:32 +0000 2010</created_at>
+    <id>22669508495</id>
+    <text>afgan ... RT @afgansyah_reza : knapa gk jdi ke tangerang ???</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>126562860</id>
+  <name>Gebby Aprilistya </name>
+  <screen_name>gebprils</screen_name>
+  <location>Tangerang,Indonesia</location>
+  <description>Gebby Aprilistya
+Tangerang,26 April
+MI-Al istiqomah
+Ozy,Fay Nabila</description>
+  <profile_image_url>http://a3.twimg.com/profile_images/1130917059/IMG_1753_copy_normal.JPG</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>71</followers_count>
+  <profile_background_color>B2DFDA</profile_background_color>
+  <profile_text_color>939396</profile_text_color>
+  <profile_link_color>5e6469</profile_link_color>
+  <profile_sidebar_fill_color>0c0c0d</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>dce1ed</profile_sidebar_border_color>
+  <friends_count>326</friends_count>
+  <created_at>Fri Mar 26 07:48:09 +0000 2010</created_at>
+  <favourites_count>19</favourites_count>
+  <utc_offset>-28800</utc_offset>
+  <time_zone>Pacific Time (US &amp; Canada)</time_zone>
+  <profile_background_image_url>http://a3.twimg.com/profile_background_images/149163659/nag_idCil_nd_boxin.jpg</profile_background_image_url>
+  <profile_background_tile>true</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>82</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Fri Dec 31 17:15:44 +0000 2010</created_at>
+    <id>20890862410014721</id>
+    <text>HAPPY NEW YEAR ALL....
+Smga di thun 2011 ini semuanya akan jauh lebih baik nd kslahan yg telah di prbuat di thun 2010 tdk trjdi lagi..</text>
+    <source>&lt;a href=&quot;http://mobile.twitter.com&quot; rel=&quot;nofollow&quot;&gt;Mobile Web&lt;/a&gt;</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>124940210</id>
+  <name>(..v..i..r..a..)</name>
+  <screen_name>savalimuk</screen_name>
+  <location>Indonesia</location>
+  <description>aku ingin menjadi yang terbaik</description>
+  <profile_image_url>http://a3.twimg.com/profile_images/1217030059/Picture_085_normal.jpg</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>98</followers_count>
+  <profile_background_color>1A1B1F</profile_background_color>
+  <profile_text_color>666666</profile_text_color>
+  <profile_link_color>2FC2EF</profile_link_color>
+  <profile_sidebar_fill_color>252429</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>181A1E</profile_sidebar_border_color>
+  <friends_count>251</friends_count>
+  <created_at>Sun Mar 21 03:38:21 +0000 2010</created_at>
+  <favourites_count>0</favourites_count>
+  <utc_offset>-28800</utc_offset>
+  <time_zone>Pacific Time (US &amp; Canada)</time_zone>
+  <profile_background_image_url>http://a0.twimg.com/profile_background_images/187424503/music.png</profile_background_image_url>
+  <profile_background_tile>true</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>313</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Sun Jan 16 09:06:39 +0000 2011</created_at>
+    <id>26565986941403136</id>
+    <text>exit dlu ah</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>175011209</id>
+  <name>anisa</name>
+  <screen_name>juestinies</screen_name>
+  <location></location>
+  <description></description>
+  <profile_image_url>http://a2.twimg.com/profile_images/1188586228/ljrJ_lkMWSQDvW1ATWo1Ig_normal.jpg</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>263</followers_count>
+  <profile_background_color>7514cf</profile_background_color>
+  <profile_text_color>ffff00</profile_text_color>
+  <profile_link_color>080806</profile_link_color>
+  <profile_sidebar_fill_color>b207eb</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>f2ca03</profile_sidebar_border_color>
+  <friends_count>1009</friends_count>
+  <created_at>Thu Aug 05 11:44:29 +0000 2010</created_at>
+  <favourites_count>0</favourites_count>
+  <utc_offset></utc_offset>
+  <time_zone></time_zone>
+  <profile_background_image_url>http://a3.twimg.com/profile_background_images/134687337/page.jpg</profile_background_image_url>
+  <profile_background_tile>true</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>9</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>2</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Sun Dec 12 08:20:05 +0000 2010</created_at>
+    <id>13870694534217729</id>
+    <text>Omegle.com: Chat with random strangers using webcam or text! http://t.co/w1pUtZg</text>
+    <source>&lt;a href=&quot;http://twitter.com/tweetbutton&quot; rel=&quot;nofollow&quot;&gt;Tweet Button&lt;/a&gt;</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+<user>
+  <id>185123446</id>
+  <name>asdar arsoket</name>
+  <screen_name>asdarbautistan</screen_name>
+  <location>makassar</location>
+  <description>terserah............</description>
+  <profile_image_url>http://a2.twimg.com/profile_images/1114975167/wu_chun_hana_kimi_17072009005149_normal.jpg</profile_image_url>
+  <url>http://asdarbautistan.com</url>
+  <protected>false</protected>
+  <followers_count>29</followers_count>
+  <profile_background_color>ebdc09</profile_background_color>
+  <profile_text_color>eb12eb</profile_text_color>
+  <profile_link_color>0ecaf0</profile_link_color>
+  <profile_sidebar_fill_color>080808</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>f2eb13</profile_sidebar_border_color>
+  <friends_count>153</friends_count>
+  <created_at>Tue Aug 31 08:26:51 +0000 2010</created_at>
+  <favourites_count>0</favourites_count>
+  <utc_offset></utc_offset>
+  <time_zone></time_zone>
+  <profile_background_image_url>http://a2.twimg.com/profile_background_images/144092675/boys-before-flowers.jpg</profile_background_image_url>
+  <profile_background_tile>true</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>7</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <follow_request_sent></follow_request_sent>
+  <listed_count>0</listed_count>
+  <show_all_inline_media>false</show_all_inline_media>
+  <is_translator>false</is_translator>
+  <status>
+    <created_at>Wed Dec 29 07:50:50 +0000 2010</created_at>
+    <id>20023924708347904</id>
+    <text>garuda di dadaQ......</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <favorited>false</favorited>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweet_count>0</retweet_count>
+    <retweeted>false</retweeted>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+</users>

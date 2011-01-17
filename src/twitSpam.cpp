@@ -203,7 +203,19 @@ void addFollowerToDb(std::string userIdStr, std::string followerIdStr, sqlite3 *
 
 void addTweetsToDb(TiXmlHandle timelineRootHandle, sqlite3 *database)
 {
+  TiXmlHandle rootHandle;
+  std::string statusText, dateTime, tweetId, replyToTweetId, replyToUserId, sourceURL;
+  int userId, retweetedCount;
+  std::stringstream ss;
 
+  for(int i = 0; i < 10; i++)
+    {
+      rootHandle = timelineRootHandle.Child("status", i);
+      if(rootHandle.ToNode())
+	
+
+
+    }
 
 
 
@@ -512,7 +524,7 @@ int main()
 	  tmpUser = User(tmpRoot.FirstChild("user"));
 	  addUserToDb(tmpUser, database);
 
-
+	  addTweetsToDb(timelineRootHandle, database);
 	  
 
 
