@@ -79,7 +79,7 @@ bool userCheck(TiXmlHandle userRootHandle, TiXmlHandle timelineRootHandle)
     }
 
   
-  // Checks whether the most recent other tweet occurred recently
+  // Checks whether the last 7 tweets occurred within a week
 
   for( int i = 0; i < 7 ; i++ )
     {
@@ -203,16 +203,50 @@ void addFollowerToDb(std::string userIdStr, std::string followerIdStr, sqlite3 *
 
 void addTweetsToDb(TiXmlHandle timelineRootHandle, sqlite3 *database)
 {
-  TiXmlHandle rootHandle;
-  std::string statusText, dateTime, tweetId, replyToTweetId, replyToUserId, sourceURL;
+  TiXmlHandle rootHandle = timelineRootHandle;
+  std::string statusText, dateTime, tweetId, replyToTweetId, replyToUserId, sourceURL, stmtStr;
+  std::string weekday, month, day, time, tmpStr, year;
   int userId, retweetedCount;
-  std::stringstream ss;
+  std::stringstream ss, strstream;
+  sqlite3_stmt *statement;
 
   for(int i = 0; i < 10; i++)
     {
       rootHandle = timelineRootHandle.Child("status", i);
       if(rootHandle.ToNode())
-	
+	{
+	  stmtStr = "INSERT INTO [TWEETS] (statusText, dateTime, tweetId, replyToTweetId, replyToUserId, sourceURL, userId, retweetedCount) VALUES (";
+	  statusText = rootHandle.FirstChild("text").ToElement()->GetText();
+	  stmtStr += statusText + ", ";
+
+	  dateTime = rootHandle.FirstChild("created_at").ToElement()->GetText();
+
+	  //if(!(dateTime == NULL))
+	    {
+	      ss << dateTime;
+	      ss >> weekday;
+	      ss >> month;
+	      ss >> day;
+	      ss >> time;
+	      ss >> tmpStr;
+	      ss >> year;
+
+	      tmpStr = weekday + " " + month + " " + day + " " + year + " " + time;
+	      stmtStr += tmpStr + ", ";
+	    }
+
+	    tweetId = rootHandle.FirstChild("id").ToElement()->GetText();
+	    stmtStr += tweetId + ", ";
+
+	    replyToTweetId = rootHandle.FirstChild("in_reply_to_status_id").ToElement()->GetText();
+	    stmtStr += replyToTweetId + ", ";
+
+	    replyToUserId = rootHandle.FirstChild("in_reply_to_user_id").ToElement()->GetText();
+	    stmtStr += replyToUserId + ", ";
+
+
+
+	}
 
 
     }
@@ -505,7 +539,7 @@ int main()
 
   tmpDoc.Parse(tmpStr.c_str());
 
-  std::cout << tmpStr;
+  //  std::cout << tmpStr;
 
       
   TiXmlHandle timelineRootHandle(&tmpDoc);
