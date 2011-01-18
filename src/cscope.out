@@ -1,4 +1,4 @@
-cscope 15 $HOME/twitSpam/src               0004000181
+cscope 15 $HOME/twitSpam/src               0004001771
 	@CMakeFiles/CompilerIdC/CMakeCCompilerId.c
 
 1 #ifdeà
@@ -14059,11 +14059,277 @@ sql™e3
 d©aba£
 )
 
+206 
+TiXmlHªdË
+ 
+roÙHªdË
+ = 
+tim–šeRoÙHªdË
+;
+
+207 
+¡d
+::
+¡ršg
+ 
+¡©usText
+, 
+d©eTime
+, 
+tw“tId
+, 
+»¶yToTw“tId
+, 
+»¶yToU£rId
+, 
+sourûURL
+, 
+¡mtSŒ
+, 
+u£rId
+, 
+»tw“‹dCouÁ
+;
+
+208 
+¡d
+::
+¡ršg
+ 
+w“kday
+, 
+mÚth
+, 
+day
+, 
+time
+, 
+tmpSŒ
+, 
+y—r
+;
+
+209 
+¡d
+::
+¡ršg¡»am
+ 
+ss
+, 
+¡r¡»am
+;
+
 210 
+sql™e3_¡mt
+ *
+¡©em’t
+;
+
+212 
+i
+ = 0; i < 10; i++)
+
+214 
+roÙHªdË
+ = 
+tim–šeRoÙHªdË
+.
+	`Chžd
+("¡©us", 
+i
+);
+
+215 if(
+roÙHªdË
+.
+	`ToNode
+())
+
+217 
+¡mtSŒ
+ = "INSERT INTO [TWEETS] (statusText, dateTime,weetId,„eplyToTweetId,„eplyToUserId, sourceURL, userId,„etweetedCount) VALUES (";
+
+218 
+¡©usText
+ = 
+roÙHªdË
+.
+	`Fœ¡Chžd
+("‹xt").
+	`ToEËm’t
+()->
+	`G‘Text
+();
+
+219 
+¡mtSŒ
+ +ð
+¡©usText
+ + ", ";
+
+221 
+d©eTime
+ = 
+roÙHªdË
+.
+	`Fœ¡Chžd
+("ü—‹d_©").
+	`ToEËm’t
+()->
+	`G‘Text
+();
+
+224 
+ss
+ << 
+d©eTime
+;
+
+225 
+ss
+ >> 
+w“kday
+;
+
+226 
+ss
+ >> 
+mÚth
+;
+
+227 
+ss
+ >> 
+day
+;
+
+228 
+ss
+ >> 
+time
+;
+
+229 
+ss
+ >> 
+tmpSŒ
+;
+
+230 
+ss
+ >> 
+y—r
+;
+
+232 
+tmpSŒ
+ = 
+w“kday
+ + " " + 
+mÚth
+ + " " + 
+day
+ + " " + 
+y—r
+ + " " + 
+time
+;
+
+233 
+¡mtSŒ
+ +ð"\"" + 
+tmpSŒ
+ + "\", ";
+
+236 
+tw“tId
+ = 
+roÙHªdË
+.
+	`Fœ¡Chžd
+("id").
+	`ToEËm’t
+()->
+	`G‘Text
+();
+
+237 
+¡mtSŒ
+ +ð"\"" + 
+tw“tId
+ + "\", ";
+
+239 
+»¶yToTw“tId
+ = 
+roÙHªdË
+.
+	`Fœ¡Chžd
+("š_»¶y_to_¡©us_id").
+	`ToEËm’t
+()->
+	`G‘Text
+();
+
+240 
+¡mtSŒ
+ +ð"\"" + 
+»¶yToTw“tId
+ + "\", ";
+
+242 
+»¶yToU£rId
+ = 
+roÙHªdË
+.
+	`Fœ¡Chžd
+("š_»¶y_to_u£r_id").
+	`ToEËm’t
+()->
+	`G‘Text
+();
+
+243 
+¡mtSŒ
+ +ð"\"" + 
+»¶yToU£rId
+ + "\", ";
+
+245 
+sourûURL
+ = 
+roÙHªdË
+.
+	`Fœ¡Chžd
+("sourû").
+	`ToEËm’t
+()->
+	`G‘Text
+();
+
+246 
+¡mtSŒ
+ +ð"\"" + 
+sourûURL
+ + "\", ";
+
+248 
+u£rId
+ = 
+roÙHªdË
+.
+	`Fœ¡Chžd
+("u£r").Fœ¡Chžd("id").
+	`ToEËm’t
+()->
+	`G‘Text
+();
+
+259 
 	}
 }
 
-215 
+264 
 	$addU£rToDb
 (
 U£r
@@ -14075,13 +14341,13 @@ sql™e3
 d©aba£
 )
 
-218 
+267 
 sql™e3_¡mt
  *
 ¡©em’t
 ;
 
-219 
+268 
 ¡d
 ::
 ¡ršg
@@ -14089,7 +14355,7 @@ sql™e3_¡mt
 ¡mtSŒ
 ;
 
-220 
+269 
 ¡d
 ::
 ¡ršg¡»am
@@ -14097,7 +14363,7 @@ sql™e3_¡mt
 ss
 ;
 
-221 
+270 
 ¡d
 ::
 ¡ršg
@@ -14105,11 +14371,11 @@ ss
 tmpSŒ
 ;
 
-223 
+272 
 ¡mtSŒ
  = "SELECT * FROM [USERS] WHERE userId = ";
 
-224 
+273 
 ss
  << 
 tmpU£r
@@ -14117,25 +14383,25 @@ tmpU£r
 m_id
 ;
 
-225 
+274 
 ss
  >> 
 tmpSŒ
 ;
 
-226 
+275 
 ss
 .
 	`þ—r
 ();
 
-227 
+276 
 ¡mtSŒ
  +ð
 tmpSŒ
 ;
 
-229 if(
+278 if(
 	`sql™e3_´•¬e_v2
 (
 d©aba£
@@ -14149,7 +14415,7 @@ d©aba£
 SQLITE_OK
 )
 
-231 ifÐ
+280 ifÐ
 	`sql™e3_¡•
 (
 ¡©em’t
@@ -14157,11 +14423,11 @@ SQLITE_OK
 SQLITE_ROW
 )
 
-239 
+288 
 ¡mtSŒ
  = "INSERT INTO [Users] (userId,‚ame, screenName, friendsCount, followersCount) VALUES (" ;
 
-241 
+290 
 ss
  << 
 tmpU£r
@@ -14169,13 +14435,13 @@ tmpU£r
 m_id
 ;
 
-243 
+292 
 ss
  >> 
 tmpSŒ
 ;
 
-244 
+293 
 ¡mtSŒ
  +ð
 tmpSŒ
@@ -14187,13 +14453,13 @@ m_Çme
 m_sü“nName
  + "\", ";
 
-245 
+294 
 ss
 .
 	`þ—r
 ();
 
-246 
+295 
 ss
  << 
 tmpU£r
@@ -14201,25 +14467,25 @@ tmpU£r
 m_ä›ndsCouÁ
 ;
 
-247 
+296 
 ss
  >> 
 tmpSŒ
 ;
 
-248 
+297 
 ¡mtSŒ
  +ð
 tmpSŒ
  + ", ";
 
-249 
+298 
 ss
 .
 	`þ—r
 ();
 
-250 
+299 
 ss
  << 
 tmpU£r
@@ -14227,19 +14493,19 @@ tmpU£r
 m_fÞlow”sCouÁ
 ;
 
-251 
+300 
 ss
  >> 
 tmpSŒ
 ;
 
-252 
+301 
 ¡mtSŒ
  +ð
 tmpSŒ
  + ")";
 
-256 if(
+305 if(
 	`sql™e3_´•¬e_v2
 (
 d©aba£
@@ -14253,33 +14519,33 @@ d©aba£
 SQLITE_OK
 )
 
-258 
+307 
 	`sql™e3_¡•
 (
 ¡©em’t
 );
 
-259 
+308 
 	`sql™e3_fš®ize
 (
 ¡©em’t
 );
 
-260 
+309 
 ¡d
 ::
 cout
  << "A user has been‡ddedohe database.\n";
 
-265 
+314 
 	}
 }
 
-268 
+317 
 	$maš
 ()
 
-270 
+319 
 ¡d
 ::
 ¡ršg¡»am
@@ -14287,13 +14553,13 @@ cout
 ss
 ;
 
-271 
+320 
 U£r
  
 tmpU£r
 ;
 
-272 
+321 
 ¡d
 ::
 ¡ršg
@@ -14301,7 +14567,7 @@ tmpU£r
 	`tmpSŒ
 ( "" );
 
-273 
+322 
 ¡d
 ::
 ¡ršg
@@ -14309,7 +14575,7 @@ tmpU£r
 	`»¶yMsg
 ( "" );
 
-274 
+323 
 ¡d
 ::
 of¡»am
@@ -14317,7 +14583,7 @@ of¡»am
 outSŒ—m
 ;
 
-275 
+324 
 ¡d
 ::
 if¡»am
@@ -14325,11 +14591,11 @@ if¡»am
 §m¶eXML
 ;
 
-277 #iâdeà
+326 #iâdeà
 DEBUG
 
 
-281 
+330 
 tw™‹rObj
 .
 	`g‘OAuth
@@ -14341,7 +14607,7 @@ tw™‹rObj
 	`¡ršg
 ( "mlzPWIdVN4FACcOnaOGFA"));
 
-282 
+331 
 tw™‹rObj
 .
 	`g‘OAuth
@@ -14353,11 +14619,11 @@ tw™‹rObj
 	`¡ršg
 ( "ywhe43wccaFahINu5jlzPjiT6V2H0UZuGyq3vXJz40"));
 
-285 
+334 
 szKey
 [1024];
 
-286 
+335 
 ¡d
 ::
 ¡ršg
@@ -14365,7 +14631,7 @@ szKey
 	`myOAuthAcûssTok’Key
 ("");
 
-287 
+336 
 ¡d
 ::
 ¡ršg
@@ -14373,7 +14639,7 @@ szKey
 	`myOAuthAcûssTok’Seü‘
 ("");
 
-288 
+337 
 ¡d
 ::
 if¡»am
@@ -14381,7 +14647,7 @@ if¡»am
 oAuthTok’KeyIn
 ;
 
-289 
+338 
 ¡d
 ::
 if¡»am
@@ -14389,67 +14655,67 @@ if¡»am
 oAuthTok’Seü‘In
 ;
 
-291 
+340 
 oAuthTok’KeyIn
 .
 	`Ý’
 ( "twitClient_token_key.txt" );
 
-292 
+341 
 oAuthTok’Seü‘In
 .
 	`Ý’
 ( "twitClient_token_secret.txt" );
 
-294 
+343 
 	`mem£t
 Ð
 szKey
 , 0, 1024 );
 
-295 
+344 
 oAuthTok’KeyIn
  >> 
 szKey
 ;
 
-296 
+345 
 myOAuthAcûssTok’Key
  = 
 szKey
 ;
 
-298 
+347 
 	`mem£t
 Ð
 szKey
 , 0, 1024 );
 
-299 
+348 
 oAuthTok’Seü‘In
  >> 
 szKey
 ;
 
-300 
+349 
 myOAuthAcûssTok’Seü‘
  = 
 szKey
 ;
 
-302 
+351 
 oAuthTok’KeyIn
 .
 	`þo£
 ();
 
-303 
+352 
 oAuthTok’Seü‘In
 .
 	`þo£
 ();
 
-305 ifÐ
+354 ifÐ
 myOAuthAcûssTok’Key
 .
 	`size
@@ -14457,7 +14723,7 @@ myOAuthAcûssTok’Key
 myOAuthAcûssTok’Seü‘
 .size() )
 
-308 
+357 
 ¡d
 ::
 cout
@@ -14469,7 +14735,7 @@ myOAuthAcûssTok’Key
 myOAuthAcûssTok’Seü‘
 .c_str() << "\n\n";
 
-310 
+359 
 tw™‹rObj
 .
 	`g‘OAuth
@@ -14479,7 +14745,7 @@ tw™‹rObj
 myOAuthAcûssTok’Key
  );
 
-311 
+360 
 tw™‹rObj
 .
 	`g‘OAuth
@@ -14489,7 +14755,7 @@ tw™‹rObj
 myOAuthAcûssTok’Seü‘
  );
 
-316 
+365 
 tw™‹rObj
 .
 	`oAuthReque¡Tok’
@@ -14497,17 +14763,17 @@ tw™‹rObj
 tmpSŒ
  );
 
-319 
+368 
 szOAuthV”if›rPš
 [1024];
 
-320 
+369 
 	`mem£t
 Ð
 szOAuthV”if›rPš
 , 0, 1024 );
 
-321 
+370 
 ¡d
 ::
 cout
@@ -14517,13 +14783,13 @@ tmpSŒ
 	`c_¡r
 ();
 
-322 
+371 
 ¡d
 ::
 cout
  << "\nEnterhe PIN…rovided bywitter: " ;
 
-323 
+372 
 ¡d
 ::
 cš
@@ -14531,13 +14797,13 @@ cš
 szOAuthV”if›rPš
 ;
 
-324 
+373 
 tmpSŒ
  = 
 szOAuthV”if›rPš
 ;
 
-325 
+374 
 tw™‹rObj
 .
 	`g‘OAuth
@@ -14547,13 +14813,13 @@ tw™‹rObj
 tmpSŒ
  );
 
-328 
+377 
 tw™‹rObj
 .
 	`oAuthAcûssTok’
 ();
 
-331 
+380 
 tw™‹rObj
 .
 	`g‘OAuth
@@ -14563,7 +14829,7 @@ tw™‹rObj
 myOAuthAcûssTok’Key
  );
 
-332 
+381 
 tw™‹rObj
 .
 	`g‘OAuth
@@ -14573,7 +14839,7 @@ tw™‹rObj
 myOAuthAcûssTok’Seü‘
  );
 
-336 
+385 
 ¡d
 ::
 of¡»am
@@ -14581,7 +14847,7 @@ of¡»am
 oAuthTok’KeyOut
 ;
 
-337 
+386 
 ¡d
 ::
 of¡»am
@@ -14589,31 +14855,31 @@ of¡»am
 oAuthTok’Seü‘Out
 ;
 
-339 
+388 
 oAuthTok’KeyOut
 .
 	`Ý’
 ( "twitClient_token_key.txt" );
 
-340 
+389 
 oAuthTok’Seü‘Out
 .
 	`Ý’
 ( "twitClient_token_secret.txt" );
 
-342 
+391 
 oAuthTok’KeyOut
 .
 	`þ—r
 ();
 
-343 
+392 
 oAuthTok’Seü‘Out
 .
 	`þ—r
 ();
 
-345 
+394 
 oAuthTok’KeyOut
  << 
 myOAuthAcûssTok’Key
@@ -14621,7 +14887,7 @@ myOAuthAcûssTok’Key
 	`c_¡r
 ();
 
-346 
+395 
 oAuthTok’Seü‘Out
  << 
 myOAuthAcûssTok’Seü‘
@@ -14629,19 +14895,19 @@ myOAuthAcûssTok’Seü‘
 	`c_¡r
 ();
 
-348 
+397 
 oAuthTok’KeyOut
 .
 	`þo£
 ();
 
-349 
+398 
 oAuthTok’Seü‘Out
 .
 	`þo£
 ();
 
-353 
+402 
 ¡d
 ::
 ¡ršg
@@ -14649,7 +14915,7 @@ oAuthTok’Seü‘Out
 u£rSŒ
  = "ntiller";
 
-356 
+405 
 tw™‹rObj
 .
 	`u£rG‘
@@ -14657,7 +14923,7 @@ tw™‹rObj
 u£rSŒ
 );
 
-358 
+407 
 tw™‹rObj
 .
 	`g‘La¡WebRe¥Ú£
@@ -14665,13 +14931,13 @@ tw™‹rObj
 u£rSŒ
 );
 
-362 
+411 
 TiXmlDocum’t
  
 u£rDoc
 ;
 
-363 
+412 
 u£rDoc
 .
 	`P¬£
@@ -14681,7 +14947,7 @@ u£rSŒ
 	`c_¡r
 ());
 
-366 
+415 
 TiXmlHªdË
  
 	`u£rRoÙ
@@ -14689,7 +14955,7 @@ TiXmlHªdË
 u£rDoc
 );
 
-368 
+417 
 TiXmlHªdË
  
 u£rRoÙHªdË
@@ -14699,11 +14965,11 @@ u£rRoÙ
 	`Fœ¡Chžd
 ("user");
 
-423 
+472 
 maxIdNum
  = 235314984;
 
-425 
+474 
 	`¤ªd48
 (
 	`time
@@ -14711,13 +14977,13 @@ maxIdNum
 NULL
 ));
 
-428 
+477 
 ¿ndNum
  = 
 	`d¿nd48
 ();
 
-429 
+478 
 idNum
  = 
 maxIdNum
@@ -14725,13 +14991,13 @@ maxIdNum
 ¿ndNum
 ;
 
-430 
+479 
 ss
  << 
 idNum
 ;
 
-432 
+481 
 tmpSŒ
  = 
 ss
@@ -14739,11 +15005,11 @@ ss
 	`¡r
 ();
 
-433 
+482 
 tmpSŒ
  = "185097526";
 
-434 
+483 
 tw™‹rObj
 .
 	`u£rG‘
@@ -14753,7 +15019,7 @@ tmpSŒ
 Œue
 );
 
-435 
+484 
 tw™‹rObj
 .
 	`g‘La¡WebRe¥Ú£
@@ -14761,7 +15027,7 @@ tw™‹rObj
 tmpSŒ
 );
 
-439 
+488 
 ¡d
 ::
 ¡ršg
@@ -14769,29 +15035,29 @@ tmpSŒ
 lše
 ;
 
-441 
+490 
 tmpSŒ
  = "";
 
-442 
+491 
 §m¶eXML
 .
 	`Ý’
 ("xmlUser.txt");
 
-443 if(
+492 if(
 §m¶eXML
 .
 	`is_Ý’
 ())
 
-445 
+494 
 §m¶eXML
 .
 	`good
 () )
 
-447 
+496 
 	`g‘lše
  (
 §m¶eXML
@@ -14799,25 +15065,25 @@ tmpSŒ
 lše
 );
 
-448 
+497 
 tmpSŒ
  +ð
 lše
  + "\n";
 
-452 
+501 
 §m¶eXML
 .
 	`þo£
 ();
 
-456 
+505 
 TiXmlDocum’t
  
 tmpDoc
 ;
 
-457 
+506 
 tmpDoc
 .
 	`P¬£
@@ -14827,7 +15093,7 @@ tmpSŒ
 	`c_¡r
 ());
 
-459 
+508 
 TiXmlHªdË
  
 	`tmpRoÙ
@@ -14835,11 +15101,11 @@ TiXmlHªdË
 tmpDoc
 );
 
-465 #iâdeà
+514 #iâdeà
 DEBUG
 
 
-467 
+516 
 tw™‹rObj
 .
 	`tim–šeU£rG‘
@@ -14847,7 +15113,7 @@ tw™‹rObj
 Œue
 );
 
-468 
+517 
 tw™‹rObj
 .
 	`g‘La¡WebRe¥Ú£
@@ -14855,49 +15121,49 @@ tw™‹rObj
 tmpSŒ
 );
 
-470 
+519 
 outSŒ—m
 .
 	`Ý’
 ("xmlUserTimeline.txt");
 
-471 if(
+520 if(
 outSŒ—m
 .
 	`is_Ý’
 ())
 
-473 
+522 
 outSŒ—m
  << 
 tmpSŒ
 ;
 
-474 
+523 
 outSŒ—m
 .
 	`þo£
 ();
 
-479 
+528 
 §m¶eXML
 .
 	`Ý’
 ("xmlUserTimeline.txt");
 
-480 if(
+529 if(
 §m¶eXML
 .
 	`is_Ý’
 ())
 
-482 
+531 
 §m¶eXML
 .
 	`good
 () )
 
-484 
+533 
 	`g‘lše
  (
 §m¶eXML
@@ -14905,19 +15171,19 @@ outSŒ—m
 lše
 );
 
-485 
+534 
 tmpSŒ
  +ð
 lše
  + "\n";
 
-489 
+538 
 §m¶eXML
 .
 	`þo£
 ();
 
-494 
+543 
 tmpDoc
 .
 	`P¬£
@@ -14927,15 +15193,7 @@ tmpSŒ
 	`c_¡r
 ());
 
-496 
-¡d
-::
-cout
- << 
-tmpSŒ
-;
-
-499 
+548 
 TiXmlHªdË
  
 	`tim–šeRoÙHªdË
@@ -14943,25 +15201,25 @@ TiXmlHªdË
 tmpDoc
 );
 
-500 
+549 
 tim–šeRoÙHªdË
  =im–šeRoÙHªdË.
 	`Fœ¡Chžd
 ("statuses");
 
-501 if(
+550 if(
 tim–šeRoÙHªdË
 .
 	`ToNode
 ())
 
-507 
+556 
 sql™e3
  *
 d©aba£
 ;
 
-508 if(
+557 if(
 	`sql™e3_Ý’
 ("../tw™S·m.db", &
 d©aba£
@@ -14969,7 +15227,7 @@ d©aba£
 SQLITE_OK
 )
 
-510 
+559 
 ¡d
 ::
 ¡ršg
@@ -14977,7 +15235,7 @@ SQLITE_OK
 u£rIdSŒ
 ;
 
-512 
+561 
 tmpU£r
  = 
 	`U£r
@@ -14987,7 +15245,7 @@ tmpRoÙ
 	`Fœ¡Chžd
 ("user"));
 
-513 
+562 
 	`addU£rToDb
 (
 tmpU£r
@@ -14995,7 +15253,7 @@ tmpU£r
 d©aba£
 );
 
-515 
+564 
 	`addTw“tsToDb
 (
 tim–šeRoÙHªdË
@@ -15003,17 +15261,17 @@ tim–šeRoÙHªdË
 d©aba£
 );
 
-526 #iâdef 
+575 #iâdef 
 DEBUG
 
 
-527 
+576 
 ss
 .
 	`þ—r
 ();
 
-528 
+577 
 ss
  << 
 tmpU£r
@@ -15021,13 +15279,13 @@ tmpU£r
 m_id
 ;
 
-529 
+578 
 ss
  >> 
 u£rIdSŒ
 ;
 
-530 
+579 
 tw™‹rObj
 .
 	`ä›ndsG‘
@@ -15037,7 +15295,7 @@ u£rIdSŒ
 Œue
 );
 
-531 
+580 
 tw™‹rObj
 .
 	`g‘La¡WebRe¥Ú£
@@ -15045,49 +15303,49 @@ tw™‹rObj
 tmpSŒ
 );
 
-534 
+583 
 outSŒ—m
 .
 	`Ý’
 ("xmlFriends.txt");
 
-535 if(
+584 if(
 outSŒ—m
 .
 	`is_Ý’
 ())
 
-537 
+586 
 outSŒ—m
  << 
 tmpSŒ
 ;
 
-538 
+587 
 outSŒ—m
 .
 	`þo£
 ();
 
-541 
+590 
 §m¶eXML
 .
 	`Ý’
 ("xmlFriends.txt");
 
-542 if(
+591 if(
 §m¶eXML
 .
 	`is_Ý’
 ())
 
-544 
+593 
 §m¶eXML
 .
 	`good
 () )
 
-546 
+595 
 	`g‘lše
  (
 §m¶eXML
@@ -15095,19 +15353,19 @@ outSŒ—m
 lše
 );
 
-547 
+596 
 tmpSŒ
  +ð
 lše
  + "\n";
 
-552 
+601 
 §m¶eXML
 .
 	`þo£
 ();
 
-558 
+607 
 tmpDoc
 .
 	`P¬£
@@ -15117,7 +15375,7 @@ tmpSŒ
 	`c_¡r
 ());
 
-559 
+608 
 tmpRoÙ
  = 
 	`TiXmlHªdË
@@ -15125,7 +15383,7 @@ tmpRoÙ
 tmpDoc
 );
 
-560 
+609 
 tmpU£r
 .
 	`£tFr›nds
@@ -15133,7 +15391,7 @@ tmpU£r
 tmpRoÙ
 );
 
-562 
+611 
 ¡d
 ::
 veùÜ
@@ -15151,7 +15409,7 @@ m_ä›nds
 	`begš
 ();
 
-563 
+612 
 ™
  !ð
 tmpU£r
@@ -15161,7 +15419,7 @@ m_ä›nds
 	`’d
 (); it++)
 
-565 
+614 
 ¡d
 ::
 ¡ršg
@@ -15169,7 +15427,7 @@ m_ä›nds
 ä›ndIdSŒ
 ;
 
-566 
+615 
 	`addU£rToDb
 ((**
 ™
@@ -15177,13 +15435,13 @@ m_ä›nds
 d©aba£
 );
 
-567 
+616 
 ss
 .
 	`þ—r
 ();
 
-568 
+617 
 ss
  << (**
 ™
@@ -15191,19 +15449,19 @@ ss
 m_id
 ;
 
-569 
+618 
 ss
  >> 
 ä›ndIdSŒ
 ;
 
-571 
+620 
 ss
 .
 	`þ—r
 ();
 
-572 
+621 
 ss
  << 
 tmpU£r
@@ -15211,13 +15469,13 @@ tmpU£r
 m_id
 ;
 
-573 
+622 
 ss
  >> 
 u£rIdSŒ
 ;
 
-574 
+623 
 	`addFr›ndToDb
 (
 u£rIdSŒ
@@ -15227,17 +15485,17 @@ u£rIdSŒ
 d©aba£
 );
 
-582 #iâdef 
+631 #iâdef 
 DEBUG
 
 
-583 
+632 
 ss
 .
 	`þ—r
 ();
 
-584 
+633 
 ss
  << 
 tmpU£r
@@ -15245,13 +15503,13 @@ tmpU£r
 m_id
 ;
 
-585 
+634 
 ss
  >> 
 u£rIdSŒ
 ;
 
-586 
+635 
 tw™‹rObj
 .
 	`fÞlow”sG‘
@@ -15261,7 +15519,7 @@ u£rIdSŒ
 Œue
 );
 
-587 
+636 
 tw™‹rObj
 .
 	`g‘La¡WebRe¥Ú£
@@ -15269,49 +15527,49 @@ tw™‹rObj
 tmpSŒ
 );
 
-590 
+639 
 outSŒ—m
 .
 	`Ý’
 ("xmlFollowers.txt");
 
-591 if(
+640 if(
 outSŒ—m
 .
 	`is_Ý’
 ())
 
-593 
+642 
 outSŒ—m
  << 
 tmpSŒ
 ;
 
-594 
+643 
 outSŒ—m
 .
 	`þo£
 ();
 
-597 
+646 
 §m¶eXML
 .
 	`Ý’
 ("xmlFollowers.txt");
 
-598 if(
+647 if(
 §m¶eXML
 .
 	`is_Ý’
 ())
 
-600 
+649 
 §m¶eXML
 .
 	`good
 () )
 
-602 
+651 
 	`g‘lše
  (
 §m¶eXML
@@ -15319,19 +15577,19 @@ outSŒ—m
 lše
 );
 
-603 
+652 
 tmpSŒ
  +ð
 lše
  + "\n";
 
-608 
+657 
 §m¶eXML
 .
 	`þo£
 ();
 
-611 
+660 
 tmpDoc
 .
 	`P¬£
@@ -15341,7 +15599,7 @@ tmpSŒ
 	`c_¡r
 ());
 
-612 
+661 
 tmpRoÙ
  = 
 	`TiXmlHªdË
@@ -15349,7 +15607,7 @@ tmpRoÙ
 tmpDoc
 );
 
-613 
+662 
 tmpU£r
 .
 	`£tFÞlow”s
@@ -15357,7 +15615,7 @@ tmpU£r
 tmpRoÙ
 );
 
-616 
+665 
 ¡d
 ::
 veùÜ
@@ -15375,7 +15633,7 @@ m_fÞlow”s
 	`begš
 ();
 
-617 
+666 
 ™”
  !ð
 tmpU£r
@@ -15385,7 +15643,7 @@ m_fÞlow”s
 	`’d
 (); iter++)
 
-620 
+669 
 ¡d
 ::
 ¡ršg
@@ -15393,7 +15651,7 @@ m_fÞlow”s
 fÞlow”IdSŒ
 ;
 
-622 
+671 
 	`addU£rToDb
 ((**
 ™”
@@ -15401,13 +15659,13 @@ fÞlow”IdSŒ
 d©aba£
 );
 
-623 
+672 
 ss
 .
 	`þ—r
 ();
 
-624 
+673 
 ss
  << (**
 ™”
@@ -15415,19 +15673,19 @@ ss
 m_id
 ;
 
-625 
+674 
 ss
  >> 
 fÞlow”IdSŒ
 ;
 
-627 
+676 
 ss
 .
 	`þ—r
 ();
 
-628 
+677 
 ss
  << 
 tmpU£r
@@ -15435,13 +15693,13 @@ tmpU£r
 m_id
 ;
 
-629 
+678 
 ss
  >> 
 u£rIdSŒ
 ;
 
-630 
+679 
 ¡d
 ::
 cout
@@ -15451,7 +15709,7 @@ u£rIdSŒ
 fÞlow”IdSŒ
  << "\n";
 
-631 
+680 
 	`addFr›ndToDb
 (
 fÞlow”IdSŒ
@@ -15461,13 +15719,13 @@ u£rIdSŒ
 d©aba£
 );
 
-640 
+689 
 	`sql™e3_þo£
 (
 d©aba£
 );
 
-653 
+702 
 	}
 }
 
