@@ -454,7 +454,7 @@ int main()
   srand48(time(NULL));
 
   int usersAddedCount = 0;
-  while(usersAddedCount < 10)
+  while(usersAddedCount < 5)
     {
 
       double randNum = drand48();
