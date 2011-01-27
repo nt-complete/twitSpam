@@ -31,7 +31,7 @@ bool userCheck(TiXmlHandle userRootHandle, TiXmlHandle timelineRootHandle)
   boost::posix_time::ptime ptime, pt, currentTime, mostRecentTweetTime;
   boost::posix_time::time_duration hourDiff;
 
-  std::cout << "\n\n\n\nIN USER CHECK\n\n\n\n\n";
+   //  std::cout << "\n\n\n\nIN USER CHECK\n\n\n\n\n";
 
   int userCount = 0;
   if(userRootHandle.FirstChild("user").ToNode())
@@ -511,16 +511,16 @@ int main()
       #endif  */
       
 
-      std::cin >> dummyStr;
+      // std::cin>> dummyStr;
 
       std::cout << tmpStr;
 
-      std::cin >> dummyStr;
+      // std::cin>> dummyStr;
 
       if(tmpRoot.FirstChild("errors").ToNode())
 	{
 	  std::cout << "ERROR FINDING USER\n";
-	  sleep(60*62);
+	  sleep(60*65);
 	  twitterObj.userGet(userIdStr, true);
 	  twitterObj.getLastWebResponse(tmpStr);
 
@@ -567,10 +567,12 @@ int main()
       tmpDoc.Parse(tmpStr.c_str());
       
       TiXmlHandle timelineRootHandle(&tmpDoc);
-      if(timelineRootHandle.FirstChild("errors").ToNode())
+      if(!timelineRootHandle.FirstChild("statuses").ToNode() )
 	{
+	  std::cout << tmpStr;
 	  std::cout << "ERROR FINDING TIMELINE\n";
-	  sleep(60*62);
+	  
+	  sleep(60*65);
 	  twitterObj.timelineUserGet(userIdStr, true);
 	  twitterObj.getLastWebResponse(tmpStr);
 
@@ -583,7 +585,7 @@ int main()
 
      timelineRootHandle = timelineRootHandle.FirstChild("statuses");
      std::cout << tmpStr;
-     std::cin >> tmpStr;  
+     // std::cin>> tmpStr;  
 
      if(timelineRootHandle.FirstChild("status").ToNode())
 	{
@@ -592,7 +594,7 @@ int main()
 	  if( userCheck(tmpRoot, timelineRootHandle))
 	    {
 	      std::cout << "Users Added has increased\n";
-	      std::cin >> tmpStr;
+	      // std::cin>> tmpStr;
 	      usersAddedCount++;
 	      {
 		sqlite3 *database;
@@ -652,7 +654,7 @@ int main()
 		    if(tmpRoot.FirstChild("errors").ToNode())
 		      {
 			std::cout << "ERROR FINDING FRIENDS\n";
-			sleep(60*62);
+			sleep(60*65);
 			twitterObj.friendsGet(userIdStr, true);
 			twitterObj.getLastWebResponse(tmpStr);
 			tmpDoc.Parse(tmpStr.c_str());
@@ -717,7 +719,7 @@ int main()
 		    if(tmpRoot.FirstChild("errors").ToNode())
 		      {
 			std::cout << "ERROR FINDING FOLLOWERS\n";
-			sleep(60*62);
+			sleep(60*65);
 			twitterObj.followersGet(userIdStr, true);
 			twitterObj.getLastWebResponse(tmpStr);
 
