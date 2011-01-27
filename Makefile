@@ -99,6 +99,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named curlURL
+
+# Build rule for target.
+curlURL: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 curlURL
+.PHONY : curlURL
+
+# fast build rule for target.
+curlURL/fast:
+	$(MAKE) -f src/CMakeFiles/curlURL.dir/build.make src/CMakeFiles/curlURL.dir/build
+.PHONY : curlURL/fast
+
+#=============================================================================
 # Target rules for targets named twitSpam
 
 # Build rule for target.
@@ -119,6 +132,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... curlURL"
 	@echo "... twitSpam"
 .PHONY : help
 

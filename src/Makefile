@@ -99,6 +99,20 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+src/CMakeFiles/curlURL.dir/rule:
+	cd /home/nick/twitSpam && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/curlURL.dir/rule
+.PHONY : src/CMakeFiles/curlURL.dir/rule
+
+# Convenience name for target.
+curlURL: src/CMakeFiles/curlURL.dir/rule
+.PHONY : curlURL
+
+# fast build rule for target.
+curlURL/fast:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/curlURL.dir/build.make src/CMakeFiles/curlURL.dir/build
+.PHONY : curlURL/fast
+
+# Convenience name for target.
 src/CMakeFiles/twitSpam.dir/rule:
 	cd /home/nick/twitSpam && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/twitSpam.dir/rule
 .PHONY : src/CMakeFiles/twitSpam.dir/rule
@@ -114,91 +128,109 @@ twitSpam/fast:
 
 # target to build an object file
 tinystr.o:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/curlURL.dir/build.make src/CMakeFiles/curlURL.dir/tinystr.o
 	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/tinystr.o
 .PHONY : tinystr.o
 
 # target to preprocess a source file
 tinystr.i:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/curlURL.dir/build.make src/CMakeFiles/curlURL.dir/tinystr.i
 	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/tinystr.i
 .PHONY : tinystr.i
 
 # target to generate assembly for a file
 tinystr.s:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/curlURL.dir/build.make src/CMakeFiles/curlURL.dir/tinystr.s
 	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/tinystr.s
 .PHONY : tinystr.s
 
 # target to build an object file
 tinyxml.o:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/curlURL.dir/build.make src/CMakeFiles/curlURL.dir/tinyxml.o
 	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/tinyxml.o
 .PHONY : tinyxml.o
 
 # target to preprocess a source file
 tinyxml.i:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/curlURL.dir/build.make src/CMakeFiles/curlURL.dir/tinyxml.i
 	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/tinyxml.i
 .PHONY : tinyxml.i
 
 # target to generate assembly for a file
 tinyxml.s:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/curlURL.dir/build.make src/CMakeFiles/curlURL.dir/tinyxml.s
 	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/tinyxml.s
 .PHONY : tinyxml.s
 
 # target to build an object file
 tinyxmlerror.o:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/curlURL.dir/build.make src/CMakeFiles/curlURL.dir/tinyxmlerror.o
 	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/tinyxmlerror.o
 .PHONY : tinyxmlerror.o
 
 # target to preprocess a source file
 tinyxmlerror.i:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/curlURL.dir/build.make src/CMakeFiles/curlURL.dir/tinyxmlerror.i
 	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/tinyxmlerror.i
 .PHONY : tinyxmlerror.i
 
 # target to generate assembly for a file
 tinyxmlerror.s:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/curlURL.dir/build.make src/CMakeFiles/curlURL.dir/tinyxmlerror.s
 	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/tinyxmlerror.s
 .PHONY : tinyxmlerror.s
 
 # target to build an object file
 tinyxmlparser.o:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/curlURL.dir/build.make src/CMakeFiles/curlURL.dir/tinyxmlparser.o
 	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/tinyxmlparser.o
 .PHONY : tinyxmlparser.o
 
 # target to preprocess a source file
 tinyxmlparser.i:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/curlURL.dir/build.make src/CMakeFiles/curlURL.dir/tinyxmlparser.i
 	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/tinyxmlparser.i
 .PHONY : tinyxmlparser.i
 
 # target to generate assembly for a file
 tinyxmlparser.s:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/curlURL.dir/build.make src/CMakeFiles/curlURL.dir/tinyxmlparser.s
 	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/tinyxmlparser.s
 .PHONY : tinyxmlparser.s
 
 # target to build an object file
 twitSpam.o:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/curlURL.dir/build.make src/CMakeFiles/curlURL.dir/twitSpam.o
 	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/twitSpam.o
 .PHONY : twitSpam.o
 
 # target to preprocess a source file
 twitSpam.i:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/curlURL.dir/build.make src/CMakeFiles/curlURL.dir/twitSpam.i
 	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/twitSpam.i
 .PHONY : twitSpam.i
 
 # target to generate assembly for a file
 twitSpam.s:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/curlURL.dir/build.make src/CMakeFiles/curlURL.dir/twitSpam.s
 	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/twitSpam.s
 .PHONY : twitSpam.s
 
 # target to build an object file
 user.o:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/curlURL.dir/build.make src/CMakeFiles/curlURL.dir/user.o
 	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/user.o
 .PHONY : user.o
 
 # target to preprocess a source file
 user.i:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/curlURL.dir/build.make src/CMakeFiles/curlURL.dir/user.i
 	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/user.i
 .PHONY : user.i
 
 # target to generate assembly for a file
 user.s:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/curlURL.dir/build.make src/CMakeFiles/curlURL.dir/user.s
 	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/user.s
 .PHONY : user.s
 
@@ -208,6 +240,7 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... curlURL"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... twitSpam"
