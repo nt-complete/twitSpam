@@ -124,6 +124,19 @@ twitSpam/fast:
 	$(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/build
 .PHONY : twitSpam/fast
 
+#=============================================================================
+# Target rules for targets named userData
+
+# Build rule for target.
+userData: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 userData
+.PHONY : userData
+
+# fast build rule for target.
+userData/fast:
+	$(MAKE) -f src/CMakeFiles/userData.dir/build.make src/CMakeFiles/userData.dir/build
+.PHONY : userData/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -134,6 +147,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... curlURL"
 	@echo "... twitSpam"
+	@echo "... userData"
 .PHONY : help
 
 
