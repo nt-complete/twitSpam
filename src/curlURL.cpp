@@ -18,7 +18,7 @@ int main()
 
   srand48(time(NULL));
 
-  
+  long randomUser = drand48();
 
 
 

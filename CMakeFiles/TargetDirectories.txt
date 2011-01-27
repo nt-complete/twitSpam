@@ -1,2 +1,3 @@
 /home/nick/twitSpam/src/CMakeFiles/curlURL.dir
 /home/nick/twitSpam/src/CMakeFiles/twitSpam.dir
+/home/nick/twitSpam/src/CMakeFiles/userData.dir
