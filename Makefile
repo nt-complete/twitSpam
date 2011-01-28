@@ -112,6 +112,19 @@ curlURL/fast:
 .PHONY : curlURL/fast
 
 #=============================================================================
+# Target rules for targets named ptTwitSpam
+
+# Build rule for target.
+ptTwitSpam: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ptTwitSpam
+.PHONY : ptTwitSpam
+
+# fast build rule for target.
+ptTwitSpam/fast:
+	$(MAKE) -f src/CMakeFiles/ptTwitSpam.dir/build.make src/CMakeFiles/ptTwitSpam.dir/build
+.PHONY : ptTwitSpam/fast
+
+#=============================================================================
 # Target rules for targets named twitSpam
 
 # Build rule for target.
@@ -146,6 +159,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... curlURL"
+	@echo "... ptTwitSpam"
 	@echo "... twitSpam"
 	@echo "... userData"
 .PHONY : help

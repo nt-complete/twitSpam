@@ -57,12 +57,14 @@ CMAKE_BINARY_DIR = /home/nick/twitSpam
 
 # Convenience name for "all" pass in the directory.
 src/all: src/CMakeFiles/curlURL.dir/all
+src/all: src/CMakeFiles/ptTwitSpam.dir/all
 src/all: src/CMakeFiles/twitSpam.dir/all
 src/all: src/CMakeFiles/userData.dir/all
 .PHONY : src/all
 
 # Convenience name for "clean" pass in the directory.
 src/clean: src/CMakeFiles/curlURL.dir/clean
+src/clean: src/CMakeFiles/ptTwitSpam.dir/clean
 src/clean: src/CMakeFiles/twitSpam.dir/clean
 src/clean: src/CMakeFiles/userData.dir/clean
 .PHONY : src/clean
@@ -107,13 +109,48 @@ clean: src/CMakeFiles/curlURL.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target src/CMakeFiles/ptTwitSpam.dir
+
+# All Build rule for target.
+src/CMakeFiles/ptTwitSpam.dir/all:
+	$(MAKE) -f src/CMakeFiles/ptTwitSpam.dir/build.make src/CMakeFiles/ptTwitSpam.dir/depend
+	$(MAKE) -f src/CMakeFiles/ptTwitSpam.dir/build.make src/CMakeFiles/ptTwitSpam.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/nick/twitSpam/CMakeFiles  7 8 9 10 11 12
+	@echo "Built target ptTwitSpam"
+.PHONY : src/CMakeFiles/ptTwitSpam.dir/all
+
+# Include target in all.
+all: src/CMakeFiles/ptTwitSpam.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+src/CMakeFiles/ptTwitSpam.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nick/twitSpam/CMakeFiles 6
+	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/ptTwitSpam.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nick/twitSpam/CMakeFiles 0
+.PHONY : src/CMakeFiles/ptTwitSpam.dir/rule
+
+# Convenience name for target.
+ptTwitSpam: src/CMakeFiles/ptTwitSpam.dir/rule
+.PHONY : ptTwitSpam
+
+# clean rule for target.
+src/CMakeFiles/ptTwitSpam.dir/clean:
+	$(MAKE) -f src/CMakeFiles/ptTwitSpam.dir/build.make src/CMakeFiles/ptTwitSpam.dir/clean
+.PHONY : src/CMakeFiles/ptTwitSpam.dir/clean
+
+# clean rule for target.
+clean: src/CMakeFiles/ptTwitSpam.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target src/CMakeFiles/twitSpam.dir
 
 # All Build rule for target.
 src/CMakeFiles/twitSpam.dir/all:
 	$(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/depend
 	$(MAKE) -f src/CMakeFiles/twitSpam.dir/build.make src/CMakeFiles/twitSpam.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nick/twitSpam/CMakeFiles  7 8 9 10 11 12
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/nick/twitSpam/CMakeFiles  13 14 15 16 17 18
 	@echo "Built target twitSpam"
 .PHONY : src/CMakeFiles/twitSpam.dir/all
 
@@ -148,7 +185,7 @@ clean: src/CMakeFiles/twitSpam.dir/clean
 src/CMakeFiles/userData.dir/all:
 	$(MAKE) -f src/CMakeFiles/userData.dir/build.make src/CMakeFiles/userData.dir/depend
 	$(MAKE) -f src/CMakeFiles/userData.dir/build.make src/CMakeFiles/userData.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nick/twitSpam/CMakeFiles  13 14 15 16 17 18
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/nick/twitSpam/CMakeFiles  19 20 21 22 23 24
 	@echo "Built target userData"
 .PHONY : src/CMakeFiles/userData.dir/all
 
