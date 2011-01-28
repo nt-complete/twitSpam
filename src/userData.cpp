@@ -125,8 +125,8 @@ int main()
 	    {
 	      tmpStr = xmlHandle.FirstChild("created_at").ToElement()->GetText() ;
 	      std::cout << "Created at: " << tmpStr << "\n";
-
-
+	      tmpStr = xmlHandle.FirstChild("id").ToElement()->GetText() ;
+	      std::cout << "ID: " << tmpStr << "\n";
 	    }
 
 
