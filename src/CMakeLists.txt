@@ -12,6 +12,6 @@ add_executable( ptTwitSpam ${ptTwitSpam_SRCS} )
 
 
 target_link_libraries(twitSpam twitcurl sqlite3)
-target_link_libraries(curlURL twitcurl sqlite3)
+target_link_libraries(curlURL twitcurl sqlite3 curl)
 target_link_libraries(userData twitcurl sqlite3)
 target_link_libraries(ptTwitSpam twitcurl sqlite3)
