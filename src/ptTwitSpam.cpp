@@ -23,7 +23,7 @@ twitCurl twitterObj;
 //#define DEBUG 1
 
 
-bool userCheck(TiXmlHandle userRootHandle, TiXmlHandle timelineRootHandle)
+bool userCheck(std::string createdAtStr, TiXmlHandle timelineRootHandle)
 {
   std::string weekday, month, day, time, year, tmpStr;
 
@@ -31,64 +31,41 @@ bool userCheck(TiXmlHandle userRootHandle, TiXmlHandle timelineRootHandle)
   std::stringstream strstream;
   boost::posix_time::ptime ptime, pt, currentTime, mostRecentTweetTime;
   boost::posix_time::time_duration hourDiff;
+  int userCount = 0;
 
   std::cout << "\n\n\n\nIN USER CHECK\n\n\n\n\n";
 
-  int userCount = 0;
-  if(userRootHandle.FirstChild("user").ToNode())
-    {
-      // Checks to see if the most recent status update
-      // occured in the past 48 hours
 
-      currentTime = boost::posix_time::second_clock::local_time();
 
-      TiXmlHandle statusRootHandle = userRootHandle.FirstChild("user").FirstChild("status");
-      if(statusRootHandle.ToNode())
+
+
+
+
+      ss << createdAtStr;
+      ss >> weekday;
+      ss >> month;
+      ss >> day;
+      ss >> time;
+      ss >> tmpStr;
+      ss >> year;
+
+      tmpStr = weekday + " " + month + " " + day + " " + year + " " + time;
+	      
+
+      strstream << tmpStr;
+
+      strstream.imbue(std::locale(std::locale::classic(), new boost::local_time::local_time_input_facet("%a %b %d %Y " "%H:%M:%S")));
+
+
+	      
+      strstream >> mostRecentTweetTime;
+
+  
+      // Checks whether the last 7 tweets occurred within a week
+
+      for( int i = 0; i < 7 ; i++ )
 	{
-	  const char* createdAtStr = statusRootHandle.FirstChild("created_at").ToElement()->GetText();
-
-	  if(!(createdAtStr == NULL))
-	    {
-
-
-	      ss << createdAtStr;
-	      ss >> weekday;
-	      ss >> month;
-	      ss >> day;
-	      ss >> time;
-	      ss >> tmpStr;
-	      ss >> year;
-
-	      tmpStr = weekday + " " + month + " " + day + " " + year + " " + time;
-	      
-
-	      strstream << tmpStr;
-
-	      strstream.imbue(std::locale(std::locale::classic(), new boost::local_time::local_time_input_facet("%a %b %d %Y " "%H:%M:%S")));
-
-
-	      
-	      strstream >> mostRecentTweetTime;
-	      tmpStr = strstream.str();
-
-	      boost::posix_time::time_duration hourDiff = currentTime - mostRecentTweetTime;
-
-	      std::cout << currentTime << " - " << mostRecentTweetTime << " = " << hourDiff << "\n";
-
-
-	      if(hourDiff.hours() < 48)
-		userCount++;
-	    }
-  
-	}
-    }
-
-  
-  // Checks whether the last 7 tweets occurred within a week
-
-  for( int i = 0; i < 7 ; i++ )
-    {
-      TiXmlHandle statusRootHandle = timelineRootHandle.Child("status", i);
+	  TiXmlHandle statusRootHandle = timelineRootHandle.Child("status", i);
       if(statusRootHandle.ToNode())
 	{
 
@@ -131,7 +108,7 @@ bool userCheck(TiXmlHandle userRootHandle, TiXmlHandle timelineRootHandle)
     }
 
   //  std::cout << "USER COUNT: " << userCount << "\n";
-  return (userCount == 8);
+  return (userCount == 7);
 }
 
 
@@ -445,7 +422,7 @@ int main()
   std::ifstream sampleXML;
   TiXmlDocument userDoc;
   TiXmlDocument tmpDoc;
-  std::string tmpStr, dummyStr;
+  std::string tmpStr, dummyStr, createdAtStr;
   bool cont;
   std::set<std::string> usersSet;
 
@@ -464,7 +441,7 @@ int main()
 
       twitterObj.timelinePublicGet();
       twitterObj.getLastWebResponse(tmpStr);
-      std::cout << tmpStr;
+
 
       tmpDoc.Parse(tmpStr.c_str());
       
@@ -472,13 +449,30 @@ int main()
       tmpRoot = tmpRoot.FirstChild("statuses");
       int i = 0;
       do{
-	usersSet.insert(tmpRoot.Child("status",i).FirstChild("id").ToElement()->GetText());
+	usersSet.insert(tmpRoot.Child("status",i).FirstChild("user").FirstChild("id").ToElement()->GetText());
+	createdAtStr = tmpRoot.Child("status",i).FirstChild("created_at").ToElement()->GetText();
 	i++;
       }while(tmpRoot.Child("status",i).ToNode());
 
       std::cout << "Count: " << i << "\n";
 
-      return 0;
+      int count = 0;
+      for(std::set<std::string>::iterator iter = usersSet.begin(); iter != usersSet.end(); iter++)
+	{
+	  std::cout << count++ << " " << *iter << "\n";
+
+
+	}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -504,84 +498,86 @@ int main()
       sampleXML.close();
 
       #endif  */
-      
-
-
-
-
-      ///*** TIMELINE SECTION ***///
-
 
       
 
-      twitterObj.timelineUserGet(userIdStr, true);
-      twitterObj.getLastWebResponse(tmpStr);
-      /*
-#ifndef DEBUG
-      outStream.open("xmlUserTimeline.txt");
-      if(outStream.is_open())
+
+      for(std::set<std::string>::iterator userIter = usersSet.begin(); userIter != usersSet.end(); userIter++)
 	{
-	  outStream << tmpStr;
-	  outStream.close();
-	}
 
-#else
+	  ///*** TIMELINE SECTION ***///
+	  userIdStr = (*userIter);
 
-      sampleXML.open("xmlUserTimeline.txt");
-      if(sampleXML.is_open())
-	{
-	  while(sampleXML.good() )
-	    {
-	      getline (sampleXML, line);
-	      tmpStr += line + "\n";
-	    }
-	}
-
-      sampleXML.close();
-
-
-      #endif */
-
-      tmpDoc.Parse(tmpStr.c_str());
       
-      TiXmlHandle timelineRootHandle(&tmpDoc);
-      if(timelineRootHandle.FirstChild("errors").ToNode())
-	{
-	  std::cout << "ERROR FINDING TIMELINE\n";
-	  sleep(60*62);
+
 	  twitterObj.timelineUserGet(userIdStr, true);
 	  twitterObj.getLastWebResponse(tmpStr);
+	  /*
+	    #ifndef DEBUG
+	    outStream.open("xmlUserTimeline.txt");
+	    if(outStream.is_open())
+	    {
+	    outStream << tmpStr;
+	    outStream.close();
+	    }
+
+	    #else
+
+	    sampleXML.open("xmlUserTimeline.txt");
+	    if(sampleXML.is_open())
+	    {
+	    while(sampleXML.good() )
+	    {
+	    getline (sampleXML, line);
+	    tmpStr += line + "\n";
+	    }
+	    }
+
+	    sampleXML.close();
+
+
+	    #endif */
 
 	  tmpDoc.Parse(tmpStr.c_str());
-	  timelineRootHandle = TiXmlHandle(&tmpDoc);
-
-	}
-
-
-
-     timelineRootHandle = timelineRootHandle.FirstChild("statuses");
-     std::cout << tmpStr;
-     std::cin >> tmpStr;  
-
-     if(timelineRootHandle.FirstChild("status").ToNode())
-	{
-
-	  std::cout << "timeline checked\n";
-	  if( userCheck(tmpRoot, timelineRootHandle))
+      
+	  TiXmlHandle timelineRootHandle(&tmpDoc);
+	  if(timelineRootHandle.FirstChild("errors").ToNode())
 	    {
-	      std::cout << "Users Added has increased\n";
-	      std::cin >> tmpStr;
-	      usersAddedCount++;
-	      {
-		sqlite3 *database;
-		if(sqlite3_open("../twitSpam.db", &database) == SQLITE_OK)
+	      std::cout << "ERROR FINDING TIMELINE\n";
+	      sleep(60*62);
+	      twitterObj.timelineUserGet(userIdStr, true);
+	      twitterObj.getLastWebResponse(tmpStr);
+
+	      tmpDoc.Parse(tmpStr.c_str());
+	      timelineRootHandle = TiXmlHandle(&tmpDoc);
+
+	    }
+
+
+
+	  timelineRootHandle = timelineRootHandle.FirstChild("statuses");
+	  //	  std::cout << tmpStr;
+	  //	  std::cin >> tmpStr;  
+
+	  if(timelineRootHandle.FirstChild("status").ToNode())
+	    {
+
+	      std::cout << "timeline checked\n";
+	      if( userCheck(createdAtStr, timelineRootHandle))
+		{
+		  std::cout << "Users Added has increased\n";
+		  std::cin >> tmpStr;
+		  usersAddedCount++;
 		  {
-		    std::string userIdStr;
+		    sqlite3 *database;
+		    if(sqlite3_open("../twitSpam.db", &database) == SQLITE_OK)
+		      {
+			std::string userIdStr;
 
-		    tmpUser = User(tmpRoot.FirstChild("user"));
-		    addUserToDb(tmpUser, database);
+			tmpUser = User(tmpRoot.FirstChild("user"));
+			addUserToDb(tmpUser, database);
 
-		    addTweetsToDb(timelineRootHandle, database);
+			addTweetsToDb(timelineRootHandle, database);
 	  
 
 
@@ -589,162 +585,162 @@ int main()
 
 
 
-		    ///**** FRIEND SECTION ****///
+			///**** FRIEND SECTION ****///
 
 
-
-		    ss.clear();
-		    ss << tmpUser.m_id;
-		    ss >> userIdStr;
-		    twitterObj.friendsGet(userIdStr, true);
-		    twitterObj.getLastWebResponse(tmpStr);
-
-		    /*#ifndef	DEBUG
-		    outStream.open("xmlFriends.txt");
-		    if(outStream.is_open())
-		      {
-			outStream << tmpStr;
-			outStream.close();
-		      }
-#else
-		    sampleXML.open("xmlFriends.txt");
-		    if(sampleXML.is_open())
-		      {
-			while(sampleXML.good() )
-			  {
-			    getline (sampleXML, line);
-			    tmpStr += line + "\n";
-			  }
-
-		      }
-
-		    sampleXML.close();
-
-		    #endif*/
-
-		    ///*** ADDS FRIENDS TO DB ****////
-
-		    tmpDoc.Parse(tmpStr.c_str());
-		    tmpRoot = TiXmlHandle(&tmpDoc);
-	
-		    if(tmpRoot.FirstChild("errors").ToNode())
-		      {
-			std::cout << "ERROR FINDING FRIENDS\n";
-			sleep(60*62);
-			twitterObj.friendsGet(userIdStr, true);
-			twitterObj.getLastWebResponse(tmpStr);
-			tmpDoc.Parse(tmpStr.c_str());
-			tmpRoot = TiXmlHandle(&tmpDoc);
-		      }
-
-		    tmpUser.setFriends(tmpRoot);
-
-		    for(std::vector<User*>::iterator it = tmpUser.m_friends.begin(); 
-			it != tmpUser.m_friends.end(); it++)
-		      {
-			std::string friendIdStr;
-			addUserToDb((**it), database);
-			ss.clear();
-			ss << (**it).m_id;
-			ss >> friendIdStr;
 
 			ss.clear();
 			ss << tmpUser.m_id;
 			ss >> userIdStr;
-			addFriendToDb(userIdStr, friendIdStr, database);
+			twitterObj.friendsGet(userIdStr, true);
+			twitterObj.getLastWebResponse(tmpStr);
 
-
-		      }
-
-		    ///**** ADD FOLLOWERS TO DB ****////
-
-
-
-		    ss.clear();
-		    ss << tmpUser.m_id;
-		    ss >> userIdStr;
-		    twitterObj.followersGet(userIdStr, true);
-		    twitterObj.getLastWebResponse(tmpStr);
-
-		    /* #ifndef	DEBUG
-		    outStream.open("xmlFollowers.txt");
-		    if(outStream.is_open())
-		      {
-			outStream << tmpStr;
-			outStream.close();
-		      }
-#else
-		    sampleXML.open("xmlFollowers.txt");
-		    if(sampleXML.is_open())
-		      {
-			while(sampleXML.good() )
+			/*#ifndef	DEBUG
+			  outStream.open("xmlFriends.txt");
+			  if(outStream.is_open())
 			  {
-			    getline (sampleXML, line);
-			    tmpStr += line + "\n";
+			  outStream << tmpStr;
+			  outStream.close();
+			  }
+			  #else
+			  sampleXML.open("xmlFriends.txt");
+			  if(sampleXML.is_open())
+			  {
+			  while(sampleXML.good() )
+			  {
+			  getline (sampleXML, line);
+			  tmpStr += line + "\n";
 			  }
 
-		      }
+			  }
 
-		    sampleXML.close();
+			  sampleXML.close();
 
-		    #endif */
-		    tmpDoc.Parse(tmpStr.c_str());
-		    tmpRoot = TiXmlHandle(&tmpDoc);
+			  #endif*/
+
+			///*** ADDS FRIENDS TO DB ****////
+
+			tmpDoc.Parse(tmpStr.c_str());
+			tmpRoot = TiXmlHandle(&tmpDoc);
+	
+			if(tmpRoot.FirstChild("errors").ToNode())
+			  {
+			    std::cout << "ERROR FINDING FRIENDS\n";
+			    sleep(60*62);
+			    twitterObj.friendsGet(userIdStr, true);
+			    twitterObj.getLastWebResponse(tmpStr);
+			    tmpDoc.Parse(tmpStr.c_str());
+			    tmpRoot = TiXmlHandle(&tmpDoc);
+			  }
+
+			tmpUser.setFriends(tmpRoot);
+
+			for(std::vector<User*>::iterator it = tmpUser.m_friends.begin(); 
+			    it != tmpUser.m_friends.end(); it++)
+			  {
+			    std::string friendIdStr;
+			    addUserToDb((**it), database);
+			    ss.clear();
+			    ss << (**it).m_id;
+			    ss >> friendIdStr;
+
+			    ss.clear();
+			    ss << tmpUser.m_id;
+			    ss >> userIdStr;
+			    addFriendToDb(userIdStr, friendIdStr, database);
 
 
-		    if(tmpRoot.FirstChild("errors").ToNode())
-		      {
-			std::cout << "ERROR FINDING FOLLOWERS\n";
-			sleep(60*62);
+			  }
+
+			///**** ADD FOLLOWERS TO DB ****////
+
+
+
+			ss.clear();
+			ss << tmpUser.m_id;
+			ss >> userIdStr;
 			twitterObj.followersGet(userIdStr, true);
 			twitterObj.getLastWebResponse(tmpStr);
 
+			/* #ifndef	DEBUG
+			   outStream.open("xmlFollowers.txt");
+			   if(outStream.is_open())
+			   {
+			   outStream << tmpStr;
+			   outStream.close();
+			   }
+			   #else
+			   sampleXML.open("xmlFollowers.txt");
+			   if(sampleXML.is_open())
+			   {
+			   while(sampleXML.good() )
+			   {
+			   getline (sampleXML, line);
+			   tmpStr += line + "\n";
+			   }
+
+			   }
+
+			   sampleXML.close();
+
+			   #endif */
 			tmpDoc.Parse(tmpStr.c_str());
 			tmpRoot = TiXmlHandle(&tmpDoc);
 
 
-		      }
+			if(tmpRoot.FirstChild("errors").ToNode())
+			  {
+			    std::cout << "ERROR FINDING FOLLOWERS\n";
+			    sleep(60*62);
+			    twitterObj.followersGet(userIdStr, true);
+			    twitterObj.getLastWebResponse(tmpStr);
 
-		    tmpUser.setFollowers(tmpRoot);
-
-
-		    for(std::vector<User*>::iterator iter = tmpUser.m_followers.begin(); 
-			iter != tmpUser.m_followers.end(); iter++)
-		      {
-
-			std::string followerIdStr;
-
-			addUserToDb((**iter), database);
-			ss.clear();
-			ss << (**iter).m_id;
-			ss >> followerIdStr;
-
-			ss.clear();
-			ss << tmpUser.m_id;
-			ss >> userIdStr;
-
-			std::cout << "Adding follower: " << followerIdStr << ", user: " << userIdStr << "\n";
-
-			addFriendToDb(followerIdStr, userIdStr, database);
+			    tmpDoc.Parse(tmpStr.c_str());
+			    tmpRoot = TiXmlHandle(&tmpDoc);
 
 
-		      }
+			  }
+
+			tmpUser.setFollowers(tmpRoot);
+
+
+			for(std::vector<User*>::iterator iter = tmpUser.m_followers.begin(); 
+			    iter != tmpUser.m_followers.end(); iter++)
+			  {
+
+			    std::string followerIdStr;
+
+			    addUserToDb((**iter), database);
+			    ss.clear();
+			    ss << (**iter).m_id;
+			    ss >> followerIdStr;
+
+			    ss.clear();
+			    ss << tmpUser.m_id;
+			    ss >> userIdStr;
+
+			    std::cout << "Adding follower: " << followerIdStr << ", user: " << userIdStr << "\n";
+
+			    addFriendToDb(followerIdStr, userIdStr, database);
+
+
+			  }
 
 
 
 
-		  }  
-		sqlite3_close(database);
+		      }  
+		    sqlite3_close(database);
 
 
       
 
 
-	      }
+		  }
 
-	    }
-	}	
-
+		}
+	    }	
+	}
     }
   return 0;
 }
