@@ -33,7 +33,7 @@ bool userCheck(std::string createdAtStr, TiXmlHandle timelineRootHandle)
   boost::posix_time::time_duration hourDiff;
   int userCount = 0;
 
-  std::cout << "\n\n\n\nIN USER CHECK\n\n\n\n\n";
+  //  std::cout << "\n\n\n\nIN USER CHECK\n\n\n\n\n";
 
 
 
@@ -97,7 +97,7 @@ bool userCheck(std::string createdAtStr, TiXmlHandle timelineRootHandle)
 
 	      hourDiff = mostRecentTweetTime - pt;
 
-	      std::cout << mostRecentTweetTime << " - " << pt << " = " << hourDiff << "\n";
+	      //	      std::cout << mostRecentTweetTime << " - " << pt << " = " << hourDiff << "\n";
 
 	      if(hourDiff.hours() < (7 * 24))
 		{
@@ -446,8 +446,25 @@ int main()
       tmpDoc.Parse(tmpStr.c_str());
       
       TiXmlHandle tmpRoot(&tmpDoc);
+
+      if(tmpRoot.FirstChild("errors").ToNode())
+	{
+	  std::cout << "ERROR GETTING PUBLIC TIMELINE\n";
+	  std::cout << tmpStr << "\n";
+
+	  sleep(60*62);
+	  twitterObj.timelinePublicGet();
+	  twitterObj.getLastWebResponse(tmpStr);
+
+	  tmpDoc.Parse(tmpStr.c_str());
+	  tmpRoot = TiXmlHandle(&tmpDoc);
+	}
+
+
+
       tmpRoot = tmpRoot.FirstChild("statuses");
       int i = 0;
+
       do{
 	usersSet.insert(tmpRoot.Child("status",i).FirstChild("user").FirstChild("id").ToElement()->GetText());
 	createdAtStr = tmpRoot.Child("status",i).FirstChild("created_at").ToElement()->GetText();
@@ -465,40 +482,6 @@ int main()
 	}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      //      std::cout << tmpStr;
-
-      /*  #else
-      std::string line;
-
-      tmpStr = "";
-      sampleXML.open("xmlUser.txt");
-      if(sampleXML.is_open())
-	{
-	while(sampleXML.good() )
-	    {
-	      getline (sampleXML, line);
-	      tmpStr += line + "\n";
-	    }
-	}
-
-      sampleXML.close();
-
-      #endif  */
-
       
 
 
@@ -508,35 +491,9 @@ int main()
 	  ///*** TIMELINE SECTION ***///
 	  userIdStr = (*userIter);
 
-      
-
 	  twitterObj.timelineUserGet(userIdStr, true);
 	  twitterObj.getLastWebResponse(tmpStr);
-	  /*
-	    #ifndef DEBUG
-	    outStream.open("xmlUserTimeline.txt");
-	    if(outStream.is_open())
-	    {
-	    outStream << tmpStr;
-	    outStream.close();
-	    }
 
-	    #else
-
-	    sampleXML.open("xmlUserTimeline.txt");
-	    if(sampleXML.is_open())
-	    {
-	    while(sampleXML.good() )
-	    {
-	    getline (sampleXML, line);
-	    tmpStr += line + "\n";
-	    }
-	    }
-
-	    sampleXML.close();
-
-
-	    #endif */
 
 	  tmpDoc.Parse(tmpStr.c_str());
       
@@ -552,6 +509,33 @@ int main()
 	      timelineRootHandle = TiXmlHandle(&tmpDoc);
 
 	    }
+
+
+
+	  twitterObj.userGet(userIdStr, true);
+	  twitterObj.getLastWebResponse(tmpStr);
+
+
+	  tmpDoc.Parse(tmpStr.c_str());
+      
+	  TiXmlHandle userRootHandle(&tmpDoc);
+	  if(timelineRootHandle.FirstChild("errors").ToNode())
+	    {
+	      std::cout << "ERROR FINDING TIMELINE\n";
+	      sleep(60*62);
+	      twitterObj.userGet(userIdStr, true);
+	      twitterObj.getLastWebResponse(tmpStr);
+
+	      tmpDoc.Parse(tmpStr.c_str());
+	      userRootHandle = TiXmlHandle(&tmpDoc);
+
+	    }
+
+
+
+
+
+
 
 
 
@@ -574,7 +558,7 @@ int main()
 		      {
 			std::string userIdStr;
 
-			tmpUser = User(tmpRoot.FirstChild("user"));
+			tmpUser = User(userRootHandle.FirstChild("user"));
 			addUserToDb(tmpUser, database);
 
 			addTweetsToDb(timelineRootHandle, database);
