@@ -411,7 +411,24 @@ void authorize()
 }
 
 
+void oAuthorize()
+{
 
+  std::string tmpStr( "" );
+  std::string replyMsg( "" );
+
+  /* OAuth flegins */
+  /* Step 0: Set OAuth related params. These are got by registering your app at twitter.com */
+  twitterObj.getOAuth().setConsumerKey( std::string( "mlzPWIdVN4FACcOnaOGFA"));
+  twitterObj.getOAuth().setConsumerSecret( std::string( "ywhe43wccaFahINu5jlzPjiT6V2H0UZuGyq3vXJz40"));
+
+  /* Step 1: Check if we already have OAuth access token from a previous run */
+ 
+      twitterObj.getOAuth().setOAuthTokenKey( "235314984-1BpeINL0JP86T0MdPPlVLzOsZevnzp7lPhFF1FWn");
+      twitterObj.getOAuth().setOAuthTokenSecret("S7QIlt3HaY0kmbalhx05xYEhgdQZJv36mJFCqb3k");
+
+  /* OAuth flow ends */
+}
 
 int main()
 {
@@ -427,10 +444,18 @@ int main()
   std::set<std::string> usersSet;
 
  
-  authorize();
+  //authorize();
 
 
+  oAuthorize();
 
+  twitterObj.getOAuth().setConsumerKey( std::string( "mlzPWIdVN4FACcOnaOGFA"));
+  twitterObj.getOAuth().setConsumerSecret( std::string( "ywhe43wccaFahINu5jlzPjiT6V2H0UZuGyq3vXJz40"));
+
+  /* Step 1: Check if we already have OAuth access token from a previous run */
+ 
+      twitterObj.getOAuth().setOAuthTokenKey( "235314984-1BpeINL0JP86T0MdPPlVLzOsZevnzp7lPhFF1FWn");
+      twitterObj.getOAuth().setOAuthTokenSecret("S7QIlt3HaY0kmbalhx05xYEhgdQZJv36mJFCqb3k");
 
   int usersAddedCount = 0;
   while(usersAddedCount < 1)
@@ -446,6 +471,14 @@ int main()
       tmpDoc.Parse(tmpStr.c_str());
       
       TiXmlHandle tmpRoot(&tmpDoc);
+
+      twitterObj.accountRateLimitGet();
+      twitterObj.getLastWebResponse(tmpStr);
+      std::cout << tmpStr;
+      std::cin >> dummyStr;
+
+
+
 
       if(tmpRoot.FirstChild("errors").ToNode())
 	{
