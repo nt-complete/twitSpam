@@ -154,7 +154,7 @@ void addFollowerToDb(std::string userIdStr, std::string followerIdStr, sqlite3 *
   std::string stmtStr;
   std::stringstream ss;
   
-  stmtStr = "SELECT * FROM [FRIENDS] WHERE userId = " + userIdStr + " AND friendId = " + followerIdStr;
+  stmtStr = "SELECT * FROM [FOLLOWERS] WHERE userId = " + userIdStr + " AND friendId = " + followerIdStr;
   std::cout << stmtStr << "\n";
 
 
@@ -217,6 +217,18 @@ void addTweetsToDb(TiXmlHandle timelineRootHandle, sqlite3 *database)
 
 		  stmtStr = "INSERT INTO [TWEETS] (statusText, dateTime, tweetId, replyToTweetId, replyToUserId, userId, retweetedCount) VALUES (";
 		  statusText = rootHandle.FirstChild("text").ToElement()->GetText();
+		  for(int textCount = 0; textCount < statusText.size(); textCount++)
+		    {
+		      if(statusText.at(textCount) == '"')
+			{
+			  statusText.erase(textCount);
+			  --textCount;
+
+			}
+
+		    }
+
+
 		  stmtStr += "\"" + statusText + "\", ";
 
 		  dateTime = rootHandle.FirstChild("created_at").ToElement()->GetText();
@@ -486,9 +498,6 @@ int main()
       tmpDoc.Parse(tmpStr.c_str());
       
       TiXmlHandle tmpRoot(&tmpDoc);
-
-
-
 
 
 

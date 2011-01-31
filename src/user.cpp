@@ -88,13 +88,14 @@ void User::setFollowers(TiXmlHandle followersRootHandle)
 {
   followersRootHandle = followersRootHandle.FirstChild("users");
 
-  int followCount = 100;
-  if(followCount > m_followersCount)
-    followCount = m_followersCount;
-  
+  int followersCount = 100;
+  if(followersCount > m_followersCount)
+    {
+      followersCount = m_followersCount;
+    }
 
 
-  for(int i = 0; i < followCount; i++)
+  for(int i = 0; i < followersCount; i++)
     {
       TiXmlHandle singleFollowerRootHandle = followersRootHandle.Child("user", i);
       User * tmpUser = new User(singleFollowerRootHandle);
