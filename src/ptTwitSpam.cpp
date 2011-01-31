@@ -202,14 +202,15 @@ void addTweetsToDb(TiXmlHandle timelineRootHandle, sqlite3 *database)
 	  userId = rootHandle.FirstChild("user").FirstChild("id").ToElement()->GetText();
 
 	  stmtStr = "SELECT * FROM [TWEETS] WHERE userId = " + userId + " AND tweetId = " + tweetId;
-	  
+	  std::cout << stmtStr << "\n";
 
 	  if(sqlite3_prepare_v2(database, stmtStr.c_str(), -1, &statement, 0) == SQLITE_OK)
 	    {
+
 	      if( sqlite3_step(statement) == SQLITE_ROW)
 		{
-		  std::cout << "That tweet already exists in the database.\n";
-		  
+		  std::cout << "That tweet already exists in the database. i = " << i << "\n";
+		  i++;
 		}
 	      else
 		{
@@ -254,7 +255,7 @@ void addTweetsToDb(TiXmlHandle timelineRootHandle, sqlite3 *database)
 		  retweetedCount = rootHandle.FirstChild("retweet_count").ToElement()->GetText();
 		  stmtStr += retweetedCount + ")"; 
 	  
-
+		  std::cout << stmtStr << "\n";
 	
 		  if(sqlite3_prepare_v2(database, stmtStr.c_str(), -1, &statement, 0) == SQLITE_OK)
 		    {
@@ -269,8 +270,18 @@ void addTweetsToDb(TiXmlHandle timelineRootHandle, sqlite3 *database)
 
 		}
 	    }
+	  else{
+	    std::cout << "ERROR WITH THE SQLITE DB\n";
+	    return;
+
+	  }
 
 	}
+      else{
+
+	return;
+
+      }
     }
 }
 
@@ -337,8 +348,8 @@ void authorize()
 
   /* OAuth flegins */
   /* Step 0: Set OAuth related params. These are got by registering your app at twitter.com */
-  twitterObj.getOAuth().setConsumerKey( std::string( "mlzPWIdVN4FACcOnaOGFA"));
-  twitterObj.getOAuth().setConsumerSecret( std::string( "ywhe43wccaFahINu5jlzPjiT6V2H0UZuGyq3vXJz40"));
+  twitterObj.getOAuth().setConsumerKey( std::string( "hbmV8ajouKJxB0hl8oeow"));
+  twitterObj.getOAuth().setConsumerSecret( std::string( "ijGXssaTltaaqPaFouVPt733mkxDnwIUSokUJxOCE"));
 
   /* Step 1: Check if we already have OAuth access token from a previous run */
   char szKey[1024];
@@ -444,24 +455,28 @@ int main()
   std::set<std::string> usersSet;
 
  
-  //authorize();
+  authorize();
 
 
-  oAuthorize();
+  //  oAuthorize();
+  /*
+  twitterObj.getOAuth().setConsumerKey( std::string( "hbmV8ajouKJxB0hl8oeow"));
+  twitterObj.getOAuth().setConsumerSecret( std::string( "ijGXssaTltaaqPaFouVPt733mkxDnwIUSokUJxOCE"));
 
-  twitterObj.getOAuth().setConsumerKey( std::string( "mlzPWIdVN4FACcOnaOGFA"));
-  twitterObj.getOAuth().setConsumerSecret( std::string( "ywhe43wccaFahINu5jlzPjiT6V2H0UZuGyq3vXJz40"));
+  /* Step 1: Check if we already have OAuth access token from a previous run **
 
-  /* Step 1: Check if we already have OAuth access token from a previous run */
- 
-      twitterObj.getOAuth().setOAuthTokenKey( "235314984-1BpeINL0JP86T0MdPPlVLzOsZevnzp7lPhFF1FWn");
-      twitterObj.getOAuth().setOAuthTokenSecret("S7QIlt3HaY0kmbalhx05xYEhgdQZJv36mJFCqb3k");
+  twitterObj.getOAuth().setOAuthTokenKey( "16369144-WPlIVGjrWj8FS2yYa3cRVcSnnL3i54rUZJku9nDBn");
+  twitterObj.getOAuth().setOAuthTokenSecret("wKwkfrWphBo4nyRk9fyMuWUuqhgDO1rR2WX3wGnWE");
+*/
+
+  twitterObj.accountRateLimitGet();
+  twitterObj.getLastWebResponse(tmpStr);
+  std::cout << tmpStr;
+
 
   int usersAddedCount = 0;
   while(usersAddedCount < 1)
     {
-
-
 
 
       twitterObj.timelinePublicGet();
@@ -472,10 +487,7 @@ int main()
       
       TiXmlHandle tmpRoot(&tmpDoc);
 
-      twitterObj.accountRateLimitGet();
-      twitterObj.getLastWebResponse(tmpStr);
-      std::cout << tmpStr;
-      std::cin >> dummyStr;
+
 
 
 
@@ -510,12 +522,7 @@ int main()
       for(std::set<std::string>::iterator iter = usersSet.begin(); iter != usersSet.end(); iter++)
 	{
 	  std::cout << count++ << " " << *iter << "\n";
-
-
 	}
-
-
-      
 
 
       for(std::set<std::string>::iterator userIter = usersSet.begin(); userIter != usersSet.end(); userIter++)
@@ -547,16 +554,19 @@ int main()
 
 	  twitterObj.userGet(userIdStr, true);
 	  twitterObj.getLastWebResponse(tmpStr);
-
+	  
+	  std::cout << tmpStr;
+	  std::cin >> dummyStr;
 
 	  tmpDoc.Parse(tmpStr.c_str());
       
 	  TiXmlHandle userRootHandle(&tmpDoc);
 	  if(timelineRootHandle.FirstChild("errors").ToNode())
 	    {
-	      std::cout << "ERROR FINDING TIMELINE\n";
+	      std::cout << "ERROR FINDING USER\n";
 	      sleep(60*62);
 	      twitterObj.userGet(userIdStr, true);
+
 	      twitterObj.getLastWebResponse(tmpStr);
 
 	      tmpDoc.Parse(tmpStr.c_str());
@@ -582,9 +592,10 @@ int main()
 	      std::cout << "timeline checked\n";
 	      if( userCheck(createdAtStr, timelineRootHandle))
 		{
-		  std::cout << "Users Added has increased\n";
-		  std::cin >> tmpStr;
 		  usersAddedCount++;
+		  std::cout << "Users Added has increased to " << usersAddedCount << "\n";
+		  std::cin >> tmpStr;
+
 		  {
 		    sqlite3 *database;
 		    if(sqlite3_open("../twitSpam.db", &database) == SQLITE_OK)
@@ -595,7 +606,7 @@ int main()
 			addUserToDb(tmpUser, database);
 
 			addTweetsToDb(timelineRootHandle, database);
-	  
+			std::cout << "Tweets have been added\n";
 
 
 
@@ -705,6 +716,8 @@ int main()
 			tmpRoot = TiXmlHandle(&tmpDoc);
 
 
+
+
 			if(tmpRoot.FirstChild("errors").ToNode())
 			  {
 			    std::cout << "ERROR FINDING FOLLOWERS\n";
@@ -735,7 +748,13 @@ int main()
 			    ss.clear();
 			    ss << tmpUser.m_id;
 			    ss >> userIdStr;
-
+			    if(strcmp(followerIdStr.c_str(), "0") == 0)
+			      {
+				std::cout << "\n\n\n\n";
+				std::cout << (**iter);
+				std::cout << "\n\n\n\n";
+				std::cin >> dummyStr;
+			      }
 			    std::cout << "Adding follower: " << followerIdStr << ", user: " << userIdStr << "\n";
 
 			    addFriendToDb(followerIdStr, userIdStr, database);

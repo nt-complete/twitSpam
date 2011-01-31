@@ -2,7 +2,7 @@
 #define _TWITCURL_H_
 
 #include <string>
-#include "oauthlib.h"
+#include <oauthlib.h>
 #include "curl/curl.h"
 
 /* Default values used in twitcurl */

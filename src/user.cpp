@@ -88,10 +88,24 @@ void User::setFollowers(TiXmlHandle followersRootHandle)
 {
   followersRootHandle = followersRootHandle.FirstChild("users");
 
-  for(int i = 0; i < m_followersCount; i++)
+  int followCount = 100;
+  if(followCount > m_followersCount)
+    followCount = m_followersCount;
+  
+
+
+  for(int i = 0; i < followCount; i++)
     {
       TiXmlHandle singleFollowerRootHandle = followersRootHandle.Child("user", i);
       User * tmpUser = new User(singleFollowerRootHandle);
+      if(tmpUser->m_id == 0)
+	{
+	  std::string dummyStr;
+	  std::cin >> dummyStr;
+	  std::cout << followersRootHandle.ToNode();
+	  std::cout << "\n\nUserNum: " << i << "\n";
+	  std::cin >> dummyStr;
+	}
       m_followers.push_back(tmpUser);
 
     }
@@ -102,7 +116,12 @@ void User::setFollowers(TiXmlHandle followersRootHandle)
 void User::setFriends(TiXmlHandle friendsRootHandle)
 {
   friendsRootHandle = friendsRootHandle.FirstChild("users");
-  for(int i = 0; i < m_friendsCount; i++)
+
+  int friendsCount = 100;
+  if(friendsCount > m_friendsCount)
+    friendsCount = m_friendsCount;
+
+  for(int i = 0; i < friendsCount; i++)
     {
       TiXmlHandle singleFriendRootHandle = friendsRootHandle.Child("user",i);
       if(singleFriendRootHandle.ToNode())
