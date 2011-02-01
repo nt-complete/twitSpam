@@ -23,45 +23,64 @@ twitCurl twitterObj;
 //#define DEBUG 1
 
 
-bool userCheck(std::string createdAtStr, TiXmlHandle timelineRootHandle)
+bool userCheck(std::string createdAtStr, TiXmlHandle timelineRootHandle, TiXmlHandle userRootHandle)
 {
   std::string weekday, month, day, time, year, tmpStr;
-
-  std::stringstream ss;
+  long utcOffset, utcLower, utcHigher;
+  std::stringstream ss, utcStrstream;
   std::stringstream strstream;
   boost::posix_time::ptime ptime, pt, currentTime, mostRecentTweetTime;
   boost::posix_time::time_duration hourDiff;
   int userCount = 0;
 
-  //  std::cout << "\n\n\n\nIN USER CHECK\n\n\n\n\n";
+  ///// Checks to see if the UTC Offset of the user is in the Americas ///////////
+  if(userRootHandle.FirstChild("user").FirstChild("utc_offset").ToNode())
+    {
+      utcStrstream << userRootHandle.FirstChild("user").FirstChild("utc_offset").ToElement()->GetText();
+      utcStrstream >> utcOffset;
+      utcLower = 60*60*(-10);  // This is the time zone for Hawaii
+      utcHigher = 60*60*(-5);  // This is the time zone for the Eastern most US
+      if(utcOffset >= utcLower && utcOffset <= utcHigher)
+	{
+	  userCount++;
+	}
+    }
+  else
+    {
+      userCount++;
+    }
 
 
 
-      ss << createdAtStr;
-      ss >> weekday;
-      ss >> month;
-      ss >> day;
-      ss >> time;
-      ss >> tmpStr;
-      ss >> year;
 
-      tmpStr = weekday + " " + month + " " + day + " " + year + " " + time;
+
+  ///  // Checks whether the last 7 tweets occurred within a week //////////////
+  ss.clear();
+  ss << createdAtStr;
+  ss >> weekday;
+  ss >> month;
+  ss >> day;
+  ss >> time;
+  ss >> tmpStr;
+  ss >> year;
+
+  tmpStr = weekday + " " + month + " " + day + " " + year + " " + time;
 	      
+  strstream.clear();
+  strstream << tmpStr;
 
-      strstream << tmpStr;
-
-      strstream.imbue(std::locale(std::locale::classic(), new boost::local_time::local_time_input_facet("%a %b %d %Y " "%H:%M:%S")));
+  strstream.imbue(std::locale(std::locale::classic(), new boost::local_time::local_time_input_facet("%a %b %d %Y " "%H:%M:%S")));
 
 
 	      
-      strstream >> mostRecentTweetTime;
+  strstream >> mostRecentTweetTime;
 
   
-      // Checks whether the last 7 tweets occurred within a week
 
-      for( int i = 0; i < 7 ; i++ )
-	{
-	  TiXmlHandle statusRootHandle = timelineRootHandle.Child("status", i);
+
+  for( int i = 0; i < 7 ; i++ )
+    {
+      TiXmlHandle statusRootHandle = timelineRootHandle.Child("status", i);
       if(statusRootHandle.ToNode())
 	{
 
@@ -104,7 +123,7 @@ bool userCheck(std::string createdAtStr, TiXmlHandle timelineRootHandle)
     }
 
   //  std::cout << "USER COUNT: " << userCount << "\n";
-  return (userCount == 7);
+  return (userCount == 8);
 }
 
 
@@ -614,7 +633,7 @@ int main()
 		{
 
 		  std::cout << "timeline checked\n";
-		  if( userCheck(createdAtStr, timelineRootHandle))
+		  if( userCheck(createdAtStr, timelineRootHandle, userRootHandle))
 		    {
 		      usersAddedCount++;
 		      std::cout << "Users Added has increased to " << usersAddedCount << "\n";

@@ -114,6 +114,9 @@ int main()
       twitterObj.userGet(username, false);
       twitterObj.getLastWebResponse(tmpStr);
 
+      std::cout << tmpStr << "\n";
+
+
       TiXmlDocument xmlDoc;
       xmlDoc.Parse(tmpStr.c_str());
       TiXmlHandle xmlHandle(&xmlDoc);
