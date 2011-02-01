@@ -476,150 +476,152 @@ int main()
 
 
   int usersAddedCount = 0;
-  while(usersAddedCount < 1)
+  sqlite3 *database;
+  if(sqlite3_open("../twitSpam.db", &database) == SQLITE_OK)
     {
 
-
-      twitterObj.timelinePublicGet();
-      
-      twitterObj.getLastWebResponse(tmpStr);
-
-
-      TiXmlDocument publicTimelineDoc;
-	publicTimelineDoc.Parse(tmpStr.c_str());
-      
-      TiXmlHandle tmpRoot(&publicTimelineDoc);
-
-
-
-      if(tmpRoot.FirstChild("errors").ToNode())
+      while(usersAddedCount < 1)
 	{
-	  std::cout << "ERROR GETTING PUBLIC TIMELINE\n";
-	  std::cout << tmpStr << "\n";
 
-	  sleep(60*62);
+
 	  twitterObj.timelinePublicGet();
-	  
+      
 	  twitterObj.getLastWebResponse(tmpStr);
 
+
+	  TiXmlDocument publicTimelineDoc;
 	  publicTimelineDoc.Parse(tmpStr.c_str());
-	  tmpRoot = TiXmlHandle(&publicTimelineDoc);
-	}
-
-
-
-      tmpRoot = tmpRoot.FirstChild("statuses");
-      int i = 0;
-
-      do{
-	usersSet.insert(tmpRoot.Child("status",i).FirstChild("user").FirstChild("id").ToElement()->GetText());
-	createdAtStr = tmpRoot.Child("status",i).FirstChild("created_at").ToElement()->GetText();
-	i++;
-      }while(tmpRoot.Child("status",i).ToNode());
-
-      std::cout << "Count: " << i << "\n";
-
-      int count = 0;
-      for(std::set<std::string>::iterator iter = usersSet.begin(); iter != usersSet.end(); iter++)
-	{
-	  std::cout << count++ << " " << *iter << "\n";
-	}
-      //      std::cin >> dummyStr;
-
-      for(std::set<std::string>::iterator userIter = usersSet.begin(); userIter != usersSet.end(); userIter++)
-	{
-
-	  ///*** TIMELINE SECTION ***///
-	  userIdStr = (*userIter);
-	  //	  userIdStr = "105887364";
-
-
-	  twitterObj.timelineUserGet(userIdStr, true);
-	  
-	  twitterObj.getLastWebResponse(tmpStr);
-	  outStream.open("xmlTimelineUserGet.txt");
-	  if(outStream.is_open())
-	    {
-	      outStream << tmpStr;
-	      outStream.close();
-	    }
-	  
-
-
-
-
-	  std::cout << tmpStr;
-	  // std::cin >> dummyStr;
-
-	  TiXmlDocument timelineUserDoc;
-	    timelineUserDoc.Parse(tmpStr.c_str());
       
-	  TiXmlHandle timelineRootHandle(&timelineUserDoc);
-	  //	  tmpDoc.Print();
-	  //	  std::cin >> dummyStr;
+	  TiXmlHandle tmpRoot(&publicTimelineDoc);
 
-	  if(timelineRootHandle.FirstChild("errors").ToNode())
+
+
+	  if(tmpRoot.FirstChild("errors").ToNode())
 	    {
-	      std::cout << "ERROR FINDING TIMELINE\n";
+	      std::cout << "ERROR GETTING PUBLIC TIMELINE\n";
+	      std::cout << tmpStr << "\n";
+
 	      sleep(60*62);
+	      twitterObj.timelinePublicGet();
+	  
+	      twitterObj.getLastWebResponse(tmpStr);
+
+	      publicTimelineDoc.Parse(tmpStr.c_str());
+	      tmpRoot = TiXmlHandle(&publicTimelineDoc);
+	    }
+
+
+
+	  tmpRoot = tmpRoot.FirstChild("statuses");
+	  int i = 0;
+
+	  do{
+	    usersSet.insert(tmpRoot.Child("status",i).FirstChild("user").FirstChild("id").ToElement()->GetText());
+	    createdAtStr = tmpRoot.Child("status",i).FirstChild("created_at").ToElement()->GetText();
+	    i++;
+	  }while(tmpRoot.Child("status",i).ToNode());
+
+	  std::cout << "Count: " << i << "\n";
+
+	  int count = 0;
+	  for(std::set<std::string>::iterator iter = usersSet.begin(); iter != usersSet.end(); iter++)
+	    {
+	      std::cout << count++ << " " << *iter << "\n";
+	    }
+	  //      std::cin >> dummyStr;
+
+	  for(std::set<std::string>::iterator userIter = usersSet.begin(); userIter != usersSet.end(); userIter++)
+	    {
+
+	      ///*** TIMELINE SECTION ***///
+	      userIdStr = (*userIter);
+	      //	  userIdStr = "105887364";
+
+
 	      twitterObj.timelineUserGet(userIdStr, true);
-	      
-	      twitterObj.getLastWebResponse(tmpStr);
-
-	      timelineUserDoc.Parse(tmpStr.c_str());
-	      timelineRootHandle = TiXmlHandle(&timelineUserDoc);
-
-	    }
-
-
-
-	  twitterObj.userGet(userIdStr, true);
 	  
-	  twitterObj.getLastWebResponse(tmpStr);
-	  
-	  std::cout << tmpStr;
-	  //	  std::cin >> dummyStr;
-
-	  TiXmlDocument userDoc;
-	  userDoc.Parse(tmpStr.c_str());
-      
-	  TiXmlHandle userRootHandle(&userDoc);
-	  userDoc.Print();
-	  // std::cin >> dummyStr;
-	  if(userRootHandle.FirstChild("errors").ToNode())
-	    {
-	      std::cout << "ERROR FINDING USER\n";
-	      sleep(60*62);
-	      twitterObj.userGet(userIdStr, true);
-	      
 	      twitterObj.getLastWebResponse(tmpStr);
-
-	      userDoc.Parse(tmpStr.c_str());
-	      userRootHandle = TiXmlHandle(&userDoc);
-
-	    }
-
-
-	  timelineRootHandle = timelineRootHandle.FirstChild("statuses");
-	  //	  std::cout << tmpStr;
-	  //	  std::cin >> tmpStr;  
-
-
-
-	  if(timelineRootHandle.FirstChild("status").ToNode())
-	    {
-
-	      std::cout << "timeline checked\n";
-	      if( userCheck(createdAtStr, timelineRootHandle))
+	      outStream.open("xmlTimelineUserGet.txt");
+	      if(outStream.is_open())
 		{
-		  usersAddedCount++;
-		  std::cout << "Users Added has increased to " << usersAddedCount << "\n";
-		  //		  std::cin >> tmpStr;
+		  outStream << tmpStr;
+		  outStream.close();
+		}
+	  
 
-		  {
-		    sqlite3 *database;
-		    if(sqlite3_open("../twitSpam.db", &database) == SQLITE_OK)
+
+
+
+	      std::cout << tmpStr;
+	      // std::cin >> dummyStr;
+
+	      TiXmlDocument timelineUserDoc;
+	      timelineUserDoc.Parse(tmpStr.c_str());
+      
+	      TiXmlHandle timelineRootHandle(&timelineUserDoc);
+	      //	  tmpDoc.Print();
+	      //	  std::cin >> dummyStr;
+
+	      if(timelineRootHandle.FirstChild("errors").ToNode())
+		{
+		  std::cout << "ERROR FINDING TIMELINE\n";
+		  sleep(60*62);
+		  twitterObj.timelineUserGet(userIdStr, true);
+	      
+		  twitterObj.getLastWebResponse(tmpStr);
+
+		  timelineUserDoc.Parse(tmpStr.c_str());
+		  timelineRootHandle = TiXmlHandle(&timelineUserDoc);
+
+		}
+
+
+
+	      twitterObj.userGet(userIdStr, true);
+	  
+	      twitterObj.getLastWebResponse(tmpStr);
+	  
+	      std::cout << tmpStr;
+	      //	  std::cin >> dummyStr;
+
+	      TiXmlDocument userDoc;
+	      userDoc.Parse(tmpStr.c_str());
+      
+	      TiXmlHandle userRootHandle(&userDoc);
+	      userDoc.Print();
+	      // std::cin >> dummyStr;
+	      if(userRootHandle.FirstChild("errors").ToNode())
+		{
+		  std::cout << "ERROR FINDING USER\n";
+		  sleep(60*62);
+		  twitterObj.userGet(userIdStr, true);
+	      
+		  twitterObj.getLastWebResponse(tmpStr);
+
+		  userDoc.Parse(tmpStr.c_str());
+		  userRootHandle = TiXmlHandle(&userDoc);
+
+		}
+
+
+	      timelineRootHandle = timelineRootHandle.FirstChild("statuses");
+	      //	  std::cout << tmpStr;
+	      //	  std::cin >> tmpStr;  
+
+
+
+	      if(timelineRootHandle.FirstChild("status").ToNode())
+		{
+
+		  std::cout << "timeline checked\n";
+		  if( userCheck(createdAtStr, timelineRootHandle))
+		    {
+		      usersAddedCount++;
+		      std::cout << "Users Added has increased to " << usersAddedCount << "\n";
+		      //		  std::cin >> tmpStr;
+
 		      {
+
 			//			std::string userIdStr;
 
 			tmpUser = User(userRootHandle.FirstChild("user"));
@@ -744,10 +746,10 @@ int main()
 			tmpRoot = TiXmlHandle(&followersDoc);
 
 			/*			std::cout << "PRINTING FOLLOWERS. PRESS BUTTON TO CONTINUE: " ;
-			std::cin >> dummyStr;
-			std::cout << "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+						std::cin >> dummyStr;
+						std::cout << "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
 
-			std::cout << tmpStr << "\n";*/
+						std::cout << tmpStr << "\n";*/
 
 
 			if(tmpRoot.FirstChild("errors").ToNode())
@@ -803,13 +805,13 @@ int main()
 
 
 		      }  
-		    sqlite3_close(database);
+		      sqlite3_close(database);
 
 
       
 
 
-		  }
+		    }
 
 		}
 	    }	
