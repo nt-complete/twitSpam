@@ -37,10 +37,6 @@ bool userCheck(std::string createdAtStr, TiXmlHandle timelineRootHandle)
 
 
 
-
-
-
-
       ss << createdAtStr;
       ss >> weekday;
       ss >> month;
@@ -542,7 +538,8 @@ int main()
 
 	  twitterObj.timelineUserGet(userIdStr, true);
 	  twitterObj.getLastWebResponse(tmpStr);
-
+	  std::cout << tmpStr;
+	  //	  std::cin >> dummyStr;
 
 	  tmpDoc.Parse(tmpStr.c_str());
       
@@ -565,12 +562,12 @@ int main()
 	  twitterObj.getLastWebResponse(tmpStr);
 	  
 	  std::cout << tmpStr;
-	  std::cin >> dummyStr;
+	  //	  std::cin >> dummyStr;
 
 	  tmpDoc.Parse(tmpStr.c_str());
       
 	  TiXmlHandle userRootHandle(&tmpDoc);
-	  if(timelineRootHandle.FirstChild("errors").ToNode())
+	  if(userRootHandle.FirstChild("errors").ToNode())
 	    {
 	      std::cout << "ERROR FINDING USER\n";
 	      sleep(60*62);
@@ -603,21 +600,28 @@ int main()
 		{
 		  usersAddedCount++;
 		  std::cout << "Users Added has increased to " << usersAddedCount << "\n";
-		  std::cin >> tmpStr;
+		  //		  std::cin >> tmpStr;
 
 		  {
 		    sqlite3 *database;
 		    if(sqlite3_open("../twitSpam.db", &database) == SQLITE_OK)
 		      {
-			std::string userIdStr;
+			//			std::string userIdStr;
 
 			tmpUser = User(userRootHandle.FirstChild("user"));
+		
+			std::cout << tmpUser << "\n";
+			std::cin >> dummyStr;
 			addUserToDb(tmpUser, database);
+
+			std::cout << (*timelineRootHandle.ToNode());
+			std::cin >> dummyStr;
+
 
 			addTweetsToDb(timelineRootHandle, database);
 			std::cout << "Tweets have been added\n";
 
-
+			std::cin >> dummyStr;
 
 
 
