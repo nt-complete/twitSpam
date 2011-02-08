@@ -21,7 +21,7 @@ int main()
 	    {
 	      username = (char*)sqlite3_column_text(statement, 2);
 	      userId = (char*)sqlite3_column_text(statement, 0);
-	      std::cout << "http://www.twitter.com/" << username << "#!\n";
+	      std::cout << "http://www.twitter.com/" << username << "\n";
 	      std::cout << "Input (s)pam, (n)ot spam, (d)elete, or (q)uit: ";
 	      std::cin >> input;
 	      switch(input){
@@ -45,5 +45,70 @@ int main()
 	    }
 	  
 	}
+
+      for(std::set<std::string>::iterator it = spamSet.begin(); it != spamSet.end(); it++)
+	{
+	  stmtStr = "UPDATE [USERS] SET Spam = 1 WHERE userId = \"" + *it + "\"";
+	  std::cout << stmtStr << "\n";
+	  if(sqlite3_prepare_v2(database, stmtStr.c_str(), -1, &statement, 0) == SQLITE_OK)
+	    {
+	      sqlite3_step(statement);
+	      sqlite3_finalize(statement);
+	      std::cout << *it << " has been marked as spam.\n";
+	    }
+
+	}
+
+
+
+      for(std::set<std::string>::iterator it = notSpamSet.begin(); it != notSpamSet.end(); it++)
+	{
+	  stmtStr = "UPDATE [USERS] SET spam = 0 WHERE userId = \"" + *it + "\"";
+	  if(sqlite3_prepare_v2(database, stmtStr.c_str(), -1, &statement, 0) == SQLITE_OK)
+	    {
+	      sqlite3_step(statement);
+	      sqlite3_finalize(statement);
+	      std::cout << *it << " has been marked as not spam.\n";
+	    }
+
+	}
+
+      for(std::set<std::string>::iterator it = deleteSet.begin(); it != deleteSet.end(); it++)
+	{
+	  stmtStr = "DELETE FROM [USERS] WHERE userId = \"" + *it + "\"";
+	  if(sqlite3_prepare_v2(database, stmtStr.c_str(), -1, &statement, 0) == SQLITE_OK)
+	    {
+	      sqlite3_step(statement);
+	      sqlite3_finalize(statement);
+	      std::cout << *it << " has been deleted from Users.\n";
+	    }
+
+	  stmtStr = "DELETE FROM [Tweets] WHERE userId = \"" + *it + "\"";
+	  if(sqlite3_prepare_v2(database, stmtStr.c_str(), -1, &statement, 0) == SQLITE_OK)
+	    {
+	      sqlite3_step(statement);
+	      sqlite3_finalize(statement);
+	      std::cout << *it << " has been deleted from Tweets.\n";
+	    }
+
+	  stmtStr = "DELETE FROM [Friends] WHERE userId = \"" + *it + "\" OR friendId = \"" + *it + "\"";
+	  if(sqlite3_prepare_v2(database, stmtStr.c_str(), -1, &statement, 0) == SQLITE_OK)
+	    {
+	      sqlite3_step(statement);
+	      sqlite3_finalize(statement);
+	      std::cout << *it << " has been deleted from Friends.\n";
+	    }
+
+	}
+
+      sqlite3_close(database);
     }
+  else
+    {
+      std::cout << "Error opening database.\n";
+      return 0;
+
+    }
+
+
 }
