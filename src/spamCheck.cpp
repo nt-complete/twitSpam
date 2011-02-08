@@ -2,6 +2,39 @@
 #include <sqlite3.h>
 #include <set>
 
+void clearUsers(sqlite3 *database, std::set<std::string> *deleteSet)
+{
+  sqlite3_stmt *statement, *friendStatement;
+  std::string stmtStr = "SELECT * FROM [USERS]";
+  std::string friendStr, userId, username, dummyStr;
+  int i = 0;
+
+      if(sqlite3_prepare_v2(database, stmtStr.c_str(), -1, &statement, 0) == SQLITE_OK)
+	{
+	  while( sqlite3_step(statement) == SQLITE_ROW)
+	    {
+	      friendStr = "SELECT * FROM [FRIENDS] WHERE UserId = \"";
+	      userId = (char*)sqlite3_column_text(statement, 0);
+	      username = (char*)sqlite3_column_text(statement, 2);
+	      friendStr += userId + "\" OR FriendId = \"" + userId + "\"";
+	      
+	      std::cout << friendStr << "\n";
+	      //	      std::cin >> dummyStr;
+
+	      if(sqlite3_prepare_v2(database, friendStr.c_str(), -1, &friendStatement, 0) == SQLITE_OK)
+		{
+		  if(sqlite3_step(friendStatement) != SQLITE_ROW)
+		    {
+		      deleteSet->insert(username);
+		      std::cout << i++ << ". " << username << " will be deleted. UserId: " << userId << "\n";
+		      //      std::cin >> dummyStr;
+		    }
+		}
+	    }
+
+	}
+}
+
 
 int main()
 {
@@ -22,7 +55,7 @@ int main()
 	      username = (char*)sqlite3_column_text(statement, 2);
 	      userId = (char*)sqlite3_column_text(statement, 0);
 	      std::cout << "http://www.twitter.com/" << username << "\n";
-	      std::cout << "Input (s)pam, (n)ot spam, (d)elete, or (q)uit: ";
+	      std::cout << "Input (s)pam, (n)ot spam, (d)elete, (c)lear users, or (q)uit: ";
 	      std::cin >> input;
 	      switch(input){
 	      case 's':
@@ -36,6 +69,12 @@ int main()
 	      case 'd':
 		std::cout << "Added to delete set!\n";
 		deleteSet.insert(userId);
+		break;
+	      case 'c':
+		std::cout << "Clearing users who are not in the friends database.\n";
+		clearUsers(database, &deleteSet);
+		return 0;
+		input = 'q';
 		break;
 	      case 'q':
 		break;
