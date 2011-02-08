@@ -127,6 +127,20 @@ ptTwitSpam/fast:
 .PHONY : ptTwitSpam/fast
 
 # Convenience name for target.
+src/CMakeFiles/spamCheck.dir/rule:
+	cd /home/nick/twitSpam && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/spamCheck.dir/rule
+.PHONY : src/CMakeFiles/spamCheck.dir/rule
+
+# Convenience name for target.
+spamCheck: src/CMakeFiles/spamCheck.dir/rule
+.PHONY : spamCheck
+
+# fast build rule for target.
+spamCheck/fast:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/spamCheck.dir/build.make src/CMakeFiles/spamCheck.dir/build
+.PHONY : spamCheck/fast
+
+# Convenience name for target.
 src/CMakeFiles/twitSpam.dir/rule:
 	cd /home/nick/twitSpam && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/twitSpam.dir/rule
 .PHONY : src/CMakeFiles/twitSpam.dir/rule
@@ -183,6 +197,21 @@ ptTwitSpam.i:
 ptTwitSpam.s:
 	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/ptTwitSpam.dir/build.make src/CMakeFiles/ptTwitSpam.dir/ptTwitSpam.s
 .PHONY : ptTwitSpam.s
+
+# target to build an object file
+spamCheck.o:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/spamCheck.dir/build.make src/CMakeFiles/spamCheck.dir/spamCheck.o
+.PHONY : spamCheck.o
+
+# target to preprocess a source file
+spamCheck.i:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/spamCheck.dir/build.make src/CMakeFiles/spamCheck.dir/spamCheck.i
+.PHONY : spamCheck.i
+
+# target to generate assembly for a file
+spamCheck.s:
+	cd /home/nick/twitSpam && $(MAKE) -f src/CMakeFiles/spamCheck.dir/build.make src/CMakeFiles/spamCheck.dir/spamCheck.s
+.PHONY : spamCheck.s
 
 # target to build an object file
 tinystr.o:
@@ -344,6 +373,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... ptTwitSpam"
 	@echo "... rebuild_cache"
+	@echo "... spamCheck"
 	@echo "... twitSpam"
 	@echo "... userData"
 	@echo "... curlURL.o"
@@ -352,6 +382,9 @@ help:
 	@echo "... ptTwitSpam.o"
 	@echo "... ptTwitSpam.i"
 	@echo "... ptTwitSpam.s"
+	@echo "... spamCheck.o"
+	@echo "... spamCheck.i"
+	@echo "... spamCheck.s"
 	@echo "... tinystr.o"
 	@echo "... tinystr.i"
 	@echo "... tinystr.s"

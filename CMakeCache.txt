@@ -182,6 +182,12 @@ ptTwitSpam_BINARY_DIR:STATIC=/home/nick/twitSpam
 //Value Computed by CMake
 ptTwitSpam_SOURCE_DIR:STATIC=/home/nick/twitSpam
 
+//Value Computed by CMake
+spamCheck_BINARY_DIR:STATIC=/home/nick/twitSpam
+
+//Value Computed by CMake
+spamCheck_SOURCE_DIR:STATIC=/home/nick/twitSpam
+
 //The directory containing a CMake configuration file for sqlite3.
 sqlite3_DIR:PATH=sqlite3_DIR-NOTFOUND
 

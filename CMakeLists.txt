@@ -4,6 +4,7 @@ project(TwitSpam)
 project(curlURL)
 project(userData)
 project(ptTwitSpam)
+project(spamCheck)
 include_directories(include)
 add_subdirectory(src)
 

@@ -15,12 +15,29 @@
 #include <boost/date_time/gregorian/gregorian.hpp>
 #include <sqlite3.h>
 #include <locale>
+#include <ctype.h>
 #include "user.h"
 
 
 twitCurl twitterObj;
 
 //#define DEBUG 1
+
+
+bool statusCheck(TiXmlHandle rootHandle)
+{
+  std::string status;
+  status = rootHandle.FirstChild("text").ToElement()->GetText();
+
+  for(int i = 0; i < status.size(); i++)
+    {
+      if(!isascii(status[i]))
+	return false;
+    }
+
+
+  return true;
+}
 
 
 bool userCheck(std::string createdAtStr, TiXmlHandle timelineRootHandle, TiXmlHandle userRootHandle)
@@ -321,6 +338,12 @@ void addUserToDb(User tmpUser, sqlite3 *database)
   std::string stmtStr;
   std::stringstream ss;
   std::string tmpStr;
+  boost::posix_time::ptime currentTime;
+
+  currentTime = boost::posix_time::second_clock::local_time();
+
+
+
 
   stmtStr = "SELECT * FROM [USERS] WHERE userId = ";
   ss << tmpUser.m_id;
@@ -338,7 +361,7 @@ void addUserToDb(User tmpUser, sqlite3 *database)
       else
 	{
 
-	  stmtStr = "INSERT INTO [Users] (userId, name, screenName, friendsCount, followersCount) VALUES (" ;
+	  stmtStr = "INSERT INTO [Users] (userId, name, screenName, friendsCount, followersCount, dateAdded) VALUES (" ;
 
 	  ss << tmpUser.m_id;
 
@@ -351,9 +374,16 @@ void addUserToDb(User tmpUser, sqlite3 *database)
 	  ss.clear();
 	  ss << tmpUser.m_followersCount;
 	  ss >> tmpStr;
-	  stmtStr += tmpStr + ")";
+	  stmtStr += tmpStr + ", ";
+	  ss.clear();
+	  ss << currentTime;
+	  ss >> tmpStr;
 
-	  //	  std::cout << stmtStr << "\n";
+	  stmtStr += "\"" + tmpStr;
+	  ss >> tmpStr;
+	  stmtStr += " " + tmpStr + "\")";
+
+	  std::cout << stmtStr << "\n";
 
 	  if(sqlite3_prepare_v2(database, stmtStr.c_str(), -1, &statement, 0) == SQLITE_OK)
 	    {
@@ -507,12 +537,17 @@ int main()
       
 	  twitterObj.getLastWebResponse(tmpStr);
 
-
+	
 	  TiXmlDocument publicTimelineDoc;
 	  publicTimelineDoc.Parse(tmpStr.c_str());
       
 	  TiXmlHandle tmpRoot(&publicTimelineDoc);
-
+	  outStream.open("xmlTimelineUserGet.txt");
+	  if(outStream.is_open())
+	    {
+	      outStream << tmpStr;
+	      outStream.close();
+	    }
 
 
 	  if(tmpRoot.FirstChild("errors").ToNode())
@@ -535,11 +570,15 @@ int main()
 	  int i = 0;
 
 	  do{
-	    usersSet.insert(tmpRoot.Child("status",i).FirstChild("user").FirstChild("id").ToElement()->GetText());
-	    createdAtStr = tmpRoot.Child("status",i).FirstChild("created_at").ToElement()->GetText();
+
+	    if(statusCheck(tmpRoot.Child("status",i)))
+	      {
+		usersSet.insert(tmpRoot.Child("status",i).FirstChild("user").FirstChild("id").ToElement()->GetText());
+		createdAtStr = tmpRoot.Child("status",i).FirstChild("created_at").ToElement()->GetText();
+	      }
 	    i++;
 	  }while(tmpRoot.Child("status",i).ToNode());
-
+	  
 	  std::cout << "Count: " << i << "\n";
 
 	  int count = 0;
