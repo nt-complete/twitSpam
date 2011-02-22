@@ -9,6 +9,10 @@ void addHyperlink(std::string tmpStr, std::string* tweetStr)
   int i = 0;
   while(tmpStr.at(i) != '/')
     {
+      if(tmpStr.at(i) == ':')
+	{
+	  tmpStr.replace(i, 1, "_");
+	}
       i++;
     }
   i += 2;
@@ -22,9 +26,16 @@ void addHyperlink(std::string tmpStr, std::string* tweetStr)
 
   while(i < tmpStr.size())
     {
+
+
       while(tmpStr.at(i) != '/' && tmpStr.at(i) != '.' && i < tmpStr.size() - 1)
 	{
+	  if(tmpStr.at(i) == ':')
+	    {
+	      tmpStr.replace(i, 1, "_");
+	    }
 	  i++;
+
 	}
   
       *tweetStr += " " + tmpStr.substr(0, i);
@@ -32,6 +43,8 @@ void addHyperlink(std::string tmpStr, std::string* tweetStr)
       i++;
     }
     
+  *tweetStr += tmpStr.at(tmpStr.size()-1);
+
 }
 
 
@@ -54,6 +67,7 @@ int main(int argv, char** argc)
 
   std::set<std::string> tweetIdSet;
   int retweet = 0;
+  int retweetCount = 0;
 
   std::string outputName = argc[1];
   outputName += ".output";
@@ -101,7 +115,7 @@ int main(int argv, char** argc)
 		  while(strcmp(tmpStr.c_str(), "*|*|*") != 0 && !inStream.eof())
 		    {
 
-		      if(strncmp(tmpStr.c_str(), "http", 4) == 0)
+		      if(strncmp(tmpStr.c_str(), "http://", 7) == 0)
 			{
 			  addHyperlink(tmpStr, &tweetStr);
 			}
@@ -146,6 +160,7 @@ int main(int argv, char** argc)
 			      if(strncmp(tmpStr.c_str(), "@", 1) == 0)
 				{
 				  retweet = 1;
+				  retweetCount++;
 				}
 			  
 			    }
@@ -168,6 +183,8 @@ int main(int argv, char** argc)
 		}
 
 	    }
+
+	  std::cout << "Retweet count: " << retweetCount << "\n";
 
 	  outStream.close();
 	  inStream.close();
