@@ -131,6 +131,11 @@ int main(int argv, char** argc)
 				  //std::cout << "1. BREAKING BECAUSE OF NON-ASCII CHARACTERS\n";
 				  break;
 				}
+
+			      if(tmpStr.at(i) == ':')
+				{
+				  tmpStr.replace(i, 1, "_");
+				}
 	
 			      if(!isalnum(tmpStr.at(i))) // checks for punctuation and replaces them with spaces
 				{
@@ -174,7 +179,7 @@ int main(int argv, char** argc)
 		  if(tweetStr.size() > 0)
 		    {
 		      std::cout << "---" << retweet << "--" << tweetStr << "---\n";
-		      outStream << retweet << " |features " << tweetStr << "\n";
+		      outStream << retweet << " |tweetWords " << tweetStr << "\n";
 		    }
 		  else
 		    {
