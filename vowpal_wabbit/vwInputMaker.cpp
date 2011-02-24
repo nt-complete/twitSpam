@@ -112,6 +112,8 @@ int main(int argv, char** argc)
 		  tweetStr = "";
 		  retweet = 0;
 		  
+		  
+
 		  while(strcmp(tmpStr.c_str(), "*|*|*") != 0 && !inStream.eof())
 		    {
 
@@ -162,12 +164,19 @@ int main(int argv, char** argc)
 			  if(strcmp(tmpStr.c_str(), "rt") == 0)
 			    {
 			      inStream >> tmpStr;
-			      if(strncmp(tmpStr.c_str(), "@", 1) == 0)
+			      for(int i = 0; i < tmpStr.size(); i++)
 				{
-				  retweet = 1;
-				  retweetCount++;
+				  if(tmpStr.at(i) == ':')
+				    {
+				      tmpStr.replace(i, 1, "_");
+				    }
 				}
-			  
+			      if(strncmp(tmpStr.c_str(), "@", 1) == 0)
+				    {
+				      retweet = 1;
+				      retweetCount++;
+				    }
+				  
 			    }
 			  tweetStr += tmpStr + " ";
 			}
