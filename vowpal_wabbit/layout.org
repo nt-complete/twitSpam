@@ -1,0 +1,23 @@
+
+* RUNNING VW
+ vw fixed_tweet_data.txt.output -f model.out
+ vw fixed_tweet_data.txt.output -i model.out -t -p results.txt
+ vw fixed_tweet_data.txt.output -i model.out -t -r unnormalized_results.txt
+
+* PRECISION 
+- (true positive) / (predicted positive)
+ - ((true +) & (Pred +)) / (Pred +)
+   
+* RECALL
+ - (true positive) / (total positive)
+ - ((true +) & (Pred +)) / (true +)
+   
+* TASKS
+** TODO Find threshold s.t.
+*** If pred > T, 10% chance
+*** If pred < T, 1% chance
+** TODO Play w/ params
+** TODO Play with size of training set
+** TODO Cut out different types of features
+** TODO Label spams
+** TODO Repeat previous for spam prediction

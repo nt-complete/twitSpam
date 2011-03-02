@@ -1,0 +1,101 @@
+#include <stdlib.h>
+#include <iostream>
+#include <fstream>
+#include <set>
+
+
+int main()
+{
+  std::ifstream resultStream;
+  std::ifstream inputStream;
+
+  std::ofstream outputStream;
+  std::string result, inputStr, tmpStr;
+  double truePos, posGuess, resultDbl, bothCount;
+  int bothTrue;
+
+
+  resultStream.open("results.txt");
+  outputStream.open("resultsToPlot.txt");
+  if(!outputStream.is_open())
+    {
+      std::cout << "Problem opening output file. Exiting...\n";
+      return 1;
+    }
+
+  outputStream << "# Accuracy\n";
+  outputStream << "# Certainty\n";
+
+  if(resultStream.is_open())
+    {
+      
+
+      inputStream.open("fixed_tweet_data.txt.output");
+      if(inputStream.is_open())
+	{
+	  for(double perc = 0.01; perc < 1.0; perc += 0.01)
+	    {
+
+	      truePos = posGuess = 0.0;
+	      bothTrue = bothCount = 0;
+
+	      while(!inputStream.eof() && !resultStream.eof())
+		{
+		  bothTrue = 0;
+		  resultStream >> result;
+		  getline(inputStream, inputStr);
+		  //		  std::cout << inputStr << "\n";
+		  //		  std::cin >> tmpStr;
+
+
+		  resultDbl = atof(result.c_str());
+		  if(resultDbl >= perc)
+		    {
+		      posGuess++;
+		      bothTrue++;
+		    }
+
+		  if(inputStr.at(0) == '1')
+		    {
+		      truePos++;
+		      bothTrue++;
+		    }
+
+		  if(bothTrue == 2)
+		    bothCount++;
+
+
+		}
+	      std::cout << perc << ": " << truePos << "/" << posGuess << " = " << (truePos/posGuess) << " \t\tBOTH: " << bothCount << "/" << posGuess << " = " << (bothCount/posGuess)<< "\n";
+	      
+	      double accuracy = (bothCount/posGuess);
+	      /*	      if(accuracy > .5)
+		{
+		  std::cout << perc << "\n";
+		  }*/
+
+
+	      outputStream << 100*perc << "\t" << 100*accuracy << "\n";
+	      
+
+
+	      inputStream.clear();
+	      inputStream.seekg(0);
+
+	      resultStream.clear();
+	      resultStream.seekg(0);
+
+	    }
+	}
+
+      inputStream.close();
+      resultStream.close();
+      outputStream.close();
+
+    }
+  else
+    {
+      std::cout << "Problem opening results.txt.\n";
+      return 1;
+    }
+}
