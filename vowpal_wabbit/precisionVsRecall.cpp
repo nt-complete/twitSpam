@@ -15,7 +15,7 @@ int main()
   double precision, recall;
   //  double perc = 21.6874;
   int bothTrue;
-
+  int i = 1;
 
   resultStream.open("results.txt");
   outputStream.open("resultsToPlot.txt");
@@ -49,14 +49,15 @@ int main()
 		  //		  std::cout << inputStr << "\n";
 		  //		  std::cin >> tmpStr;
 
-
+		  /*		  if(inputStr.size() == 0)
+				  break; */
 		  resultDbl = atof(result.c_str());
 		  if(resultDbl >= perc)
 		    {
 		      posGuess++;
 		      bothTrue++;
 		    }
-
+		  //		  std::cout << "_" << inputStr << "_\n";
 		  if(inputStr.at(0) == '1')
 		    {
 		      truePos++;
