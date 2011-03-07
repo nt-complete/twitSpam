@@ -1,5 +1,4 @@
 #include <iostream>
-#include <iostream> 
 #include <fstream>
 #include <map>
 #include <sstream>
@@ -15,7 +14,7 @@ int main(int argc, char** argv)
   std::string tweetLine, userIdStr, tweetStr, tmpStr;
   long userId;
   std::stringstream sstream;
-  std::map<long, std::string> tweetMap;
+  std::multimap<long, std::string> tweetMap;
   std::vector<long> tweetVector;
   bool usersBool;
 
@@ -80,7 +79,9 @@ int main(int argc, char** argv)
 	      
 		}
 	    }
-	  tweetMap[userId] = tweetStr;
+	  tweetMap.insert(std::pair<long, std::string>(userId, tweetStr));
+
+
 	  tweetVector.push_back(userId);
 
 
@@ -91,8 +92,13 @@ int main(int argc, char** argv)
 
       for(std::vector<long>::iterator it = tweetVector.begin(); it != tweetVector.end(); it++)
 	{
-	  std::cout << *it << " |||" << tweetMap[*it] << "\n";
-	  outStream << *it << " |||" << tweetMap[*it] << "\n";
+	  std::map<long, std::string>::iterator iter = tweetMap.find(*it);
+	  if( iter != tweetMap.end())
+	    {
+	      std::cout << (*iter).first << " |||" << (*iter).second << "\n";
+	      outStream << (*iter).first << " |||" << (*iter).second << "\n";
+	      tweetMap.erase(iter);
+	    }
 	}
 
 
