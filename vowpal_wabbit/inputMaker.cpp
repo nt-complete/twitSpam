@@ -45,14 +45,14 @@ void addHyperlink(std::string tmpStr, std::string* tweetStr)
     }
     
   *tweetStr += tmpStr.at(tmpStr.size()-1);
-
+  *tweetStr += " ";
 }
 
 
 
 int main(int argv, char** argc)
 {
-  std::string tmpStr, tweetId, tweetStr;
+  std::string tmpStr, tweetId, tweetStr, wordStr;
   std::stringstream strStream;
   bool addBool;
 
@@ -87,7 +87,10 @@ int main(int argv, char** argc)
 	{
 	  while(!inStream.eof())
 	    {
+	      inStream >> tmpStr; // UserId
+	      inStream >> tmpStr; // |||
 	      inStream >> tweetId; // tweetId
+
 
 	      //     std::cout << "tweetId:: " << tweetId << "\n";
 	      
@@ -95,19 +98,6 @@ int main(int argv, char** argc)
 		{
 		  tweetIdSet.insert(tweetId);
 		  addBool = true;
-		  
-		  inStream >> tmpStr; // |||
-		  inStream >> tmpStr; // UserId
-		  inStream >> tmpStr; // |||
-		  inStream >> tmpStr; // receiverUserId
-		  inStream >> tmpStr; // |||
-		  inStream >> tmpStr; // geo info
-		  inStream >> tmpStr; // |||
-		  do{
-		    inStream >> tmpStr; // source
-		  }while(strcmp(tmpStr.c_str(), "|||") != 0);
-
-		  inStream >> tmpStr; // tweet date (Epoch Time)
 		  inStream >> tmpStr; // |||
 		  tmpStr = "";
 
@@ -119,95 +109,97 @@ int main(int argv, char** argc)
 
 		  while(strcmp(tmpStr.c_str(), "*|*|*") != 0 && !inStream.eof())
 		    {
+		      strStream.clear();
+		      strStream << tmpStr;
 
-		      for(int i = 0; i < tmpStr.size(); i++)
+		      while(strStream >> wordStr)
 			{
-			  if(!isascii(tmpStr.at(i))) // checks for non-ASCII characters
-			    {
-			      addBool = false;
-			      tmpStr = "";
-			      //std::cout << "1. BREAKING BECAUSE OF NON-ASCII CHARACTERS\n";
-			      break;
-			    }
 
-			  if(tmpStr.at(i) == ':')
+
+			  if(strncmp(wordStr.c_str(), "http://", 7) == 0)
 			    {
-			      tmpStr.replace(i, 1, "_");
+			      addHyperlink(wordStr, &tweetStr);
 			    }
+			  else 
+			    {
+
+			      for(int i = 0; i < wordStr.size(); i++)
+				{
+				  if(!isascii(wordStr.at(i))) // checks for non-ASCII characters
+				    {
+				      addBool = false;
+				      wordStr = "";
+				      //std::cout << "1. BREAKING BECAUSE OF NON-ASCII CHARACTERS\n";
+				      break;
+				    }
+
+				  if(wordStr.at(i) == ':')
+				    {
+				      wordStr.replace(i, 1, "_");
+				    }
 	
-			  if(!isalnum(tmpStr.at(i)) && tmpStr.at(i) != '@') // checks for punctuation and replaces them with spaces
-			    {
-			      tmpStr.replace(i,1, " ");
+				  if(!isalnum(wordStr.at(i)) && wordStr.at(i) != '@') // checks for punctuation and replaces them with spaces
+				    {
+				      wordStr.replace(i,1, " ");
 			    
-			      //  tmpStr.at(i) = " ";
-			    }
+				      //  wordStr.at(i) = " ";
+				    }
 			
-			  tmpStr.at(i) = tolower(tmpStr.at(i)); // makes all characters lowercase
+				  wordStr.at(i) = tolower(wordStr.at(i)); // makes all characters lowercase
+				}
+			    }
+			}
+
+		      if(!addBool)
+			{
+			  while(strcmp(tmpStr.c_str(), "*|*|*") != 0)
+			    {
+			      inStream >> tmpStr; // tweet
+			    }
+			  tweetStr = "";
+			  //  std::cout << "2. BREAKING BECAUSE OF NON-ASCII CHARACTERS\n";
+			  break;
 			}
 
 
 
-			  if(!addBool)
-			    {
-			      while(strcmp(tmpStr.c_str(), "*|*|*") != 0)
-				{
-				  inStream >> tmpStr; // tweet
-				}
-			      tweetStr = "";
-			      //  std::cout << "2. BREAKING BECAUSE OF NON-ASCII CHARACTERS\n";
-			      break;
-			    }
-
-
-
-			  strStream.clear();
-			  strStream << tmpStr;
+		      strStream.clear();
+		      strStream << tmpStr;
 			  
 			  
 			  
-			  while(strStream >> tmpStr)
+		      while(strStream >> tmpStr)
+			{
+
+
+			  if(strcmp(tmpStr.c_str(), "rt") == 0)
 			    {
 
+			      strStream >> tmpStr;
 
-
-			      if(strncmp(tmpStr.c_str(), "http://", 7) == 0)
-				{
-				  addHyperlink(tmpStr, &tweetStr);
-				}
-			      else 
-				{
-			  
-		    
-
-
-				  if(strcmp(tmpStr.c_str(), "rt") == 0)
-				    {
-
-				      strStream >> tmpStr;
-
-				      /*	      for(int i = 0; i < tmpStr.size(); i++)
-					{
-					  if(tmpStr.at(i) == ':')
-					    {
+			      /*	      for(int i = 0; i < tmpStr.size(); i++)
+					      {
+					      if(tmpStr.at(i) == ':')
+					      {
 					      tmpStr.replace(i, 1, "_");
-					    }
-					    } */
-				      if(strncmp(tmpStr.c_str(), "@", 1) == 0)
-					{
-					  retweet = 1;
-					  retweetCount++;
-					}
-				  
-				    }
-
-				  if(strcmp(tmpStr.c_str(), "rt") != 0)
-				    {
-				      tweetStr += tmpStr + " ";
-				    }
+					      }
+					      } */
+			      if(strncmp(tmpStr.c_str(), "@", 1) == 0)
+				{
+				  retweet = 1;
+				  retweetCount++;
 				}
+				  
 			    }
-			  getline(inStream, tmpStr);  //tweet
-			  //		      inStream >> tmpStr; 
+
+			  if(strncmp(tmpStr.c_str(), "http://", 7) != 0)
+			    {
+			      tweetStr += tmpStr + " ";
+			    }
+			}
+
+		      getline(inStream, tmpStr);  //tweet
+		      //		      inStream >> tmpStr; 
 		    }
 
 

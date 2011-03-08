@@ -2,14 +2,17 @@
 #include <fstream>
 #include <map>
 #include <vector>
+#include <sstream>
+#include <stdlib.h>
+
 
 int main()
 {
   std::ifstream userFile, tweetFile;
   std::ofstream combinedFile;
   std::vector<long> userIds, tweetIds;
-  std::string tmpStr;
-  
+  std::string tmpStr, tweetStr, userStr;
+  std::stringstream strStream;
   std::multimap<long, std::string> userMap, tweetMap;
 
 
@@ -20,7 +23,20 @@ int main()
 
   if(userFile.is_open() && tweetFile.is_open() && combinedFile.is_open())
     {
-      
+      while(getline(userFile,tmpStr))
+	{
+	  strStream.clear();
+	  strStream << tmpStr;
+	  strStream >> tmpStr;
+	  userIds.push_back(atol(tmpStr.c_str()));
+	  while(strStream >> tmpStr)
+	    {
+	      userStr += " " + tmpStr;
+	    }
+
+	  
+
+	}
 
 
 
