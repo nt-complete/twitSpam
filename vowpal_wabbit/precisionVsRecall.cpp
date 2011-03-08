@@ -17,7 +17,7 @@ int main()
   int bothTrue;
   int i = 1;
 
-  resultStream.open("results.txt");
+  resultStream.open("noUsersResults.txt");
   outputStream.open("resultsToPlot.txt");
   if(!outputStream.is_open())
     {
@@ -32,7 +32,7 @@ int main()
     {
       
 
-      inputStream.open("fixed_tweet_data.txt.output");
+      inputStream.open("smaller_tweet_data.txt.output");
       if(inputStream.is_open())
 	{
 	  for(double perc = 0.01; perc < 1.0; perc += 0.01)
@@ -51,6 +51,8 @@ int main()
 
 		  /*		  if(inputStr.size() == 0)
 				  break; */
+		  if(inputStr.size() <= 0)
+		    break;
 		  resultDbl = atof(result.c_str());
 		  if(resultDbl >= perc)
 		    {

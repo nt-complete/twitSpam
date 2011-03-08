@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <set>
+#include <stdlib.h>
 #include <string.h>
 
 
@@ -54,8 +55,8 @@ int main(int argv, char** argc)
 {
   std::string tmpStr, tweetId, tweetStr, wordStr;
   std::stringstream strStream;
-  bool addBool;
-
+  bool addBool, rtname, retweetCounted;
+  
   /*tmpStr = "http://ping.fm/060gb";
 
   
@@ -88,67 +89,101 @@ int main(int argv, char** argc)
 	  while(!inStream.eof())
 	    {
 	      inStream >> tmpStr; // UserId
+	     
 	      inStream >> tmpStr; // |||
+	     
+
 	      inStream >> tweetId; // tweetId
 
 
-	      //     std::cout << "tweetId:: " << tweetId << "\n";
-	      
+	      //	      std::cout << "tweetId:: " << tweetId << "\n";
+
+
+	      tweetStr = "";	      
+
+		  
 	      if(tweetIdSet.find(tweetId) == tweetIdSet.end())
 		{
+	
+
 		  tweetIdSet.insert(tweetId);
 		  addBool = true;
 		  inStream >> tmpStr; // |||
 		  tmpStr = "";
 
-		  tweetStr = "";
+
 		  retweet = 0;
 		  
-
-
+		  retweetCounted = false;
+		  rtname = false;
 
 		  while(strcmp(tmpStr.c_str(), "*|*|*") != 0 && !inStream.eof())
 		    {
-		      strStream.clear();
-		      strStream << tmpStr;
-
-		      while(strStream >> wordStr)
+	
+		      if(strncmp(tmpStr.c_str(), "http://", 7) == 0)
+			{
+			  addHyperlink(tmpStr, &tweetStr);
+			}
+		      else 
 			{
 
-
-			  if(strncmp(wordStr.c_str(), "http://", 7) == 0)
+			  for(int i = 0; i < tmpStr.size(); i++)
 			    {
-			      addHyperlink(wordStr, &tweetStr);
-			    }
-			  else 
-			    {
-
-			      for(int i = 0; i < wordStr.size(); i++)
+			      if(!isascii(tmpStr.at(i))) // checks for non-ASCII characters
 				{
-				  if(!isascii(wordStr.at(i))) // checks for non-ASCII characters
-				    {
-				      addBool = false;
-				      wordStr = "";
-				      //std::cout << "1. BREAKING BECAUSE OF NON-ASCII CHARACTERS\n";
-				      break;
-				    }
-
-				  if(wordStr.at(i) == ':')
-				    {
-				      wordStr.replace(i, 1, "_");
-				    }
-	
-				  if(!isalnum(wordStr.at(i)) && wordStr.at(i) != '@') // checks for punctuation and replaces them with spaces
-				    {
-				      wordStr.replace(i,1, " ");
-			    
-				      //  wordStr.at(i) = " ";
-				    }
-			
-				  wordStr.at(i) = tolower(wordStr.at(i)); // makes all characters lowercase
+				  addBool = false;
+				  tmpStr = "";
+				  //std::cout << "BREAKING BECAUSE OF NON-ASCII CHARACTERS\n";
+				  break;
 				}
+
+			      if(tmpStr.at(i) == ':')
+				{
+				  tmpStr.replace(i, 1, "_");
+				}
+	
+			      if(!isalnum(tmpStr.at(i)) ) //&& tmpStr.at(i) != '@') // checks for punctuation and replaces them with spaces
+				{
+				  tmpStr.replace(i,1, " ");
+			    
+				  //  tmpStr.at(i) = " ";
+				}
+			
+			      tmpStr.at(i) = tolower(tmpStr.at(i)); // makes all characters lowercase
 			    }
 			}
+
+		      if(strcmp(tmpStr.c_str(), "rt") == 0 && !retweetCounted)
+			{
+
+			  rtname = true;
+			  inStream >> wordStr;
+
+
+			  if(strncmp(wordStr.c_str(), "@", 1) == 0)
+			    {
+			      retweet = 1;
+			      retweetCount++;
+			     
+			      retweetCounted = true; // This is to check if a string contains RT multiple times that that doesn't count as multiple retweets
+			      tmpStr = wordStr;
+			    }
+			  else
+			    {
+			      tweetStr += tmpStr + " ";
+			      tmpStr = wordStr;
+			    }
+				  
+			}
+
+		      if(strncmp(tmpStr.c_str(), "http://", 7) != 0 && !rtname)
+			{
+			  tweetStr += tmpStr + " ";
+			}
+
+			
+
+
 
 		      if(!addBool)
 			{
@@ -163,44 +198,16 @@ int main(int argv, char** argc)
 
 
 
-		      strStream.clear();
-		      strStream << tmpStr;
-			  
-			  
-			  
-		      while(strStream >> tmpStr)
+
+		      //		      getline(inStream, tmpStr);  //tweet
+		     
+		      if(!rtname)
 			{
-
-
-			  if(strcmp(tmpStr.c_str(), "rt") == 0)
-			    {
-
-			      strStream >> tmpStr;
-
-			      /*	      for(int i = 0; i < tmpStr.size(); i++)
-					      {
-					      if(tmpStr.at(i) == ':')
-					      {
-					      tmpStr.replace(i, 1, "_");
-					      }
-					      } */
-			      if(strncmp(tmpStr.c_str(), "@", 1) == 0)
-				{
-				  retweet = 1;
-				  retweetCount++;
-				}
-				  
-			    }
-
-			  if(strncmp(tmpStr.c_str(), "http://", 7) != 0)
-			    {
-			      tweetStr += tmpStr + " ";
-			    }
-			}
-
-		      getline(inStream, tmpStr);  //tweet
-		      //		      inStream >> tmpStr; 
+			  inStream >> tmpStr; 
+			} 
+		      rtname = false;
 		    }
+
 
 
 		  if(tweetStr.size() > 0)
@@ -212,6 +219,14 @@ int main(int argv, char** argc)
 		    {
 		      //  std::cout << "***" << retweet << "--" << tweetStr << "---\n";
 		    }
+		}
+	      else
+		{
+		  while(strcmp(tmpStr.c_str(), "*|*|*") != 0 && !inStream.eof())
+		    {
+		      inStream >> tmpStr;
+		    }
+
 		}
 
 	    }

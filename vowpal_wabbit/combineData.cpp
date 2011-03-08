@@ -3,6 +3,7 @@
 #include <map>
 #include <vector>
 #include <sstream>
+#include <algorithm>
 #include <stdlib.h>
 
 
@@ -10,14 +11,14 @@ int main()
 {
   std::ifstream userFile, tweetFile;
   std::ofstream combinedFile;
-  std::vector<long> userIds, tweetIds;
-  std::string tmpStr, tweetStr, userStr;
+  std::vector<long> userIdVector, tweetIdVector;
+  std::string tmpStr, tweetStr, userStr, combinedStr;
   std::stringstream strStream;
   std::multimap<long, std::string> userMap, tweetMap;
+  long userId;
 
-
-  userFile.open("sorted_user_data.txt");
-  tweetFile.open("sorted_tweet_data.txt");
+  userFile.open("formatted_user_data.txt");
+  tweetFile.open("smaller_tweet_data.txt");
   combinedFile.open("combined_tweet_info.txt");
 
 
@@ -28,17 +29,51 @@ int main()
 	  strStream.clear();
 	  strStream << tmpStr;
 	  strStream >> tmpStr;
-	  userIds.push_back(atol(tmpStr.c_str()));
-	  while(strStream >> tmpStr)
+	  userId = atol(tmpStr.c_str());
+	  userIdVector.push_back(userId);
+	  userStr = "";
+  while(strStream >> tmpStr)
 	    {
 	      userStr += " " + tmpStr;
 	    }
-
-	  
-
+	  userMap.insert(std::pair<long, std::string>(userId, userStr));
 	}
 
 
+      while(getline(tweetFile,tmpStr))
+	{
+	  strStream.clear();
+	  strStream << tmpStr;
+	  
+	  strStream >> tmpStr;
+
+	  userId = atol(tmpStr.c_str());
+	  tweetStr = "";
+	  while(strStream >> tmpStr)
+	    {
+	      tweetStr += " " + tmpStr;
+	    }
+	
+	  tweetMap.insert(std::pair<long, std::string>(userId, tweetStr));
+	}
+      
+      for(std::map<long, std::string>::iterator userIter = userMap.begin(); userIter != userMap.end(); userIter++)
+	{
+	  std::map<long, std::string>::iterator tweetIter = tweetMap.find((*userIter).first);
+
+	  if( tweetIter != tweetMap.end())
+	    {
+	      strStream.clear();
+	      userId = (*userIter).first;
+	      strStream << userId;
+	      strStream >> combinedStr;
+	      combinedStr += (*userIter).second + (*tweetIter).second;
+	      //	      std::cout << combinedStr << "\n";
+	      combinedFile << combinedStr << "\n";
+	      combinedFile << "*|*|*\n";
+	    }
+
+	}
 
     }
   else
