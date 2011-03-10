@@ -5,7 +5,7 @@
 #include <sstream>
 #include <algorithm>
 #include <stdlib.h>
-
+#include <string.h>
 
 
 int main()
@@ -13,14 +13,14 @@ int main()
   std::ifstream userFile, tweetFile;
   std::ofstream combinedFile;
   std::vector<long> userIdVector, tweetIdVector;
-  std::string tmpStr, tweetStr, userStr, combinedStr;
+  std::string tmpStr, tweetStr, userStr, combinedStr, lineStr;
   std::stringstream strStream;
   std::multimap<long, std::string> userMap, tweetMap;
   long userId;
 
 
-  userFile.open("formatted_user_data.txt");
-  tweetFile.open("formatted_tweet_data.txt");
+  userFile.open("temp_user_data.txt");
+  tweetFile.open("temp_tweet_data.txt");
   combinedFile.open("combined_tweet_info.txt");
 
 
@@ -35,7 +35,7 @@ int main()
 	  userId = atol(tmpStr.c_str());
 	  userIdVector.push_back(userId);
 	  userStr = "";
-  while(strStream >> tmpStr)
+	  while(strStream >> tmpStr)
 	    {
 	      userStr += " " + tmpStr;
 	    }
@@ -43,23 +43,50 @@ int main()
 	}
 
 
-      while(getline(tweetFile,tmpStr))
+      while(!tweetFile.eof())
 	{
+	  getline(tweetFile,lineStr);
+	  std::cout << lineStr << "\n";
 	  strStream.clear();
-	  strStream << tmpStr;
+	  strStream << lineStr;
 	  
 	  strStream >> tmpStr;
 
 	  userId = atol(tmpStr.c_str());
+
+
+	  //	  std::cout << lineStr << "\n";
 	  tweetStr = "";
 	  while(strStream >> tmpStr)
 	    {
 	      tweetStr += " " + tmpStr;
 	    }
-	
+
+
 	  tweetMap.insert(std::pair<long, std::string>(userId, tweetStr));
 	}
-      
+
+
+
+
+      /*
+            for(std::map<long, std::string>::iterator userIter = userMap.begin(); userIter != userMap.end(); userIter++)
+	      {
+		std::cout << (*userIter).first << (*userIter).second << "\n";
+	      }*/
+
+
+
+	    
+      /*            for(std::map<long, std::string>::iterator tweetIter = tweetMap.begin(); tweetIter != tweetMap.end(); tweetIter++)
+	      {
+		std::cout << (*tweetIter).first << (*tweetIter).second << "\n";
+		} */
+	    
+
+
+
+
       for(std::map<long, std::string>::iterator userIter = userMap.begin(); userIter != userMap.end(); userIter++)
 	{
 	  std::map<long, std::string>::iterator tweetIter = tweetMap.find((*userIter).first);
@@ -95,7 +122,9 @@ int main()
 	  combinedFile << "*|*|*\n";
 
 	}
-
+      tweetFile.close();
+      combinedFile.close();
+      userFile.close();
 
     }
   else

@@ -1,4 +1,4 @@
-all: examiner setter vwInputMaker thresholdFinder precisionVsRecall inputMaker sortTweetUserIds combineData
+all: examiner setter vwInputMaker thresholdFinder precisionVsRecall inputMaker sortTweetUserIds combineData preprocess
 
 examiner: examiner.cpp
 	g++ -g examiner.cpp -o examiner
@@ -16,8 +16,8 @@ setter: setter.cpp
 vwInputMaker: vwInputMaker.cpp
 	g++ -g vwInputMaker.cpp -o vwInputMaker
 
-InputMaker: InputMaker.cpp
-	g++ -g InputMaker.cpp -o InputMaker
+inputMaker: inputMaker.cpp
+	g++ -g inputMaker.cpp -o inputMaker
 
 sortTweetUserIds: sortTweetUserIds.cpp
 	g++ -g sortTweetUserIds.cpp -o sortTweetUserIds
@@ -25,7 +25,10 @@ sortTweetUserIds: sortTweetUserIds.cpp
 combineData: combineData.cpp
 	g++ -g combineData.cpp -o combineData
 
+preprocess: preprocess.cpp
+	g++ -g preprocess.cpp -o preprocess
+
 
 clean:
-	rm -f setter examiner vwInputMaker thresholdFinder precisionVsRecall inputMaker sortTweetUserIds combineData
+	rm -f setter examiner vwInputMaker thresholdFinder precisionVsRecall inputMaker sortTweetUserIds combineData preprocess
 
