@@ -19,8 +19,8 @@ int main()
   long userId;
 
 
-  userFile.open("temp_user_data.txt");
-  tweetFile.open("temp_tweet_data.txt");
+  userFile.open("formatted_user_data.txt");
+  tweetFile.open("nolines_tweet_data.txt");
   combinedFile.open("combined_tweet_info.txt");
 
 
@@ -29,16 +29,17 @@ int main()
 
       while(getline(userFile,tmpStr))
 	{
-	  strStream.clear();
+	  strStream.str(std::string());
 	  strStream << tmpStr;
 	  strStream >> tmpStr;
 	  userId = atol(tmpStr.c_str());
 	  userIdVector.push_back(userId);
 	  userStr = "";
-	  while(strStream >> tmpStr)
+	  /*	  while(strStream >> tmpStr)
 	    {
 	      userStr += " " + tmpStr;
-	    }
+	      }*/
+	  userStr = strStream.str();
 	  userMap.insert(std::pair<long, std::string>(userId, userStr));
 	}
 
@@ -46,24 +47,26 @@ int main()
       while(!tweetFile.eof())
 	{
 	  getline(tweetFile,lineStr);
-	  std::cout << lineStr << "\n";
-	  strStream.clear();
-	  strStream << lineStr;
-	  
-	  strStream >> tmpStr;
-
-	  userId = atol(tmpStr.c_str());
-
-
 	  //	  std::cout << lineStr << "\n";
-	  tweetStr = "";
-	  while(strStream >> tmpStr)
+	  if(strcmp(lineStr.c_str(), "*|*|*") != 0 && lineStr.size() > 0)
 	    {
-	      tweetStr += " " + tmpStr;
+	      strStream.str(std::string());
+	      strStream << lineStr;
+	      tweetStr = strStream.str();	  
+	      //std::cout << tweetStr << "\n";
+	      strStream >> tmpStr;
+
+	      userId = atol(tmpStr.c_str());
+
+	      /*	      while(strStream >> tmpStr)
+		{
+		  tweetStr += " " + tmpStr;
+		  } */
+
+
+	      getline(tweetFile, lineStr);
+	      tweetMap.insert(std::pair<long, std::string>(userId, tweetStr));
 	    }
-
-
-	  tweetMap.insert(std::pair<long, std::string>(userId, tweetStr));
 	}
 
 
@@ -91,17 +94,28 @@ int main()
 	{
 	  std::map<long, std::string>::iterator tweetIter = tweetMap.find((*userIter).first);
 
-	  if( tweetIter != tweetMap.end())
+
+	 
+	  while( tweetIter != tweetMap.end())
 	    {
-	      strStream.clear();
+
+	      /*	      strStream.str(std::string());
+	      combinedStr = "";
 	      userId = (*userIter).first;
 	      strStream << userId;
-	      strStream >> combinedStr;
-	      combinedStr += (*userIter).second + (*tweetIter).second;
-	      //	      std::cout << combinedStr << "\n";
+	      strStream >> tmpStr;
+	      combinedStr = tmpStr;
+	      std::cout << userId << " - " << tmp << "\n";*/
+
+
+	      combinedStr = (*tweetIter).second + (*userIter).second;
+	      
+
 	      combinedFile << combinedStr << "\n";
 	      combinedFile << "*|*|*\n";
 	      tweetMap.erase(tweetIter);
+
+	       tweetIter = tweetMap.find((*userIter).first);
 	    }
 
 	}
@@ -110,14 +124,14 @@ int main()
       for(std::map<long, std::string>::iterator tweetIter = tweetMap.begin(); tweetIter != tweetMap.end(); tweetIter++)
 	{
 
-	  userId = (*tweetIter).first;
-	  strStream.clear();
+	  /*	  userId = (*tweetIter).first;
+	  combinedStr = "";
+	  strStream.str(std::string());
 	  strStream << userId;
+	  strStream >> combinedStr; */
 
-	  strStream >> combinedStr;
-
-	  combinedStr += " ||| 0 ||| 0 ||| 0" + (*tweetIter).second;
-
+	  combinedStr = (*tweetIter).second;
+	  //std::cout << combinedStr << "\n";
 	  combinedFile << combinedStr << "\n";
 	  combinedFile << "*|*|*\n";
 

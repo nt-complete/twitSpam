@@ -42,7 +42,7 @@ int main(int argc, char** argv)
       while(getline(inStream, tweetLine))
 	{
 	  tweetStr = "";
-	  sstream.clear();
+	  sstream.str(std::string());
 	  sstream << tweetLine;
 
 	  if(usersBool)
