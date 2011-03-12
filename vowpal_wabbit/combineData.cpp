@@ -19,8 +19,8 @@ int main()
   long userId;
 
 
-  userFile.open("formatted_user_data.txt");
-  tweetFile.open("nolines_tweet_data.txt");
+  userFile.open("temp_user_data.txt");
+  tweetFile.open("temp_tweet_data.txt");
   combinedFile.open("combined_tweet_info.txt");
 
 
@@ -29,20 +29,24 @@ int main()
 
       while(getline(userFile,tmpStr))
 	{
-	  strStream.str(std::string());
+	  strStream.str("");
 	  strStream << tmpStr;
-	  strStream >> tmpStr;
 	  userId = atol(tmpStr.c_str());
 	  userIdVector.push_back(userId);
 	  userStr = "";
-	  /*	  while(strStream >> tmpStr)
+	  std::cout << strStream.str() << "\n";
+	  while(strStream >> tmpStr)
 	    {
 	      userStr += " " + tmpStr;
-	      }*/
-	  userStr = strStream.str();
+	    }
+		  //	  userStr = strStream.str();
 	  userMap.insert(std::pair<long, std::string>(userId, userStr));
 	}
 
+      for(std::map<long, std::string>::iterator userIter = userMap.begin(); userIter != userMap.end(); userIter++)
+	{
+	  std::cout << (*userIter).first << "\n";
+	}
 
       while(!tweetFile.eof())
 	{

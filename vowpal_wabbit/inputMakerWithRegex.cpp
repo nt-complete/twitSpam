@@ -1,6 +1,9 @@
 #include <iostream> 
 #include <fstream>
+#include <sstream>
 #include <set>
+#include <boost/regex.hpp>
+#include <stdlib.h>
 #include <string.h>
 
 
@@ -44,16 +47,17 @@ void addHyperlink(std::string tmpStr, std::string* tweetStr)
     }
     
   *tweetStr += tmpStr.at(tmpStr.size()-1);
-
+  *tweetStr += " ";
 }
 
 
 
 int main(int argv, char** argc)
 {
-  std::string tmpStr, tweetId, tweetStr;
-  bool addBool;
-
+  std::string tmpStr, tweetId, tweetStr, wordStr;
+  std::stringstream strStream;
+  bool addBool, rtname, retweetCounted;
+  
   /*tmpStr = "http://ping.fm/060gb";
 
   
@@ -85,109 +89,93 @@ int main(int argv, char** argc)
 	{
 	  while(!inStream.eof())
 	    {
+	    beginning:
+
+	      inStream >> tmpStr; // UserId
+	     
+	      inStream >> tmpStr; // |||
+	     
+
 	      inStream >> tweetId; // tweetId
 
-	      //     std::cout << "tweetId:: " << tweetId << "\n";
-	      
+
+	      //	      std::cout << "tweetId:: " << tweetId << "\n";
+
+
+	      tweetStr = "";	      
+
+		  
 	      if(tweetIdSet.find(tweetId) == tweetIdSet.end())
 		{
+	
+
 		  tweetIdSet.insert(tweetId);
 		  addBool = true;
-		  
-		  inStream >> tmpStr; // |||
-		  inStream >> tmpStr; // UserId
-		  inStream >> tmpStr; // |||
-		  inStream >> tmpStr; // receiverUserId
-		  inStream >> tmpStr; // |||
-		  inStream >> tmpStr; // geo info
-		  inStream >> tmpStr; // |||
-		  do{
-		    inStream >> tmpStr; // source
-		  }while(strcmp(tmpStr.c_str(), "|||") != 0);
-
-		  inStream >> tmpStr; // tweet date (Epoch Time)
 		  inStream >> tmpStr; // |||
 		  tmpStr = "";
 
-		  tweetStr = "";
-		  retweet = 0;
-		  
-		  
+		  getline(inStream, tmpStr);
 
-		  while(strcmp(tmpStr.c_str(), "*|*|*") != 0 && !inStream.eof())
+		  for(int i = 0; i < tmpStr.size(); i++)
 		    {
-
-		      if(strncmp(tmpStr.c_str(), "http://", 7) == 0)
+		      if(!isascii(tmpStr.at(i)))
 			{
-			  addHyperlink(tmpStr, &tweetStr);
+			  goto beginning;
 			}
-		      else 
-			{
-			  
-			  for(int i = 0; i < tmpStr.size(); i++)
-			    {
-			      if(!isascii(tmpStr.at(i))) // checks for non-ASCII characters
-				{
-				  addBool = false;
-				  tmpStr = "";
-				  //std::cout << "1. BREAKING BECAUSE OF NON-ASCII CHARACTERS\n";
-				  break;
-				}
 
-			      if(tmpStr.at(i) == ':')
-				{
-				  tmpStr.replace(i, 1, "_");
-				}
+		      if(tmpStr.at(i) == ':')
+			{
+			  tmpStr.replace(i, 1, "_");
+			}
 	
-			      if(!isalnum(tmpStr.at(i))) // checks for punctuation and replaces them with spaces
-				{
-				  tmpStr.replace(i,1, " ");
+		      if(!isalnum(tmpStr.at(i)) && tmpStr.at(i) != '@' && tmpStr.at(i) != '|' && tmpStr.at(i) != '_') // checks for punctuation and replaces them with spaces
+			{
+			  tmpStr.replace(i,1, " ");
 			    
-				  //  tmpStr.at(i) = " ";
-				}
-			
-			      tmpStr.at(i) = tolower(tmpStr.at(i)); // makes all characters lowercase
-			    }
-			
-		      
-			  if(!addBool)
-			    {
-			      while(strcmp(tmpStr.c_str(), "*|*|*") != 0)
-				{
-				  inStream >> tmpStr; // tweet
-				}
-			      tweetStr = "";
-			      //std::cout << "2. BREAKING BECAUSE OF NON-ASCII CHARACTERS\n";
-			      break;
-			    }
-		    
-			  std::cout << tmpStr << "\n";
-
-			  if(strcmp(tmpStr.c_str(), "rt") == 0)
-			    {
-			      std::cout << "___IN___\n";
-			      inStream >> tmpStr;
-
-			      for(int i = 0; i < tmpStr.size(); i++)
-				{
-				  if(tmpStr.at(i) == ':')
-				    {
-				      tmpStr.replace(i, 1, "_");
-				    }
-				}
-			      if(strncmp(tmpStr.c_str(), "@", 1) == 0)
-				    {
-				      retweet = 1;
-				      retweetCount++;
-				    }
-				  
-			    }
-			  tweetStr += tmpStr + " ";
+			  //  tmpStr.at(i) = " ";
 			}
-		      
-		      inStream >> tmpStr; // tweet	  		    
+		      tmpStr.at(i) = tolower(tmpStr.at(i)); // makes all characters lowercase
+
+
 		    }
 
+
+		  retweet = 0;
+		  
+		  retweetCounted = false;
+		  rtname = false;
+
+		  boost::regex re(".*\(http://[^\\s]+).*");
+
+		    {
+		      
+		      std::string hyperlink = boost::regex_replace(tmpStr, re, "$1");
+		      addHyperlink(hyperlink, &tweetStr);
+
+		    }
+		  std::string username;
+		  re = boost::regex(".*[Rr][Tt]\\s+@\([A-Za-z0-9_]+)\\s+\(.*)");
+
+		  
+		  if(boost::regex_search(tmpStr,  re))
+		    {
+		      username = boost::regex_replace(tmpStr, re, "$1");
+		      tmpStr = boost::regex_replace(tmpStr, re, "$2");
+		      retweet = 1;
+		      retweetCount++;
+		    }
+
+		  std::string userInfo;
+		  re = boost::regex("\(.*)\\|\\|\\|\(.*\\|\\|\\|.*\\|\\|\\|.*)$");
+		  if(boost::regex_search(tmpStr,  re))
+		    {
+		      tmpStr = boost::regex_replace(tmpStr, re, "$1");
+		      userInfo = boost::regex_replace(tmpStr, re, "$2");
+		    }
+
+
+
+		  
 
 		  if(tweetStr.size() > 0)
 		    {
@@ -199,6 +187,7 @@ int main(int argv, char** argc)
 		      //  std::cout << "***" << retweet << "--" << tweetStr << "---\n";
 		    }
 		}
+	
 
 	    }
 
