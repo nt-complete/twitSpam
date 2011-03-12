@@ -24,13 +24,9 @@ void addHyperlink(std::string tmpStr, std::string* tweetStr)
       i += 4;
     }
   
-  //  std::cout << "SIZE: " << tmpStr.size() << "\n";
-  
 
   while(i < tmpStr.size())
     {
-
-
       while(tmpStr.at(i) != '/' && tmpStr.at(i) != '.' && i < tmpStr.size() - 1)
 	{
 	  if(tmpStr.at(i) == ':')
@@ -38,7 +34,6 @@ void addHyperlink(std::string tmpStr, std::string* tweetStr)
 	      tmpStr.replace(i, 1, "_");
 	    }
 	  i++;
-
 	}
   
       *tweetStr += " " + tmpStr.substr(0, i);
@@ -57,28 +52,26 @@ int main(int argv, char** argc)
   std::string tmpStr, tweetId, tweetStr, wordStr;
   std::stringstream strStream;
   bool addBool, rtname, retweetCounted;
-  
-  /*tmpStr = "http://ping.fm/060gb";
-
-  
-  addHyperlink(tmpStr, &tweetStr);
-  std::cout << tweetStr << "\n";
-  
-  return 0;*/
-  
-  
-
+  std::ofstream outStream;
+  std::ifstream inStream;  
 
   std::set<std::string> tweetIdSet;
   int retweet = 0;
   int retweetCount = 0;
 
+  if(argv < 2)
+    {
+      std::cout << "Please pass the file that should be made into input.\n";
+      return 1;
+
+
+    }
+
+
   std::string outputName = argc[1];
   outputName += ".output";
   std::cout << "Beginning formatting file and outputting as " << outputName << "\n";
 
-  std::ofstream outStream;
-  std::ifstream inStream;
 
   outStream.open(outputName.c_str());
 
@@ -92,10 +85,7 @@ int main(int argv, char** argc)
 	    beginning:
 
 	      inStream >> tmpStr; // UserId
-	     
 	      inStream >> tmpStr; // |||
-	     
-
 	      inStream >> tweetId; // tweetId
 
 
@@ -116,24 +106,32 @@ int main(int argv, char** argc)
 
 		  getline(inStream, tmpStr);
 
+
+		  boost::regex re(".*\(http://[^\\s]+).*");
+		  if(boost::regex_search(tmpStr,  re))
+		    {
+		      std::string hyperlink = boost::regex_replace(tmpStr, re, "$1");
+		      addHyperlink(hyperlink, &tweetStr);
+		    }
+
+
+
 		  for(int i = 0; i < tmpStr.size(); i++)
 		    {
+
 		      if(!isascii(tmpStr.at(i)))
 			{
 			  goto beginning;
 			}
 
-		      if(tmpStr.at(i) == ':')
-			{
-			  tmpStr.replace(i, 1, "_");
-			}
-	
+
 		      if(!isalnum(tmpStr.at(i)) && tmpStr.at(i) != '@' && tmpStr.at(i) != '|' && tmpStr.at(i) != '_') // checks for punctuation and replaces them with spaces
 			{
 			  tmpStr.replace(i,1, " ");
 			    
 			  //  tmpStr.at(i) = " ";
 			}
+
 		      tmpStr.at(i) = tolower(tmpStr.at(i)); // makes all characters lowercase
 
 
@@ -145,18 +143,10 @@ int main(int argv, char** argc)
 		  retweetCounted = false;
 		  rtname = false;
 
-		  boost::regex re(".*\(http://[^\\s]+).*");
 
-		    {
-		      
-		      std::string hyperlink = boost::regex_replace(tmpStr, re, "$1");
-		      addHyperlink(hyperlink, &tweetStr);
-
-		    }
 		  std::string username;
 		  re = boost::regex(".*[Rr][Tt]\\s+@\([A-Za-z0-9_]+)\\s+\(.*)");
 
-		  
 		  if(boost::regex_search(tmpStr,  re))
 		    {
 		      username = boost::regex_replace(tmpStr, re, "$1");
@@ -166,26 +156,47 @@ int main(int argv, char** argc)
 		    }
 
 		  std::string userInfo;
+
 		  re = boost::regex("\(.*)\\|\\|\\|\(.*\\|\\|\\|.*\\|\\|\\|.*)$");
 		  if(boost::regex_search(tmpStr,  re))
 		    {
-		      tmpStr = boost::regex_replace(tmpStr, re, "$1");
+		      std::string regStr;
+		      regStr = boost::regex_replace(tmpStr, re, "$1");
 		      userInfo = boost::regex_replace(tmpStr, re, "$2");
+		      tmpStr = regStr;
 		    }
 
 
 
-		  
+		  //		  std::cout << tmpStr << "\n";
 
-		  if(tweetStr.size() > 0)
+		  tweetStr += tmpStr;
+		 
+		  if(userInfo.size() > 0)
+		    {
+		      std::string friends, followers, age;
+		      std::stringstream userStream;
+		      userStream.str(userInfo);
+		      userStream >> friends;
+		      userStream >> tmpStr;
+		      userStream >> followers;
+		      userStream >> tmpStr;
+		      userStream >> age;
+
+		      std::string userStr = " |Friends " + friends + " |Followers " + followers + " |age " + age;
+
+
+		      std::cout << "---" << retweet << "--" << tweetStr << "---" << userStr << "\n";
+		      outStream << retweet << " |tweetWords " << tweetStr << userStr << "\n";
+		      
+
+		    }
+		  else
 		    {
 		      std::cout << "---" << retweet << "--" << tweetStr << "---\n";
 		      outStream << retweet << " |tweetWords " << tweetStr << "\n";
 		    }
-		  else
-		    {
-		      //  std::cout << "***" << retweet << "--" << tweetStr << "---\n";
-		    }
+		  getline(inStream, tmpStr);
 		}
 	
 
