@@ -1,4 +1,4 @@
-all: examiner setter inputMakerWithRegex thresholdFinder precisionVsRecall inputMaker sortTweetUserIds combineData preprocess 
+all: examiner setter inputMakerWithRegex thresholdFinder precisionVsRecall inputMaker sortTweetUserIds combineData preprocess inputMakerWithCurl
 
 examiner: examiner.cpp
 	g++ -g examiner.cpp -o examiner
@@ -16,6 +16,15 @@ setter: setter.cpp
 inputMakerWithRegex: inputMakerWithRegex.cpp
 	g++ -g inputMakerWithRegex.cpp -lboost_regex -o inputMakerWithRegex
 
+inputMakerWithCurl: inputMakerWithCurl.o curler.o 
+	g++ inputMakerWithCurl.o curler.o -lboost_regex -lcurl -ltinyxml -lboost_date_time -o inputMakerWithCurl
+
+inputMakerWithCurl.o: inputMakerWithCurl.cpp curler.h 
+	g++ -g -c inputMakerWithCurl.cpp 
+
+curler.o: curler.cpp
+	g++ -g -c curler.cpp
+
 inputMaker: inputMaker.cpp
 	g++ -g inputMaker.cpp -o inputMaker
 
@@ -30,5 +39,5 @@ preprocess: preprocess.cpp
 
 
 clean:
-	rm -f setter examiner inputMakerWithRegex thresholdFinder precisionVsRecall inputMaker sortTweetUserIds combineData preprocess
+	rm -f setter examiner inputMakerWithRegex inputMakerWithCurl thresholdFinder precisionVsRecall inputMaker sortTweetUserIds combineData preprocess *.o
 

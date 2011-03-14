@@ -72,7 +72,7 @@ bool userCheck(std::string createdAtStr, TiXmlHandle timelineRootHandle, TiXmlHa
 
 
   ///  // Checks whether the last 7 tweets occurred within a week //////////////
-  ss.clear();
+  ss.str("");
   ss << createdAtStr;
   ss >> weekday;
   ss >> month;
@@ -83,7 +83,7 @@ bool userCheck(std::string createdAtStr, TiXmlHandle timelineRootHandle, TiXmlHa
 
   tmpStr = weekday + " " + month + " " + day + " " + year + " " + time;
 	      
-  strstream.clear();
+  strstream.str("");
   strstream << tmpStr;
 
   strstream.imbue(std::locale(std::locale::classic(), new boost::local_time::local_time_input_facet("%a %b %d %Y " "%H:%M:%S")));

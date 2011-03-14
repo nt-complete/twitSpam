@@ -11,19 +11,19 @@ SET(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/CMakeCXXCompiler.cmake"
   "CMakeFiles/CMakeSystem.cmake"
   "CMakeLists.txt"
-  "/usr/share/cmake-2.8/Modules/CMakeCInformation.cmake"
-  "/usr/share/cmake-2.8/Modules/CMakeCXXInformation.cmake"
-  "/usr/share/cmake-2.8/Modules/CMakeCommonLanguageInclude.cmake"
-  "/usr/share/cmake-2.8/Modules/CMakeGenericSystem.cmake"
-  "/usr/share/cmake-2.8/Modules/CMakeSystemSpecificInformation.cmake"
-  "/usr/share/cmake-2.8/Modules/Compiler/GNU-C.cmake"
-  "/usr/share/cmake-2.8/Modules/Compiler/GNU-CXX.cmake"
-  "/usr/share/cmake-2.8/Modules/Compiler/GNU.cmake"
-  "/usr/share/cmake-2.8/Modules/Platform/Linux-GNU-C.cmake"
-  "/usr/share/cmake-2.8/Modules/Platform/Linux-GNU-CXX.cmake"
-  "/usr/share/cmake-2.8/Modules/Platform/Linux-GNU.cmake"
-  "/usr/share/cmake-2.8/Modules/Platform/Linux.cmake"
-  "/usr/share/cmake-2.8/Modules/Platform/UnixPaths.cmake"
+  "/usr/share/cmake/Modules/CMakeCInformation.cmake"
+  "/usr/share/cmake/Modules/CMakeCXXInformation.cmake"
+  "/usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake"
+  "/usr/share/cmake/Modules/CMakeGenericSystem.cmake"
+  "/usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake"
+  "/usr/share/cmake/Modules/Compiler/GNU-C.cmake"
+  "/usr/share/cmake/Modules/Compiler/GNU-CXX.cmake"
+  "/usr/share/cmake/Modules/Compiler/GNU.cmake"
+  "/usr/share/cmake/Modules/Platform/Linux-GNU-C.cmake"
+  "/usr/share/cmake/Modules/Platform/Linux-GNU-CXX.cmake"
+  "/usr/share/cmake/Modules/Platform/Linux-GNU.cmake"
+  "/usr/share/cmake/Modules/Platform/Linux.cmake"
+  "/usr/share/cmake/Modules/Platform/UnixPaths.cmake"
   )
 
 # The corresponding makefile is:
@@ -39,5 +39,9 @@ SET(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 SET(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/curlURL.dir/DependInfo.cmake"
+  "CMakeFiles/ptTwitSpam.dir/DependInfo.cmake"
+  "CMakeFiles/spamCheck.dir/DependInfo.cmake"
   "CMakeFiles/twitSpam.dir/DependInfo.cmake"
+  "CMakeFiles/userData.dir/DependInfo.cmake"
   )

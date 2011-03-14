@@ -171,16 +171,70 @@ TwitSpam_BINARY_DIR:STATIC=/home/nick/twitSpam
 TwitSpam_SOURCE_DIR:STATIC=/home/nick/twitSpam
 
 //Value Computed by CMake
+combineData_BINARY_DIR:STATIC=/home/nick/twitSpam
+
+//Value Computed by CMake
+combineData_SOURCE_DIR:STATIC=/home/nick/twitSpam
+
+//Value Computed by CMake
 curlURL_BINARY_DIR:STATIC=/home/nick/twitSpam
 
 //Value Computed by CMake
 curlURL_SOURCE_DIR:STATIC=/home/nick/twitSpam
 
 //Value Computed by CMake
+examiner_BINARY_DIR:STATIC=/home/nick/twitSpam
+
+//Value Computed by CMake
+examiner_SOURCE_DIR:STATIC=/home/nick/twitSpam
+
+//Value Computed by CMake
+inputMakerWithCurl_BINARY_DIR:STATIC=/home/nick/twitSpam
+
+//Value Computed by CMake
+inputMakerWithCurl_SOURCE_DIR:STATIC=/home/nick/twitSpam
+
+//Value Computed by CMake
+inputMakerWithRegex_BINARY_DIR:STATIC=/home/nick/twitSpam
+
+//Value Computed by CMake
+inputMakerWithRegex_SOURCE_DIR:STATIC=/home/nick/twitSpam
+
+//Value Computed by CMake
+inputMaker_BINARY_DIR:STATIC=/home/nick/twitSpam
+
+//Value Computed by CMake
+inputMaker_SOURCE_DIR:STATIC=/home/nick/twitSpam
+
+//Value Computed by CMake
+precisionVsRecall_BINARY_DIR:STATIC=/home/nick/twitSpam
+
+//Value Computed by CMake
+precisionVsRecall_SOURCE_DIR:STATIC=/home/nick/twitSpam
+
+//Value Computed by CMake
+preprocess_BINARY_DIR:STATIC=/home/nick/twitSpam
+
+//Value Computed by CMake
+preprocess_SOURCE_DIR:STATIC=/home/nick/twitSpam
+
+//Value Computed by CMake
 ptTwitSpam_BINARY_DIR:STATIC=/home/nick/twitSpam
 
 //Value Computed by CMake
 ptTwitSpam_SOURCE_DIR:STATIC=/home/nick/twitSpam
+
+//Value Computed by CMake
+setter_BINARY_DIR:STATIC=/home/nick/twitSpam
+
+//Value Computed by CMake
+setter_SOURCE_DIR:STATIC=/home/nick/twitSpam
+
+//Value Computed by CMake
+sortTweetUserIds_BINARY_DIR:STATIC=/home/nick/twitSpam
+
+//Value Computed by CMake
+sortTweetUserIds_SOURCE_DIR:STATIC=/home/nick/twitSpam
 
 //Value Computed by CMake
 spamCheck_BINARY_DIR:STATIC=/home/nick/twitSpam
@@ -190,6 +244,12 @@ spamCheck_SOURCE_DIR:STATIC=/home/nick/twitSpam
 
 //The directory containing a CMake configuration file for sqlite3.
 sqlite3_DIR:PATH=sqlite3_DIR-NOTFOUND
+
+//Value Computed by CMake
+thresholdFinder_BINARY_DIR:STATIC=/home/nick/twitSpam
+
+//Value Computed by CMake
+thresholdFinder_SOURCE_DIR:STATIC=/home/nick/twitSpam
 
 //Value Computed by CMake
 userData_BINARY_DIR:STATIC=/home/nick/twitSpam
