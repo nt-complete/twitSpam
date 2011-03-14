@@ -20,8 +20,8 @@ int main()
 
 
   userFile.open("formatted_user_data.txt");
-  tweetFile.open("nolines_tweet_data.txt");
-  combinedFile.open("combined_tweet_info.txt");
+  tweetFile.open("nolines_tweet_data.txt.tmp");
+  combinedFile.open("nostar_tweet_info.txt");
 
 
   if(userFile.is_open() && tweetFile.is_open() && combinedFile.is_open())
@@ -49,7 +49,7 @@ int main()
 	  } */
 
 
-
+      int count = 0;
       while(!tweetFile.eof())
 	{
 	  getline(tweetFile,lineStr);
@@ -61,13 +61,12 @@ int main()
 	      tweetStr = tweetStream.str();	  
 	      tweetStream >> userId;
 
-	      getline(tweetFile, lineStr);
 	      tweetMap.insert(std::pair<long, std::string>(userId, tweetStr));
 	    }
+	  count++;
 	}
-
-
-
+      std::cout << "Count: " << count << "\n";
+      std::cout << "Tweetsize: " << tweetMap.size() << " Usersize: " << userMap.size() << "\n";
 
       for(std::map<long, std::string>::iterator userIter = userMap.begin(); userIter != userMap.end(); userIter++)
 	{
@@ -78,7 +77,6 @@ int main()
 	      combinedStr = (*tweetIter).second + (*userIter).second;
 	      
 	      combinedFile << combinedStr << "\n";
-	      combinedFile << "*|*|*\n";
 	      tweetMap.erase(tweetIter);
 
 	      tweetIter = tweetMap.find((*userIter).first);
@@ -90,7 +88,6 @@ int main()
 
 	  combinedStr = (*tweetIter).second;
 	  combinedFile << combinedStr << "\n";
-	  combinedFile << "*|*|*\n";
 	}
       tweetFile.close();
       combinedFile.close();

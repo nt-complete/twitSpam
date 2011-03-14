@@ -123,13 +123,20 @@ int main(int argv, char** argc)
   int retweet = 0;
   int retweetCount = 0;
 
+
+
+
+
   if(argv < 2)
     {
       std::cout << "Please pass the file that should be made into input.\n";
       return 1;
     }
 
+
+
   std::string outputName = argc[1];
+
   outputName += ".output";
   std::cout << "Beginning formatting file and outputting as " << outputName << "\n";
 
@@ -159,14 +166,20 @@ int main(int argv, char** argc)
 
 		  getline(inStream, tmpStr);
 
-		  boost::regex re(".*\(http://[^\\s]+).*");
+		  boost::regex re("^\(.*)\(http://[^\\s]+)\(.*)$");
 		  if(boost::regex_search(tmpStr,  re))
 		    {
-		      std::string hyperlink = boost::regex_replace(tmpStr, re, "$1");
+		      std::string fullStr;
+		      std::string hyperlink = boost::regex_replace(tmpStr, re, "$2");
 		      addHyperlink(hyperlink, &tweetStr);
+		      fullStr = tmpStr;
+		      tmpStr = boost::regex_replace(fullStr, re, "$1");
+		      tmpStr += boost::regex_replace(fullStr, re, "$3");
+		      //std::cout << tmpStr << "\n";
 		    }
 
-		  for(int i = 0; i < tmpStr.size(); i++)
+
+		  /*		  for(int i = 0; i < tmpStr.size(); i++)
 		    {
 
 		      if(!isascii(tmpStr.at(i)))
@@ -193,7 +206,7 @@ int main(int argv, char** argc)
 
 
 		      tmpStr.at(i) = tolower(tmpStr.at(i)); // makes all characters lowercase
-		    }
+		      } */
 
 		  retweet = 0;
 		  
@@ -219,21 +232,23 @@ int main(int argv, char** argc)
 			  inStream >> tmpStr;
 			  goto start;
 			}
+		      //std::cout << "***\n" << tmpStr << "\n";
 		      tmpStr = boost::regex_replace(tmpStr, re, "$2");
-
+		      //std::cout << tmpStr << "\n";
 		      retweet = 1;
 		      retweetCount++;
 		      userInfo += " " + userInfoVec.at(0);
 		      userInfo += " ||| " + userInfoVec.at(1);
 		      userInfo += " ||| " + userInfoVec.at(2);
-		      std::cout << userInfo << "\n";
+		      //std::cout << userInfo << "\n";
 		    }
 
 
 
-		  re = boost::regex("\(.*)\\|\\|\\|\(.*\\|\\|\\|.*\\|\\|\\|.*)$");
+		  re = boost::regex("^\(.*)\\|\\|\\|\(.*\\|\\|\\|.*\\|\\|\\|.*)$");
 		  if(boost::regex_search(tmpStr,  re))
 		    {
+		      //std::cout << tmpStr << "\n";
 		      std::string regStr;
 		      regStr = boost::regex_replace(tmpStr, re, "$1");
 		      if(userInfo.size() == 0)
@@ -241,6 +256,7 @@ int main(int argv, char** argc)
 			  userInfo = boost::regex_replace(tmpStr, re, "$2");
 			}
 		      tmpStr = regStr;
+		      //std::cout << tmpStr << "\n";
 		    }
 
 
@@ -263,14 +279,14 @@ int main(int argv, char** argc)
 		      std::string userStr = " |Friends " + friends + " |Followers " + followers + " |age " + age;
 
 
-		      std::cout << "---" << retweet << "--" << tweetStr << "---" << userStr << "\n";
+		      std::cout << retweet << " |tweetWords " << tweetStr << userStr << "\n";
 		      outStream << retweet << " |tweetWords " << tweetStr << userStr << "\n";
 		      
 
 		    }
 		  else
 		    {
-		      std::cout << "---" << retweet << "--" << tweetStr << "---\n";
+		      std::cout << retweet << " |tweetWords " << tweetStr << "\n";
 		      outStream << retweet << " |tweetWords " << tweetStr << "\n";
 		    }
 		  getline(inStream, tmpStr);
