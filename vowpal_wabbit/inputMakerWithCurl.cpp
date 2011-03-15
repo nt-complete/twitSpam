@@ -111,32 +111,43 @@ void addHyperlink(std::string tmpStr, std::string* tweetStr)
 
 
 
-int main(int argv, char** argc)
+int main(int argc, char** argv)
 {
   std::string tmpStr, tweetId, tweetStr, wordStr;
   std::stringstream strStream;
-  bool addBool, rtname, retweetCounted;
+  bool addBool, checkUser;
   std::ofstream outStream;
   std::ifstream inStream;  
+  std::string outputName, inputName, fullStr;
 
   std::set<std::string> tweetIdSet;
   int retweet = 0;
   int retweetCount = 0;
+  long lineNum = 2227180;
+  double count = 0;
+  double percentage;
 
 
+  checkUser = true;
 
 
-
-  if(argv < 2)
+  if(argc < 2)
     {
       std::cout << "Please pass the file that should be made into input.\n";
       return 1;
     }
 
+  if(strcmp(argv[1], "-n") == 0)
+    {
+      checkUser = false;
+      outputName = argv[2];
+    }
+  else
+    {
+      outputName = argv[1];
+    }
 
-
-  std::string outputName = argc[1];
-
+  inputName = outputName;
   outputName += ".output";
   std::cout << "Beginning formatting file and outputting as " << outputName << "\n";
 
@@ -144,32 +155,59 @@ int main(int argv, char** argc)
 
   if(outStream.is_open())
     {
-      inStream.open(argc[1]);
+      inStream.open(inputName.c_str());
       if(inStream.is_open())
 	{
 	  while(!inStream.eof())
 	    {
 	    start:
+	      count++;
+	      getline(inStream, fullStr);
+	      if(fullStr.size() <= 0)
+		{
+		  break;
+		}
 
-	      inStream >> tmpStr; // UserId
-	      inStream >> tmpStr; // |||
-	      inStream >> tweetId; // tweetId
+	      std::stringstream fullStream;
+	      fullStream.str(fullStr);
 
+	      if(!checkUser)
+		{
+		  fullStream >> retweet;
+
+		  fullStream >> tmpStr;
+		  retweetCount += retweet;
+		  tweetId = "0";
+		}
+	      else
+		{
+
+		  fullStream >> tmpStr; // UserId
+		  fullStream >> tmpStr; // |||
+		  fullStream >> tweetId; // tweetId
+		  fullStream >> tmpStr; // |||
+		}
 	      tweetStr = "";	      
 		  
-	      if(tweetIdSet.find(tweetId) == tweetIdSet.end())
+	      if(tweetIdSet.find(tweetId) == tweetIdSet.end() || !checkUser)
 		{
 		  tweetIdSet.insert(tweetId);
 		  addBool = true;
-		  inStream >> tmpStr; // |||
+	
 		  tmpStr = "";
 
-		  getline(inStream, tmpStr);
+		  //getline(inStream, tmpStr);
+		  
+		  while(fullStream >> fullStr)
+		    {
+		      tmpStr += fullStr + " ";
+		    }
+
 
 		  boost::regex re("^\(.*)\(http://[^\\s]+)\(.*)$");
-		  if(boost::regex_search(tmpStr,  re))
+		  while(boost::regex_search(tmpStr,  re))
 		    {
-		      std::string fullStr;
+	
 		      std::string hyperlink = boost::regex_replace(tmpStr, re, "$2");
 		      addHyperlink(hyperlink, &tweetStr);
 		      fullStr = tmpStr;
@@ -208,41 +246,43 @@ int main(int argv, char** argc)
 		      tmpStr.at(i) = tolower(tmpStr.at(i)); // makes all characters lowercase
 		      } */
 
-		  retweet = 0;
-		  
-		  retweetCounted = false;
-		  rtname = false;
+
 
 		  std::string username;
 		  std::string userInfo = "";
-		  re = boost::regex("^.*\\s+[Rr][Tt]\\s+@\([A-Za-z0-9_]+)\\s+\(.*)");
-		  //re = boost::regex("\\s+\([Rr][Tt])\(.*)");
-		  if(boost::regex_search(tmpStr,  re))
+		  if(checkUser)
 		    {
-		      username = boost::regex_replace(tmpStr, re, "$1");
-		      Curler curlHelper;
+		      retweet = 0;
+		  
 
-		      std::string userXML = curlHelper.getUserInfo(username);
-		      //std::cout << userXML ;
-		      std::vector<std::string> userInfoVec = parseXML(userXML);
-		      if(userInfoVec.size() == 0)
+		      re = boost::regex("^.*\\s+[Rr][Tt]\\s+@\([A-Za-z0-9_]+)\\s+\(.*)");
+		      //re = boost::regex("\\s+\([Rr][Tt])\(.*)");
+		      if(boost::regex_search(tmpStr,  re))
 			{
-		
-			  tmpStr = boost::regex_replace(tmpStr, re, "$2");
-			  inStream >> tmpStr;
-			  goto start;
-			}
-		      //std::cout << "***\n" << tmpStr << "\n";
-		      tmpStr = boost::regex_replace(tmpStr, re, "$2");
-		      //std::cout << tmpStr << "\n";
-		      retweet = 1;
-		      retweetCount++;
-		      userInfo += " " + userInfoVec.at(0);
-		      userInfo += " ||| " + userInfoVec.at(1);
-		      userInfo += " ||| " + userInfoVec.at(2);
-		      //std::cout << userInfo << "\n";
-		    }
+			  username = boost::regex_replace(tmpStr, re, "$1");
+			  Curler curlHelper;
 
+			  std::string userXML = curlHelper.getUserInfo(username);
+			  //std::cout << userXML ;
+			  std::vector<std::string> userInfoVec = parseXML(userXML);
+			  if(userInfoVec.size() == 0)
+			    {
+		
+			      tmpStr = boost::regex_replace(tmpStr, re, "$2");
+			      //inStream >> tmpStr;
+			      goto start;
+			    }
+			  //std::cout << "***\n" << tmpStr << "\n";
+			  tmpStr = boost::regex_replace(tmpStr, re, "$2");
+			  //std::cout << tmpStr << "\n";
+			  retweet = 1;
+			  retweetCount++;
+			  userInfo += " " + userInfoVec.at(0);
+			  userInfo += " ||| " + userInfoVec.at(1);
+			  userInfo += " ||| " + userInfoVec.at(2);
+			  //std::cout << userInfo << "\n";
+			}
+		    }
 
 
 		  re = boost::regex("^\(.*)\\|\\|\\|\(.*\\|\\|\\|.*\\|\\|\\|.*)$");
@@ -265,6 +305,13 @@ int main(int argv, char** argc)
 
 		  tweetStr += tmpStr;
 
+		  percentage = (double)(count / lineNum);
+
+		  percentage = (percentage * 10000);
+
+		  percentage = (int) percentage;
+		  percentage /= 100;
+
 		  if(userInfo.size() > 0)
 		    {
 		      std::string friends, followers, age;
@@ -278,24 +325,30 @@ int main(int argv, char** argc)
 
 		      std::string userStr = " |Friends " + friends + " |Followers " + followers + " |age " + age;
 
+		      std::cout << "\r" << percentage << "%";
 
-		      std::cout << retweet << " |tweetWords " << tweetStr << userStr << "\n";
+
+		      //std::cout << retweet << " |tweetWords " << tweetStr << userStr << "\n";
 		      outStream << retweet << " |tweetWords " << tweetStr << userStr << "\n";
 		      
 
 		    }
 		  else
 		    {
-		      std::cout << retweet << " |tweetWords " << tweetStr << "\n";
+		      std::cout << "\r" << percentage << "%";
+
+
+		      //std::cout << retweet << " |tweetWords " << tweetStr << "\n";
 		      outStream << retweet << " |tweetWords " << tweetStr << "\n";
 		    }
-		  getline(inStream, tmpStr);
+		  //  getline(inStream, tmpStr);
+
 		}
 	
 
 	    }
 
-	  std::cout << "Retweet count: " << retweetCount << "\n";
+	  std::cout << "\nRetweet count: " << retweetCount << "\n";
 
 	  outStream.close();
 	  inStream.close();

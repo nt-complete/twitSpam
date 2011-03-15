@@ -17,7 +17,7 @@ int main()
   int bothTrue;
   int i = 1;
 
-  resultStream.open("noUsersResults.txt");
+  resultStream.open("results.txt");
   outputStream.open("resultsToPlot.txt");
   if(!outputStream.is_open())
     {
