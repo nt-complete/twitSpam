@@ -1,4 +1,5 @@
 
+
 * RUNNING VW
  vw fixed_tweet_data.txt.output -f model.out
  vw fixed_tweet_data.txt.output -i model.out -t -p results.txt

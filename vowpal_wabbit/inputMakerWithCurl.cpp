@@ -115,7 +115,7 @@ int main(int argc, char** argv)
 {
   std::string tmpStr, tweetId, tweetStr, wordStr;
   std::stringstream strStream;
-  bool addBool, checkUser;
+  bool addBool, checkUser, useCurl;
   std::ofstream outStream;
   std::ifstream inStream;  
   std::string outputName, inputName, fullStr;
@@ -123,13 +123,13 @@ int main(int argc, char** argv)
   std::set<std::string> tweetIdSet;
   int retweet = 0;
   int retweetCount = 0;
-  long lineNum = 2227180;
+  long lineNum = 262255;
   double count = 0;
   double percentage;
 
 
   checkUser = true;
-
+  useCurl = true;
 
   if(argc < 2)
     {
@@ -137,16 +137,24 @@ int main(int argc, char** argv)
       return 1;
     }
 
-  if(strcmp(argv[1], "-n") == 0)
-    {
-      checkUser = false;
-      outputName = argv[2];
-    }
-  else
-    {
-      outputName = argv[1];
-    }
 
+  if(strcmp(argv[1], "-c") == 0)
+    {
+   
+      useCurl = false;
+      outputName = argv[2];
+    } else {
+
+    if(strcmp(argv[1], "-n") == 0)
+      {
+	checkUser = false;
+	outputName = argv[2];
+      }
+    else
+      {
+	outputName = argv[1];
+      }
+  }
   inputName = outputName;
   outputName += ".output";
   std::cout << "Beginning formatting file and outputting as " << outputName << "\n";
@@ -261,25 +269,32 @@ int main(int argc, char** argv)
 			{
 			  username = boost::regex_replace(tmpStr, re, "$1");
 			  Curler curlHelper;
-
-			  std::string userXML = curlHelper.getUserInfo(username);
-			  //std::cout << userXML ;
-			  std::vector<std::string> userInfoVec = parseXML(userXML);
-			  if(userInfoVec.size() == 0)
+			  if(useCurl)
 			    {
+			      std::string userXML = curlHelper.getUserInfo(username);
+			      //std::cout << userXML ;
+			      std::vector<std::string> userInfoVec = parseXML(userXML);
+			      if(userInfoVec.size() == 0)
+				{
 		
-			      tmpStr = boost::regex_replace(tmpStr, re, "$2");
-			      //inStream >> tmpStr;
-			      goto start;
+				  tmpStr = boost::regex_replace(tmpStr, re, "$2");
+				  //inStream >> tmpStr;
+				  goto start;
+				}
+			      userInfo += " " + userInfoVec.at(0);
+			      userInfo += " ||| " + userInfoVec.at(1);
+			      userInfo += " ||| " + userInfoVec.at(2);
+
+
 			    }
 			  //std::cout << "***\n" << tmpStr << "\n";
 			  tmpStr = boost::regex_replace(tmpStr, re, "$2");
 			  //std::cout << tmpStr << "\n";
 			  retweet = 1;
 			  retweetCount++;
-			  userInfo += " " + userInfoVec.at(0);
-			  userInfo += " ||| " + userInfoVec.at(1);
-			  userInfo += " ||| " + userInfoVec.at(2);
+
+
+
 			  //std::cout << userInfo << "\n";
 			}
 		    }

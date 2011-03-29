@@ -4,12 +4,12 @@
 #include <set>
 
 
-int main()
+int main(int argc, char ** argv)
 {
   std::ifstream resultStream;
   std::ifstream inputStream;
 
-  std::ofstream outputStream;
+  std::ofstream outputStream, thresholdStream;
   std::string result, inputStr, tmpStr;
   double truePos, posGuess, resultDbl, bothCount;
   double precision, recall;
@@ -17,8 +17,17 @@ int main()
   int bothTrue;
   int i = 1;
 
-  resultStream.open("results.txt");
-  outputStream.open("resultsToPlot.txt");
+
+  if(argc < 3)
+    {
+      std::cout << "Please input file.\n";
+      return 1;
+
+    }
+  resultStream.open(argv[2]);
+  outputStream.open("links_resultsToPlot.txt");
+  thresholdStream.open("links_thresholdPlot.txt");
+
   if(!outputStream.is_open())
     {
       std::cout << "Problem opening output file. Exiting...\n";
@@ -28,11 +37,10 @@ int main()
   outputStream << "# Precision\n";
   outputStream << "# Recall\n";
 
+
   if(resultStream.is_open())
     {
-      
-
-      inputStream.open("smaller_tweet_data.txt.output");
+      inputStream.open(argv[1]);
       if(inputStream.is_open())
 	{
 	  for(double perc = 0.01; perc < 1.0; perc += 0.01)
@@ -86,6 +94,8 @@ int main()
 
 
 	      outputStream << 100*recall << "\t" << 100*precision << "\n";
+	      thresholdStream << 100*precision << perc*100 << "\n";
+	      //outputStream << 100*precision << "\t" << 100*recall << "\n";
 	      
 
 
@@ -101,7 +111,7 @@ int main()
       inputStream.close();
       resultStream.close();
       outputStream.close();
-
+      thresholdStream.close();
     }
   else
     {
