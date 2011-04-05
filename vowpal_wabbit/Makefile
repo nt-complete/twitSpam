@@ -1,4 +1,4 @@
-all: setter thresholdFinder precisionVsRecall sortTweetUserIds combineData preprocess inputMakerWithCurl countLinks
+all: setter thresholdFinder precisionVsRecall sortTweetUserIds combineData preprocess inputMakerWithCurl countLinks weightExaminer
 
 
 precisionVsRecall: precisionVsRecall.cpp
@@ -10,6 +10,9 @@ thresholdFinder: thresholdFinder.cpp
 
 setter: setter.cpp
 	g++ -g setter.cpp -o setter
+
+weightExaminer: weightExaminer.cpp
+	g++ -g weightExaminer.cpp -lboost_regex -o weightExaminer
 
 
 inputMakerWithCurl: inputMakerWithCurl.o curler.o 
@@ -35,5 +38,5 @@ preprocess: preprocess.cpp
 
 
 clean:
-	rm -f setter inputMakerWithCurl thresholdFinder precisionVsRecall sortTweetUserIds combineData preprocess countLinks *.o
+	rm -f setter inputMakerWithCurl thresholdFinder precisionVsRecall sortTweetUserIds combineData preprocess weightExaminer countLinks *.o
 
