@@ -1,4 +1,4 @@
-all: setter thresholdFinder precisionVsRecall sortTweetUserIds combineData preprocess inputMakerWithCurl countLinks weightExaminer
+all: setter thresholdFinder precisionVsRecall sortTweetUserIds combineData preprocess inputMakerWithCurl countLinks weightExaminer spamLabel
 
 
 precisionVsRecall: precisionVsRecall.cpp
@@ -21,6 +21,12 @@ inputMakerWithCurl: inputMakerWithCurl.o curler.o
 inputMakerWithCurl.o: inputMakerWithCurl.cpp curler.h 
 	g++ -g -c inputMakerWithCurl.cpp 
 
+spamLabel: spamLabel.o curler.o 
+	g++ spamLabel.o curler.o -lboost_regex -lcurl -ltinyxml -lboost_date_time -o spamLabel
+
+spamLabel.o: spamLabel.cpp curler.h 
+	g++ -g -c spamLabel.cpp 
+
 curler.o: curler.cpp
 	g++ -g -c curler.cpp
 
@@ -38,5 +44,5 @@ preprocess: preprocess.cpp
 
 
 clean:
-	rm -f setter inputMakerWithCurl thresholdFinder precisionVsRecall sortTweetUserIds combineData preprocess weightExaminer countLinks *.o
+	rm -f setter inputMakerWithCurl thresholdFinder precisionVsRecall sortTweetUserIds combineData preprocess weightExaminer countLinks spamLabel *.o
 
