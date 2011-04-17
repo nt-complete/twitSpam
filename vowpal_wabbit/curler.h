@@ -5,6 +5,7 @@ class Curler
 {
  public:
   std::string getUserInfo(std::string);
+  std::string getTweetInfo(std::string, std::string);
  private:
   char errorBuffer[CURL_ERROR_SIZE];  
   std::string buffer;  

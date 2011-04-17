@@ -18,15 +18,23 @@ int main(int argc, char ** argv)
   int i = 1;
 
 
-  if(argc < 3)
+  if(argc < 4)
     {
-      std::cout << "Please input file.\n";
+      std::cout << "Expected input:\nOriginal_file results_file name_to_append_to_resultsToPlot.\n";
       return 1;
 
     }
   resultStream.open(argv[2]);
-  outputStream.open("links_resultsToPlot.txt");
-  thresholdStream.open("links_thresholdPlot.txt");
+  std::string resultsName;
+  resultsName = argv[3] ;
+  resultsName += "_resultsToPlot.txt";
+  outputStream.open(resultsName.c_str());
+  std::cout << resultsName << "\n";
+  resultsName = argv[3] ;
+  resultsName += "_thresholdPlot.txt";
+  thresholdStream.open(resultsName.c_str());
+  std::cout << resultsName << "\n";
+  std::cin >> tmpStr;
 
   if(!outputStream.is_open())
     {
@@ -94,7 +102,7 @@ int main(int argc, char ** argv)
 
 
 	      outputStream << 100*recall << "\t" << 100*precision << "\n";
-	      thresholdStream << 100*precision << perc*100 << "\n";
+	      thresholdStream << 100*precision << "\t" << perc*100 << "\n";
 	      //outputStream << 100*precision << "\t" << 100*recall << "\n";
 	      
 

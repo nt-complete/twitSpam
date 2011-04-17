@@ -14,6 +14,23 @@
 #include "../include/tinyxml.h"
 
 
+
+std::string getTweetAge(std::string tweetXML)
+{
+  TiXmlDocument tweetDoc;
+
+  std::cout << tweetXML;
+
+  tweetDoc.Parse(tweetXML.c_str());
+  TiXmlHandle tweetRootHandle(&tweetDoc);
+  if(!tweetRootHandle.FirstChild("").ToNode())
+    {}
+
+  return "";
+
+}
+
+
 std::vector<std::string> parseXML(std::string userXML)
 {
   std::vector<std::string> info;
@@ -113,7 +130,8 @@ void addHyperlink(std::string tmpStr, std::string* tweetStr)
 
 int main(int argc, char** argv)
 {
-  std::string tmpStr, tweetId, tweetStr, wordStr, userId, userXML;
+  std::string tmpStr, tweetId, tweetStr, wordStr, userId;
+  std::string userXML, tweetXML, tweetDate;
   std::stringstream strStream;
   std::vector<std::string> userInfoVec;
   bool addBool, checkUser, useCurl;
@@ -124,7 +142,7 @@ int main(int argc, char** argv)
   std::set<std::string> tweetIdSet;
   int retweet = 0;
   int retweetCount = 0;
-  long lineNum = 262255;
+  long lineNum = 142046;
   int spam = 0;
   int spamCount = 0;
   double count = 0;
@@ -229,37 +247,6 @@ int main(int argc, char** argv)
 		    }
 
 
-		  /*		  for(int i = 0; i < tmpStr.size(); i++)
-		    {
-
-		      if(!isascii(tmpStr.at(i)))
-			{
-			  inStream >> tmpStr;
-			  goto start;
-			}
-
-		      if(strncmp(tmpStr.substr(i,7).c_str(), "http://", 7) == 0)
-			{
-			  while(!isspace(tmpStr[i]))
-			    {
-			      tmpStr.replace(i,1, " ");
-			      i++;
-			    }
-			}
-
-		      if(!isalnum(tmpStr.at(i)) && tmpStr.at(i) != '@' && tmpStr.at(i) != '|' && tmpStr.at(i) != '_') // checks for punctuation and replaces them with spaces
-			{
-			  tmpStr.replace(i,1, " ");
-			  //  tmpStr.at(i) = " ";
-			}
-
-
-
-		      tmpStr.at(i) = tolower(tmpStr.at(i)); // makes all characters lowercase
-		      } */
-
-
-
 		  std::string username;
 		  std::string userInfo = "";
 		  if(checkUser)
@@ -267,8 +254,8 @@ int main(int argc, char** argv)
 		      retweet = 0;
 		      spam = 0;
 
-		      re = boost::regex("^.*\\s+[Rr][Tt]\\s+@\([A-Za-z0-9_]+)\\s+\(.*)");
-		      //re = boost::regex("\\s+\([Rr][Tt])\(.*)");
+		      re = boost::regex("[Rr][Tt]\\s\\s*@\([A-Za-z0-9_][A-Za-z0-9_]*)\\s\(.*)");
+
 		      Curler curlHelper;
 		      if(boost::regex_search(tmpStr,  re))
 			{
@@ -277,17 +264,16 @@ int main(int argc, char** argv)
 			  if(useCurl)
 			    {
 			      userXML = curlHelper.getUserInfo(username);
-			      //std::cout << userXML ;
+			      tweetXML = curlHelper.getTweetInfo(username, tweetId);
+			      tweetDate = getTweetAge(tweetXML);
+
 			      userInfoVec = parseXML(userXML);
+
 			      if(userInfoVec.size() == 0)
 				{
-		
-				  tmpStr = boost::regex_replace(tmpStr, re, "$2");
-				  //inStream >> tmpStr;
 				  spam = 1;
-				  //goto start;
-				 
 				}
+
 			      else{
 				spam = 0;
 				userInfo += " " + userInfoVec.at(0);
@@ -296,20 +282,19 @@ int main(int argc, char** argv)
 			      }
 
 			    }
-			  //std::cout << "***\n" << tmpStr << "\n";
-			  tmpStr = boost::regex_replace(tmpStr, re, "$2");
-			  //std::cout << tmpStr << "\n";
+
 			  retweet = 1;
 			  retweetCount++;
 
 
-
-			  //std::cout << userInfo << "\n";
 			}
 		      else
 			{
 			  userXML = curlHelper.getUserInfo(userId);
+			  tweetXML = curlHelper.getTweetInfo(username, tweetId);
+			  tweetDate = getTweetAge(tweetXML);
 			      //std::cout << userXML ;
+
 			  userInfoVec = parseXML(userXML);
 			  if(userInfoVec.size() == 0)
 			    {

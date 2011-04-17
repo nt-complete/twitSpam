@@ -14,16 +14,21 @@ for line in readFile:
 
         friends = int(p.group(2))
         if friends > 0:
-            friends = math.log(friends)
+            squaredFriends = friends * friends
+            logFriends = math.log(friends)
 
         followers = int(p.group(3))
         if followers > 0:
-            followers = math.log(followers)
+            squaredFollowers = followers * followers
+            logFollowers = math.log(followers)
 
         age = int(p.group(4))
         if age > 0:
-            age = math.log(age)
+            squaredAge = age * age
+            logAge = math.log(age)
 
-        writeFile.write(p.group(1) + "|Friends " + str(friends) + " |Followers " + str(followers) + " |age " + str(age) + "\n")
+        writeFile.write(p.group(1) + "|Friends " + str(friends) + " " + str(squaredFriends) + " " + str(logFriends))
+        writeFile.write(" |Followers " + str(followers) + " " + str(squaredFollowers) + " " + str(logFollowers))
+        writeFile.write(" |age " + str(age) + " " + str(squaredAge) + " " + str(logAge) + "\n")
     else:
         writeFile.write(line)
