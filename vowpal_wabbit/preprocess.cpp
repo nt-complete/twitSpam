@@ -6,14 +6,16 @@ int main(int argc, char **argv)
 {
   std::ifstream tweetFile;
   std::ofstream outFile;
-  std::string tmpStr, fullStr;
+  std::string tmpStr, fullStr, outFileStr;
 
 
   tweetFile.open(argv[1]);
   //  outFile.open("nolines_tweet_data.txt.tmp");
   //outFile.open("first_data_set.txt");
-  outFile.open(argv[1] + ".processed");
-
+  outFileStr = argv[1];
+  outFileStr += ".processed";
+  outFile.open(outFileStr.c_str());
+  std::cout << "Outputting to " << outFileStr << "\n";
   if(tweetFile.is_open() && outFile.is_open())
     {
       while(!tweetFile.eof())

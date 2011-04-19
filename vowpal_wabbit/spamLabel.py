@@ -6,10 +6,13 @@ import pycurl
 import re
 import StringIO
 import BeautifulSoup
-from lxml import etree
+from xml.etree.ElementTree import ElementTree
+
+
 
 def findUserInfo(xml):
-    root = etree.parse(xml)
+    root = ElementTree()
+    root = ElementTree.XML(xml)
 
     print(root)
 """    root = root.getroot
@@ -18,12 +21,13 @@ def findUserInfo(xml):
     print(userId.tag)"""
 
 
+
+
 def addHyperlink(fullLinkStr):
     fullLinkStr = fullLinkStr.replace(":", "_")
-    #print(fullLinkStr)
+
     if fullLinkStr[7:11] == "www.":
         i = 11
-
     else:
         i = 7
 
@@ -34,9 +38,11 @@ def addHyperlink(fullLinkStr):
         i += 1
     
     linkStr += " " + fullLinkStr[:i]
-    
-    #print(linkStr)
+
     return linkStr
+
+
+
 
 def main():
 # input is probably nolines_tweet_data.txt.tmp
@@ -55,15 +61,22 @@ def main():
             tweetId = rgx.group(2)
             fullStr = rgx.group(3)
             tweetSet.add(tweetId)
-            #linkRgx = re.findall(r"^(.*)(http://[^ ][^ ]*)(.*)$",fullStr);
-            #print(fullStr)
+
+            userInfoRgx = re.match("^(.*) \|\|\| (\d+) \|\|\| (\d+) \|\|\| (\d+)$", fullStr)
+            if userInfoRgx is not None:
+                friendCount = userInfoRgx.group(2)
+                followerCount = userInfoRgx.group(3)
+                age = userInfoRgx.group(4)
+                fullStr = userInfoRgx.group(1)
+                
+
+            linkStr = ""
             for link in re.finditer("(http://[^\s]+)",fullStr):
-                #print(link.group(1))
-                fakeStr = addHyperlink(link.group(1))
+                linkStr += " " + addHyperlink(link.group(1))
 
 
             fullStr = re.sub("http://[^ ]+", " ", fullStr)
-            #print(fullStr)
+            fullStr = linkStr + " " + fullStr
 
             curlStr = "http://twitter.com/users/" + userId
             curlObj = pycurl.Curl()
@@ -72,14 +85,25 @@ def main():
             curlObj.setopt(pycurl.WRITEFUNCTION, b.write)
             curlObj.perform()
             xml = b.getvalue()
-#print (xml)
+
+            if userInfoRgx is None:
+                findUserInfo(xml)
+            else:
+                print(fullStr)
+    
             if xml is None:
                 isSpam = 1
             else:
                 isSpam = 0
-                #findUserInfo(xml)
-        else:
-            print(line)
+
+            fullStr = str(isSpam) + " | " + fullStr
+            if userInfoRgx is not None:
+                fullStr += " |Friends " + friendCount + " |Followers " + followerCount + " |Age " + age
+
+
+            #print(fullStr)
+        '''else:
+            print(line)'''
     
 
 main()
