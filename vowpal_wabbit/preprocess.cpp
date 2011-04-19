@@ -11,7 +11,8 @@ int main(int argc, char **argv)
 
   tweetFile.open(argv[1]);
   //  outFile.open("nolines_tweet_data.txt.tmp");
-  outFile.open("first_data_set.txt");
+  //outFile.open("first_data_set.txt");
+  outFile.open(argv[1] + ".processed");
 
   if(tweetFile.is_open() && outFile.is_open())
     {
