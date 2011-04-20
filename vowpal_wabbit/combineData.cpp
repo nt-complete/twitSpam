@@ -8,7 +8,7 @@
 #include <string.h>
 
 
-int main()
+int main(int argc, char **argv)
 {
   std::ifstream userFile, tweetFile;
   std::ofstream combinedFile;
@@ -18,11 +18,17 @@ int main()
   std::multimap<long, std::string> userMap, tweetMap;
   long userId;
 
+  if(argc < 4)
+    {
+      std::cout << "Please input the tweet file, user file, and output file.\n";
+      return 1;
 
-  userFile.open("formatted_user_data.txt");
-  tweetFile.open("nolines_tweet_data.txt.tmp");
-  combinedFile.open("nostar_tweet_info.txt");
+    }
 
+  userFile.open(argv[2]);
+  tweetFile.open(argv[1]);
+  combinedFile.open(argv[3]);
+  std::cout << "Outputting to: " << argv[3] << ".\n";
 
   if(userFile.is_open() && tweetFile.is_open() && combinedFile.is_open())
     {
@@ -59,9 +65,11 @@ int main()
 	      std::stringstream tweetStream;
 	      tweetStream.str(lineStr);
 	      tweetStr = tweetStream.str();	  
+	      tweetStream >> tmpStr;
+	      tweetStream >> tmpStr;
 	      tweetStream >> userId;
-
-	      tweetMap.insert(std::pair<long, std::string>(userId, tweetStr));
+	      std::cout << "UserId: " << userId << "\n";
+	      tweetMap.insert(std::pair<long, std::string>(userId, lineStr));
 	    }
 	  count++;
 	}
@@ -77,6 +85,7 @@ int main()
 	      combinedStr = (*tweetIter).second + (*userIter).second;
 	      
 	      combinedFile << combinedStr << "\n";
+	      //std::cout << combinedStr << "\n";
 	      tweetMap.erase(tweetIter);
 
 	      tweetIter = tweetMap.find((*userIter).first);
@@ -87,6 +96,7 @@ int main()
 	{
 
 	  combinedStr = (*tweetIter).second;
+	  //std::cout << combinedStr << "\n";
 	  combinedFile << combinedStr << "\n";
 	}
       tweetFile.close();

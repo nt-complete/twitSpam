@@ -1,27 +1,45 @@
 # 16369144 ||| 58420198205698048 ||| RT http://www.totallyreal.com @ntiller @DrCodyFaeth Memories... http://i.imgur.com/Aqtmq.jpg
-
+# Need to run top 100,000 of complete_combined_tweets.txt
 
 import sys
 import pycurl
 import re
 import StringIO
-import BeautifulSoup
-from xml.etree.ElementTree import ElementTree
+import datetime
+import calendar
+from xml.etree import ElementTree 
 
 
 
 def findUserInfo(xml):
-    root = ElementTree()
-    root = ElementTree.XML(xml)
 
-    print(root)
-"""    root = root.getroot
-    userId = root.Element("id")
-    print("Attack readiness!")
-    print(userId.tag)"""
+#root = ElementTree()
+    try:
+        root = ElementTree.XML(xml)
+    except:
+        root = None
+    if root is not None:
+        userId = root.find("id").text
+        followerCount = root.find("followers_count").text
+        friendCount = root.find("friends_count").text
+        dateCreated = root.find("created_at").text
+        
+    
+        dateRgx = re.match("^.*\s(.*)\s(\d+)\s.*\s(\d+)$",dateCreated)
+        
+        caldic = dict((v,k) for k,v in enumerate(calendar.month_abbr))
+        month = int(caldic[dateRgx.group(1)])
+        
+        dateCreated = datetime.date(int(dateRgx.group(3)), month, int(dateRgx.group(2)))
+
+        delta = datetime.date.today() - dateCreated
 
 
-
+        userInfo = {'friendCount':friendCount, 'followerCount':followerCount, 'dateCreated':dateCreated, 'age':delta.days}
+    
+        return userInfo
+    else:
+        return None
 
 def addHyperlink(fullLinkStr):
     fullLinkStr = fullLinkStr.replace(":", "_")
@@ -52,23 +70,34 @@ def main():
     
     readFile = open(sys.argv[1], 'r')
     writeFile = open(str(sys.argv[1]) + ".output", 'w')
+    print("Printing to " + str(sys.argv[1]) + ".output")
     tweetSet = set()
+    invUserIdSet = set()
 
     for line in readFile:
-        rgx = re.match(r"^(\d+) \|\|\| (\d+) \|\|\| (.*)$", line)
-        if rgx is not None and rgx.group(2) not in tweetSet:
-            userId = rgx.group(1)
-            tweetId = rgx.group(2)
-            fullStr = rgx.group(3)
-            tweetSet.add(tweetId)
+        rgx = re.match(r"^(\d+) \|\|\| (\d+) \|\|\| .* \|\|\| .* \|\|\| .* \|\|\| (\d+) \|\|\| (.*)$", line)
+        #If for some reason we don't match...
+        if rgx is not None and rgx.group(1) not in tweetSet:
 
-            userInfoRgx = re.match("^(.*) \|\|\| (\d+) \|\|\| (\d+) \|\|\| (\d+)$", fullStr)
+            tweetId = rgx.group(1)
+            userId = rgx.group(2)
+            epochDate = rgx.group(3)
+            fullStr = rgx.group(4)
+            tweetSet.add(tweetId)
+            #print(fullStr)
+
+            tweetDate = datetime.datetime.fromtimestamp(float(epochDate))
+
+
+
+            userInfoRgx = re.match("^(.*) \_\_\_ (\d+) \_\_\_ (\d+) \_\_\_ (\d+)$", fullStr)
+            #If there's already user data, assign it to the appropriate variables
             if userInfoRgx is not None:
                 friendCount = userInfoRgx.group(2)
                 followerCount = userInfoRgx.group(3)
                 age = userInfoRgx.group(4)
                 fullStr = userInfoRgx.group(1)
-                
+
 
             linkStr = ""
             for link in re.finditer("(http://[^\s]+)",fullStr):
@@ -77,28 +106,56 @@ def main():
 
             fullStr = re.sub("http://[^ ]+", " ", fullStr)
             fullStr = linkStr + " " + fullStr
+            if userId not in invUserIdSet:
 
-            curlStr = "http://twitter.com/users/" + userId
-            curlObj = pycurl.Curl()
-            curlObj.setopt(pycurl.URL, curlStr)
-            b = StringIO.StringIO()
-            curlObj.setopt(pycurl.WRITEFUNCTION, b.write)
-            curlObj.perform()
-            xml = b.getvalue()
-
-            if userInfoRgx is None:
-                findUserInfo(xml)
+                curlStr = "http://twitter.com/users/" + userId
+                curlObj = pycurl.Curl()
+                curlObj.setopt(pycurl.URL, curlStr)
+                b = StringIO.StringIO()
+                curlObj.setopt(pycurl.WRITEFUNCTION, b.write)
+                curlObj.perform()
+                xml = b.getvalue()
+                
+                xmlUserInfo = findUserInfo(xml)
             else:
-                print(fullStr)
+                xmlUserInfo = None
+            #tweetDate = getTweetDate(userId, tweetId)
     
-            if xml is None:
-                isSpam = 1
-            else:
-                isSpam = 0
+            
+            
+            
 
-            fullStr = str(isSpam) + " | " + fullStr
-            if userInfoRgx is not None:
-                fullStr += " |Friends " + friendCount + " |Followers " + followerCount + " |Age " + age
+
+
+            # If we were able to find the user in Twitter
+            if xmlUserInfo is not None:
+                isSpam = 0
+                fullStr = str(isSpam) + " | " + fullStr
+                delta = tweetDate.date() - xmlUserInfo['dateCreated']
+                if userInfoRgx is not None:
+                    userInfo = {'friendCount':friendCount, 'followerCount':followerCount, 'age':age}
+
+                
+                else:
+                    userInfo = xmlUserInfo
+                    userInfo['age'] = delta.days
+                fullStr += " |Friends " + str(userInfo['friendCount']) + " |Followers " + str(userInfo['followerCount']) + " |Age " + str(userInfo['age'])
+
+            else:
+                invUserIdSet.add(userId)
+                isSpam = 1
+                fullStr = str(isSpam) + " | " + fullStr
+                if userInfoRgx is not None:
+                    userInfo = {'friendCount':friendCount, 'followerCount':followerCount, 'age':age}
+                    fullStr += " |Friends " + str(userInfo['friendCount']) + " |Followers " + str(userInfo['followerCount']) + " |Age " + str(userInfo['age'])
+                
+
+
+
+            writeFile.write(fullStr + "\n")
+
+            '''       if userInfo is not None:
+                fullStr += " |Friends " + str(userInfo['friendCount']) + " |Followers " + str(userInfo['followerCount']) + " |Age " + str(userInfo['age'])'''
 
 
             #print(fullStr)
