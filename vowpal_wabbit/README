@@ -1,0 +1,23 @@
+nolines_tweet_data.txt.tmp - this is the last file before running through inputMaker or spamLabel
+
+combined_tweet_info.txt - combined user & tweet info
+
+first_data_set.txt - first (smaller) data set
+
+links_* - only tweets with links
+
+no_links_* - previously had links, now doesn't
+
+full_split_tweets.txt.output - results of splitting the tweets, running the RT examiner, and putting back together
+
+quarter_tweets.txt - a file 1/4 of full_split_tweets.txt.output
+
+smaller_tweet_data.txt - top 284096 lines of quarter_tweets.txt
+
+squared_full_* - user info is squared
+
+log_full_* - user info is logged
+
+both_full_* - user info is original squared and logged
+
+complete_* - huge data set with all information intact
