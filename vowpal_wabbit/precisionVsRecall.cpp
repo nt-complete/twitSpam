@@ -34,7 +34,7 @@ int main(int argc, char ** argv)
   resultsName += "_thresholdPlot.txt";
   thresholdStream.open(resultsName.c_str());
   std::cout << resultsName << "\n";
-  std::cin >> tmpStr;
+
 
   if(!outputStream.is_open())
     {
@@ -100,11 +100,12 @@ int main(int argc, char ** argv)
 		  std::cout << perc << "\n";
 		  }*/
 
-
-	      outputStream << 100*recall << "\t" << 100*precision << "\n";
-	      thresholdStream << 100*precision << "\t" << perc*100 << "\n";
-	      //outputStream << 100*precision << "\t" << 100*recall << "\n";
-	      
+	      if( posGuess > 0.0 && truePos > 0.0 )
+		{
+		  outputStream << 100*recall << "\t" << 100*precision << "\n";
+		  thresholdStream << 100*precision << "\t" << perc*100 << "\n";
+		  //outputStream << 100*precision << "\t" << 100*recall << "\n";
+		}
 
 
 	      inputStream.clear();

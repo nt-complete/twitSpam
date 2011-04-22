@@ -9,9 +9,9 @@ readFile = open(sys.argv[1], 'r')
 writeFile = open(sys.argv[2], 'w')
 
 for line in readFile:
-    p = re.match(r"^(\d).*(\|Friends \d+ \|Followers \d+ \|age \d+)$", line)
+    p = re.match(r"^(\d).*(\|Friends \d+ [^ ]+ [^ ]+ \|Followers \d+ [^ ]+ [^ ]+ \|age \d+ [^ ]+ [^ ]+)$", line)
     if p is not None:
-        print(p.group(1) + " " + p.group(2) + "\n")
-        writeFile.write(p.group(1) + " " + p.group(2) + "\n")
-    else:
-        writeFile.write(line)
+        #print(p.group(1) + " " + p.group(2) + "\n")
+     
+        writeFile.write(p.group(1) + " " + p.group(2))
+

@@ -7,6 +7,7 @@ import re
 import StringIO
 import datetime
 import calendar
+from progressbar import ProgressBar
 from xml.etree import ElementTree 
 
 
@@ -19,6 +20,8 @@ def findUserInfo(xml):
     except:
         root = None
     if root is not None:
+        if root.find("id") is None:
+            return None
         userId = root.find("id").text
         followerCount = root.find("followers_count").text
         friendCount = root.find("friends_count").text
@@ -73,7 +76,10 @@ def main():
     print("Printing to " + str(sys.argv[1]) + ".output")
     tweetSet = set()
     invUserIdSet = set()
-
+    progress = ProgressBar()
+    
+    count = 0
+    oldPerc = 0
     for line in readFile:
         rgx = re.match(r"^(\d+) \|\|\| (\d+) \|\|\| .* \|\|\| .* \|\|\| .* \|\|\| (\d+) \|\|\| (.*)$", line)
         #If for some reason we don't match...
@@ -86,39 +92,39 @@ def main():
             tweetSet.add(tweetId)
             #print(fullStr)
 
-            tweetDate = datetime.datetime.fromtimestamp(float(epochDate))
+        tweetDate = datetime.datetime.fromtimestamp(float(epochDate))
 
 
 
-            userInfoRgx = re.match("^(.*) \_\_\_ (\d+) \_\_\_ (\d+) \_\_\_ (\d+)$", fullStr)
+        userInfoRgx = re.match("^(.*) \_\_\_ (\d+) \_\_\_ (\d+) \_\_\_ (\d+)$", fullStr)
             #If there's already user data, assign it to the appropriate variables
-            if userInfoRgx is not None:
-                friendCount = userInfoRgx.group(2)
-                followerCount = userInfoRgx.group(3)
-                age = userInfoRgx.group(4)
-                fullStr = userInfoRgx.group(1)
+        if userInfoRgx is not None:
+            friendCount = userInfoRgx.group(2)
+            followerCount = userInfoRgx.group(3)
+            age = userInfoRgx.group(4)
+            fullStr = userInfoRgx.group(1)
 
 
-            linkStr = ""
-            for link in re.finditer("(http://[^\s]+)",fullStr):
-                linkStr += " " + addHyperlink(link.group(1))
+        linkStr = ""
+        for link in re.finditer("(http://[^\s]+)",fullStr):
+            linkStr += " " + addHyperlink(link.group(1))
 
 
-            fullStr = re.sub("http://[^ ]+", " ", fullStr)
-            fullStr = linkStr + " " + fullStr
-            if userId not in invUserIdSet:
+        fullStr = re.sub("http://[^ ]+", " ", fullStr)
+        fullStr = linkStr + " " + fullStr
+        if userId not in invUserIdSet:
 
-                curlStr = "http://twitter.com/users/" + userId
-                curlObj = pycurl.Curl()
-                curlObj.setopt(pycurl.URL, curlStr)
-                b = StringIO.StringIO()
-                curlObj.setopt(pycurl.WRITEFUNCTION, b.write)
-                curlObj.perform()
-                xml = b.getvalue()
-                
-                xmlUserInfo = findUserInfo(xml)
-            else:
-                xmlUserInfo = None
+            curlStr = "http://twitter.com/users/" + userId
+            curlObj = pycurl.Curl()
+            curlObj.setopt(pycurl.URL, curlStr)
+            b = StringIO.StringIO()
+            curlObj.setopt(pycurl.WRITEFUNCTION, b.write)
+            curlObj.perform()
+            xml = b.getvalue()
+            
+            xmlUserInfo = findUserInfo(xml)
+        else:
+            xmlUserInfo = None
             #tweetDate = getTweetDate(userId, tweetId)
     
             
@@ -128,37 +134,45 @@ def main():
 
 
             # If we were able to find the user in Twitter
-            if xmlUserInfo is not None:
-                isSpam = 0
-                fullStr = str(isSpam) + " | " + fullStr
-                delta = tweetDate.date() - xmlUserInfo['dateCreated']
-                if userInfoRgx is not None:
-                    userInfo = {'friendCount':friendCount, 'followerCount':followerCount, 'age':age}
+        if xmlUserInfo is not None:
+            isSpam = 0
+            fullStr = str(isSpam) + " | " + fullStr
+            delta = tweetDate.date() - xmlUserInfo['dateCreated']
+            if userInfoRgx is not None:
+                userInfo = {'friendCount':friendCount, 'followerCount':followerCount, 'age':age}
 
                 
-                else:
-                    userInfo = xmlUserInfo
-                    userInfo['age'] = delta.days
-                fullStr += " |Friends " + str(userInfo['friendCount']) + " |Followers " + str(userInfo['followerCount']) + " |Age " + str(userInfo['age'])
-
             else:
-                invUserIdSet.add(userId)
-                isSpam = 1
-                fullStr = str(isSpam) + " | " + fullStr
-                if userInfoRgx is not None:
-                    userInfo = {'friendCount':friendCount, 'followerCount':followerCount, 'age':age}
-                    fullStr += " |Friends " + str(userInfo['friendCount']) + " |Followers " + str(userInfo['followerCount']) + " |Age " + str(userInfo['age'])
+                userInfo = xmlUserInfo
+                userInfo['age'] = delta.days
+            fullStr += " |Friends " + str(userInfo['friendCount']) + " |Followers " + str(userInfo['followerCount']) + " |Age " + str(userInfo['age'])
+
+        else:
+            invUserIdSet.add(userId)
+            isSpam = 1
+            fullStr = str(isSpam) + " | " + fullStr
+            if userInfoRgx is not None:
+                userInfo = {'friendCount':friendCount, 'followerCount':followerCount, 'age':age}
+                fullStr += " |Friends " + str(userInfo['friendCount']) + " |Followers " + str(userInfo['followerCount']) + " |Age " + str(userInfo['age'])
                 
+        perc = float(float(count) / 2500)
+
+        if perc != oldPerc:
+            print( str(perc*100) + "%")
 
 
+        oldPerc = perc
+        count += 1
+        
+        writeFile.write(fullStr + "\n")
 
-            writeFile.write(fullStr + "\n")
+        '''       if userInfo is not None:
+            fullStr += " |Friends " + str(userInfo['friendCount']) + " |Followers " + str(userInfo['followerCount']) + " |Age " + str(userInfo['age'])'''
+        
+        if curlStr is not None:
 
-            '''       if userInfo is not None:
-                fullStr += " |Friends " + str(userInfo['friendCount']) + " |Followers " + str(userInfo['followerCount']) + " |Age " + str(userInfo['age'])'''
-
-
-            #print(fullStr)
+            print(curlStr)
+        #print(fullStr)
         '''else:
             print(line)'''
     
