@@ -27,7 +27,8 @@ sorted_x = sorted(trends.iteritems(), key=operator.itemgetter(1))
 
 
 for each in sorted_x:
-    writeFile.write(str(each[0]) + " " + str(each[1]) + "\n")
+    if each[1] > 200:
+        writeFile.write(str(each[0]) + " " + str(each[1]) + "\n")
 
 
 #for key in trends.keys():
