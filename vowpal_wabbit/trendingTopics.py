@@ -10,12 +10,14 @@ readFile = open(sys.argv[1], "r")
 writeFile = open(sys.argv[2], "w")
 
 trends = {}
+count = 0
 for line in readFile:
-    p = re.findall(r"#\w+", line)
+    p = re.findall("#\w+", line)
     for topic in p:
-        p = re.match(r"#(\w+)", topic)
-        topic = p.group(1)
+        q = re.match("#(\w+)", topic)
+        topic = q.group(1)
 
+        count += 1
         if topic in trends:
             trends[topic] += 1
         else:
@@ -25,10 +27,10 @@ for line in readFile:
 
 sorted_x = sorted(trends.iteritems(), key=operator.itemgetter(1))
 
-
+print count
 for each in sorted_x:
-    if each[1] > 200:
-        writeFile.write(str(each[0]) + " " + str(each[1]) + "\n")
+    #if each[1] > 20:
+    writeFile.write(str(each[0]) + " " + str(each[1]) + "\n")
 
 
 #for key in trends.keys():

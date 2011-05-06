@@ -58,7 +58,7 @@ int main(int argc, char **argv)
 
 
 
-		  if(!isalnum(tmpStr.at(i)) && tmpStr.at(i) != '@' && tmpStr.at(i) != '|' && tmpStr.at(i) != '_') // checks for punctuation and replaces them with spaces
+		  if(!isalnum(tmpStr.at(i)) && tmpStr.at(i) != '@' && tmpStr.at(i) != '|' && tmpStr.at(i) != '_' && tmpStr.at(i) != '#') // checks for punctuation and replaces them with spaces
 		    {
 		      tmpStr.replace(i,1, " ");
 		    }
