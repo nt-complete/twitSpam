@@ -29,8 +29,8 @@ sorted_x = sorted(trends.iteritems(), key=operator.itemgetter(1))
 
 print count
 for each in sorted_x:
-    #if each[1] > 20:
-    writeFile.write(str(each[0]) + " " + str(each[1]) + "\n")
+    if each[1] == 1:
+        writeFile.write(str(each[0]) + " " + str(each[1]) + "\n")
 
 
 #for key in trends.keys():
